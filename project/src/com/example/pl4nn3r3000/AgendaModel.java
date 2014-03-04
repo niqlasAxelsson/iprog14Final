@@ -1,4 +1,4 @@
-package se.kth.csc.iprog.agendabuilder.model;
+package com.example.pl4nn3r3000;
 
 import java.util.ArrayList;
 import java.util.List;
