@@ -37,7 +37,5 @@
             android:text="List goes here maddafakkas"
             ></TextView>
     </LinearLayout>
-    
-    
 
 </LinearLayout>

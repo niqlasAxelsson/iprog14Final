@@ -16,11 +16,19 @@ public class Day extends Observable {
 	public Day(int hour, int min) {
 		start = hour*60 + min;
 	}
-
+	
+	/**
+	 * Get Start time of day
+	 * @return
+	 */
 	public int getStart() {
 		return start;
 	}
 
+	/**
+	 * Set Start time on a day
+	 * @param start
+	 */
 	public void setStart(int start) {
 		this.start = start;
 		setChanged();
