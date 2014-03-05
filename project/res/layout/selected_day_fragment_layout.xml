@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="#00B4FF"
-    android:id="@+id/all_days_layout">
+    android:background="#FFD927"
+    android:id="@+id/selected_day_layout">
 
     <Button
-        android:id="@+id/button_test"
+        android:id="@+id/button_test2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button" />
