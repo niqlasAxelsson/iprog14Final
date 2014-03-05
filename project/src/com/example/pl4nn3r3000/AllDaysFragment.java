@@ -19,6 +19,7 @@ public class AllDaysFragment extends Fragment{
 		// TODO Auto-generated method stub
 		Button testButton = (Button) getView().findViewById(R.id.button_test);
 		ButtonAction buttonAction = new ButtonAction();
+		System.out.println(buttonAction== null);
 		testButton.setOnClickListener(buttonAction);
 		
 		frag = new SelectedDayFragment();
