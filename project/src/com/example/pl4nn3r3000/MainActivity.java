@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 		AllDaysFragment frag = new AllDaysFragment();
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.add(R.id.main_layout, frag, "alldaysfragment");
+		transaction.add(R.id.fragment_holder, frag, "alldaysfragment");
 		transaction.commit();
 	}
 
