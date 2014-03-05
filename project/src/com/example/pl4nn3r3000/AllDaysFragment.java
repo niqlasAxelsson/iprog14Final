@@ -16,28 +16,24 @@ public class AllDaysFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		Button testButton = (Button) getView().findViewById(R.id.button_test);
-		ButtonAction buttonAction = new ButtonAction();
-		System.out.println(buttonAction== null);
-		testButton.setOnClickListener(buttonAction);
+		// TODO Auto-generated method stub		
 		
-		frag = new SelectedDayFragment();
+		View view = inflater.inflate(R.layout.all_days_fragment_layout, container, false);
+			   Button button = (Button) view.findViewById(R.id.button_test);
+			   button.setOnClickListener(new OnClickListener()
+			   {
+			             @Override
+			             public void onClick(View v)
+			             {
+			            	System.out.println("ghiSHGYUI'OAYSFHBYUIGWRHRGIEARHISGG");
+//			            	final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
+//			     			ft.replace(R.id.all_days_layout, frag, "test");
+//			     			ft.commit();
+			             } 
+			   }); 
 		
 		return inflater.inflate(R.layout.all_days_fragment_layout, container, false);
 	}
 
-	private class ButtonAction implements OnClickListener{
 
-		@Override
-		public void onClick(View v) {
-			final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
-			ft.replace(R.id.all_days_layout, frag, "test");
-			ft.commit(); 
-		}
-		
-		
-	}
 }
-
-
