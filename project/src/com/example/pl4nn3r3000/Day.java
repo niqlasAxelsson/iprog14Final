@@ -10,13 +10,74 @@ public class Day extends Observable {
 	 * the start of the agenda in min, counted from midnight
 	 */
 	int start;
+	int day;
+	int month;
+	int year;
 	
 	List<Activity> activities = new ArrayList<Activity>();
 	
-	public Day(int hour, int min) {
+	public Day(int hour, int min,int day,int month,int year) {
 		start = hour*60 + min;
+		this.day = day;
+		this.month = month;
+		this.year = year;
 	}
 	
+	/**
+	 * get day
+	 * @return
+	 */
+	public int getDay() {
+		return day;
+	}
+	
+	/**
+	 * set day
+	 * @param day
+	 */
+	public void setDay(int day) {
+		this.day = day;
+		setChanged();
+		notifyObservers("DayChanged");
+	}
+
+	/**
+	 * get month
+	 * @return
+	 */
+	public int getMonth() {
+		return month;
+	}
+
+	/**
+	 * set Month of a day
+	 * @param month
+	 */
+	public void setMonth(int month) {
+		this.month = month;
+		setChanged();
+		notifyObservers("MonthChanged");
+	}
+
+	/**
+	 * get the year of the day
+	 * @return
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * set the year of the day
+	 * @param year
+	 */
+	public void setYear(int year) {
+		this.year = year;
+		setChanged();
+		notifyObservers("YearChanged");
+	}
+
+
 	/**
 	 * Get Start time of day
 	 * @return
@@ -33,6 +94,15 @@ public class Day extends Observable {
 		this.start = start;
 		setChanged();
 		notifyObservers("StartChanged");
+	}
+	
+	/**
+	 * get date in a string
+	 * @return
+	 */
+	public String getDateString(){
+	
+		return  year + "-" + month + "-" + day;
 	}
 
 	/**
