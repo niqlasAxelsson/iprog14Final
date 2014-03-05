@@ -17,7 +17,7 @@ public class AllDaysFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Button testButton = (Button) container.findViewById(R.id.button_test);
+		Button testButton = (Button) getView().findViewById(R.id.button_test);
 		ButtonAction buttonAction = new ButtonAction();
 		testButton.setOnClickListener(buttonAction);
 		
