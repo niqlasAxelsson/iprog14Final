@@ -21,19 +21,20 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int clock=0x7f020000;
-        public static final int delete=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int logo=0x7f020003;
-        public static final int meal=0x7f020004;
-        public static final int meeting=0x7f020005;
-        public static final int other=0x7f020006;
-        public static final int party=0x7f020007;
-        public static final int pleasure=0x7f020008;
-        public static final int studies=0x7f020009;
-        public static final int trash=0x7f02000a;
-        public static final int work=0x7f02000b;
-        public static final int workout=0x7f02000c;
+        public static final int action_bar_gradient=0x7f020000;
+        public static final int clock=0x7f020001;
+        public static final int delete=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int logo=0x7f020004;
+        public static final int meal=0x7f020005;
+        public static final int meeting=0x7f020006;
+        public static final int other=0x7f020007;
+        public static final int party=0x7f020008;
+        public static final int pleasure=0x7f020009;
+        public static final int studies=0x7f02000a;
+        public static final int trash=0x7f02000b;
+        public static final int work=0x7f02000c;
+        public static final int workout=0x7f02000d;
     }
     public static final class id {
         public static final int action_settings=0x7f080006;
@@ -58,14 +59,18 @@ public final class R {
         public static final int hello_world=0x7f050002;
     }
     public static final class style {
+        public static final int AgendaActionBarTheme=0x7f060003;
+        public static final int AgendaTheme=0x7f060002;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
