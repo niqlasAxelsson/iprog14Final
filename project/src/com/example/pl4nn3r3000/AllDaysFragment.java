@@ -19,20 +19,27 @@ public class AllDaysFragment extends Fragment{
 		// TODO Auto-generated method stub		
 		
 		View view = inflater.inflate(R.layout.all_days_fragment_layout, container, false);
-			   Button button = (Button) view.findViewById(R.id.button_test);
+			   final Button button = (Button) view.findViewById(R.id.button_test);
 			   button.setOnClickListener(new OnClickListener()
 			   {
 			             @Override
 			             public void onClick(View v)
 			             {
-			            	System.out.println("ghiSHGYUI'OAYSFHBYUIGWRHRGIEARHISGG");
-//			            	final FragmentTransaction ft = getFragmentManager().beginTransaction(); 
-//			     			ft.replace(R.id.all_days_layout, frag, "test");
-//			     			ft.commit();
+			            	 frag = new SelectedDayFragment();
+			            	//button.setText("lol");
+			            	//System.out.println("ghiSHGYUI'OAYSFHBYUIGWRHRGIEARHISGG");
+			            	final FragmentTransaction ft = getFragmentManager().beginTransaction();
+			            	ft.remove((Fragment)object);
+			     			ft.replace(R.id.all_days_layout, frag, "test");
+			     			ft.commit();
+			     			 
+			     			
+			     			
+			     		
 			             } 
 			   }); 
 		
-		return inflater.inflate(R.layout.all_days_fragment_layout, container, false);
+		return view;
 	}
 
 
