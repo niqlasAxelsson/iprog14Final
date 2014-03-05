@@ -78,6 +78,24 @@ public class Day extends Observable {
 		notifyObservers("ActivityAdded");
 		return position;
 	}
+	/**
+	 * check if the time is free for booking 
+	 * @param startTime
+	 * @param endTime
+	 * @return
+	 */
+	public boolean checkIfTimeIsEmpty(int startTime,int endTime){
+		
+		for(Activity act: activities){
+			if(startTime>act.getStartTime() && startTime<act.getEndTime())
+				return false;
+			else if(endTime>act.getStartTime() && endTime<act.getEndTime())
+				return false;
+			else if(startTime<act.getStartTime() && endTime>act.getEndTime())
+				return false;
+		}
+		return true;
+	}
 	
 	/**
 	 * removes an activity from specific position
