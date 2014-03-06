@@ -32,7 +32,8 @@ public class MainActivity extends Activity {
 	
 	 private static String[] dataObjects = new String[]{ "Text #1",
 	        "Text #2",
-	        "Text #3" };
+	        "Text #3", 
+	        "fnhiosw,","fdsfvs" , "few", "vfdsv","Maddafukka", "qwerty"};
 	    
 	    private BaseAdapter mAdapter = new BaseAdapter() {
 	 

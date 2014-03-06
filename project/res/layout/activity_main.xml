@@ -31,7 +31,8 @@
     <LinearLayout
         android:id="@+id/horizontalListlayout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="85dp" 
+        android:orientation="vertical">
 
         <com.example.pl4nn3r3000.HorizontalListView
             android:id="@+id/listview"
