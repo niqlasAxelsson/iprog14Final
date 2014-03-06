@@ -1,14 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" 
-    android:id="@+id/main_layout">
+    tools:context=".MainActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -29,23 +29,23 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/horizontalListlayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List goes here maddafakkas"
-            ></TextView>
-    </LinearLayout>
 
-    
-    
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" 
-        android:id="@+id/fragment_holder">
+        <com.example.pl4nn3r3000.HorizontalListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </com.example.pl4nn3r3000.HorizontalListView>
         
     </LinearLayout>
-    
+
+    <LinearLayout
+        android:id="@+id/fragment_holder"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
 </LinearLayout>
