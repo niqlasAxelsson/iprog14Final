@@ -33,11 +33,11 @@ public class MainActivity extends Activity {
 		//get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
 		model.addExampleData();
-		EventActivity[] parkedActivities= model.getParkedActivitiesArray();
+		String[] activityNames = model.getNameOfParkedActivities();
 		
 		// create the horizontal listview
 		HorizontalListView listview = (HorizontalListView) findViewById(R.id.listview);
-		adapter = new EventActivityList(this, model, parkedActivities);
+		adapter = new EventActivityList(this, model, activityNames);
 		listview.setAdapter(adapter);
 
 		// starts fragment

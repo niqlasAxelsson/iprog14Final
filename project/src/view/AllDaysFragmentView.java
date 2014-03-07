@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import com.group14.pl4nn3r3000.R;
 import model.AgendaModel;
+import model.EventActivity;
 
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ public class AllDaysFragmentView implements Observer {
 	
 	private void buildComponent(){
 		Button b = (Button) view.findViewById(R.id.button_test);
-		b.setText("qwertyujikl");
+		b.setText("Challa");
 	}
 	
 	@Override

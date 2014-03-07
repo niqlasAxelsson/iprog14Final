@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class EventActivityList extends ArrayAdapter<EventActivity>{
+public class EventActivityList extends ArrayAdapter<String>{
 	
 	private Activity context;
 	private AgendaModel model;
@@ -19,14 +19,14 @@ public class EventActivityList extends ArrayAdapter<EventActivity>{
 	private TextView eventDuration;
 	private ImageView eventImage;
 	private View listItemView;
-	private EventActivity[] freeEvents;
+	private EventActivity[] parkedEvents;
 	
 
-	public EventActivityList(Activity context, AgendaModel model, EventActivity[] freeEvents) {
-		super(context, R.layout.list_item);
+	public EventActivityList(Activity context, AgendaModel model, String[] activityNames) {
+		super(context, R.layout.list_item, activityNames);
 		this.context = context;
 		this.model = model;
-		this.freeEvents = freeEvents;
+		this.parkedEvents = model.getParkedActivitiesArray();
 		
 	}
 
@@ -55,7 +55,7 @@ public class EventActivityList extends ArrayAdapter<EventActivity>{
 	 * Sets the resources for all of the components created in the list item
 	 */
 	private void setResourcesForComponents() {
-		EventActivity selectedEvent = freeEvents[position];
+		EventActivity selectedEvent = parkedEvents[position];
 		eventTitle.setText(selectedEvent.getName());
 		eventDuration.setText(selectedEvent.getLength());
 		eventImage.setImageResource(selectedEvent.getImage());	

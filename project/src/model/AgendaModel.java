@@ -46,6 +46,16 @@ public class AgendaModel extends Observable {
 		return parkedActivites;
 	}
 	
+	public String[] getNameOfParkedActivities(){
+		String[] array = new String[parkedActivites.size()];
+		
+		for(int i = 0; i < parkedActivites.size(); i++){
+			array[i] = parkedActivites.get(i).getName();
+		}
+		
+		return array;
+	}
+	
 	public EventActivity[] getParkedActivitiesArray(){
 		EventActivity[] pa = new EventActivity[parkedActivites.size()];
 		
