@@ -9,6 +9,7 @@
         android:targetSdkVersion="18" />
 
     <application
+        android:screenOrientation="portrait"
         android:name="model.AgendaApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
