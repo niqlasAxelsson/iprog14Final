@@ -2,6 +2,8 @@ package model;
 
 import java.util.Observable;
 
+import com.example.pl4nn3r3000.R;
+
 public class EventActivity extends Observable {
 
 	// The possible types of the activity
@@ -38,8 +40,39 @@ public class EventActivity extends Observable {
 		this.description = description;
 		this.length = length;
 		this.category = category;
+		setImage(category);
 		start = -1;
 		end = -1;
+	}
+
+	private void setImage(int category) {
+		switch (category) {
+		case 1:
+			image = R.drawable.workout;
+			break;
+		case 2:
+			image = R.drawable.meeting;
+			break;
+		case 3:
+			image = R.drawable.meal;
+			break;
+		case 4:
+			image = R.drawable.party;
+			break;
+		case 5:
+			image = R.drawable.studies;
+			break;
+		case 6:
+			image = R.drawable.work;
+			break;
+		case 7:
+			image = R.drawable.pleasure;
+			break;
+		default: 
+			image = R.drawable.other;
+			break;
+		}
+		
 	}
 
 	/**

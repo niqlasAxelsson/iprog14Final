@@ -37,6 +37,18 @@ public class AgendaModel extends Observable {
 		setChanged();
 		notifyObservers("ActivityParked");
 	}
+	
+	/**
+	 * return the list of parked activities
+	 * @return
+	 */
+	public List<EventActivity> getParkedActivities(){
+		return parkedActivites;
+	}
+	
+	public EventActivity[] getParkedActivitiesArray(){
+		return (EventActivity[]) parkedActivites.toArray();
+	}
 
 	/**
 	 * remove an activity on provided position from parked activites
@@ -71,6 +83,18 @@ public class AgendaModel extends Observable {
 		setChanged();
 		notifyObservers();
 	};
+	
+	public void addExampleData(){
+		String[] titles = {"Workout", "Meeting", "Meal", "Party", "Studies", "Work", "Pleasure", "Other"};
+		String[] descriptions = {"Workout", "Meeting", "Meal", "Party", "Studies", "Work", "Pleasure", "Other"};
+		Integer[] durations = {1, 2, 3, 4, 5, 6, 7, 8};
+		Integer[] categories = {1, 2, 3, 4, 5, 6, 7, 8};
+		
+		for(int i = 0; i < 8; i++){
+			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
+			addParkedActivity(ea);
+		}
+	}
 
 	/**
 	 * you can use this method to create some test data and test your
