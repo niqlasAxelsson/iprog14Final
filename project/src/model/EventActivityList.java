@@ -36,8 +36,20 @@ public class EventActivityList extends ArrayAdapter<String>{
 		LayoutInflater inflater = context.getLayoutInflater();
 		listItemView = inflater.inflate(R.layout.list_item, null, true);
 		
-		buildComponents();
-		setResourcesForComponents();
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		
+		eventTitle = (TextView) listItemView.findViewById(R.id.list_item_title);
+		eventDuration = (TextView) listItemView.findViewById(R.id.list_item_duration);
+		eventImage = (ImageView) listItemView.findViewById(R.id.list_item_image);
+		
+		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+		
+		EventActivity selectedEvent = parkedEvents[position];
+		eventTitle.setText(selectedEvent.getName());
+		eventDuration.setText(selectedEvent.getLength());
+		eventImage.setImageResource(selectedEvent.getImage());	
+		
+		System.out.println("ccccccccccccccccccccccccccccccccccccccccccccccccc");
 		
 		return listItemView;
 	}
@@ -46,19 +58,14 @@ public class EventActivityList extends ArrayAdapter<String>{
 	 * Build the three components for the list items
 	 */
 	private void buildComponents() {
-		eventTitle = (TextView) listItemView.findViewById(R.id.list_item_title);
-		eventDuration = (TextView) listItemView.findViewById(R.id.list_item_duration);
-		eventImage = (ImageView) listItemView.findViewById(R.id.list_item_image);
+		
 	}
 	
 	/**
 	 * Sets the resources for all of the components created in the list item
 	 */
 	private void setResourcesForComponents() {
-		EventActivity selectedEvent = parkedEvents[position];
-		eventTitle.setText(selectedEvent.getName());
-		eventDuration.setText(selectedEvent.getLength());
-		eventImage.setImageResource(selectedEvent.getImage());	
+		
 	}
 	
 
