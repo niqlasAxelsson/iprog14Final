@@ -11,31 +11,38 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:text="Your activities" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#393939" >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:text="+activity" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="Your activities"
+                android:layout_centerVertical="true"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:text="New activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horizontalListlayout"
         android:layout_width="fill_parent"
-        android:layout_height="85dp" 
-        android:orientation="vertical">
+        android:layout_height="85dp"
+        android:orientation="vertical" >
 
         <com.group14.pl4nn3r3000.HorizontalListView
             android:id="@+id/listview"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent" >
         </com.group14.pl4nn3r3000.HorizontalListView>
-        
     </LinearLayout>
 
     <LinearLayout
