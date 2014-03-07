@@ -45,8 +45,8 @@ public class EventActivityList extends ArrayAdapter<String>{
 		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
 		
 		EventActivity selectedEvent = parkedEvents[position];
-		eventTitle.setText(selectedEvent.getName());
-		eventDuration.setText(selectedEvent.getLength());
+		eventTitle.setText("" + selectedEvent.getName());
+		eventDuration.setText("" + selectedEvent.getLength());
 		eventImage.setImageResource(selectedEvent.getImage());	
 		
 		System.out.println("ccccccccccccccccccccccccccccccccccccccccccccccccc");
