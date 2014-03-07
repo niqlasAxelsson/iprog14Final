@@ -1,5 +1,9 @@
 package com.group14.pl4nn3r3000;
 
+import model.AgendaApplication;
+import model.AgendaModel;
+import view.AllDaysFragmentView;
+
 import com.example.pl4nn3r3000.R;
 
 import android.app.Fragment;
@@ -19,12 +23,18 @@ public class AllDaysFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		
+		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
+		AllDaysFragmentView view = new AllDaysFragmentView(inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);
 
-		View view = inflater.inflate(R.layout.all_days_fragment_layout,
-				container, false);
-		final Button button = (Button) view.findViewById(R.id.button_test);
+//		View view = inflater.inflate(R.layout.all_days_fragment_layout,
+//				container, false);
+		final Button button = (Button) view.getView().findViewById(R.id.button_test);
+		
+		
+		
 		button.setOnClickListener(new OnClickListener() {
-			@Override
+		@Override
 			public void onClick(View v) {
 				frag = new SelectedDayFragment();
 				
@@ -36,7 +46,7 @@ public class AllDaysFragment extends Fragment {
 			}
 		});
 
-		return view;
+		return view.getView();
 	}
 
 }

@@ -1,16 +1,14 @@
-package com.group14.pl4nn3r3000;
+package model;
 
 import java.util.LinkedList;
 
-import model.Activity;
-import model.AgendaModel;
 
 import android.app.Application;
 
 public class AgendaApplication extends Application {
 
 	private AgendaModel model = new AgendaModel();
-	private LinkedList<Activity> freeActivites = new LinkedList<Activity>();
+	private LinkedList<EventActivity> freeActivites = new LinkedList<EventActivity>();
 
 	public AgendaModel getModel() {
 
@@ -31,7 +29,7 @@ public class AgendaApplication extends Application {
 	 *set the activity List
 	 * @param list
 	 */
-	public void setActivity(LinkedList<Activity> list){
+	public void setActivity(LinkedList<EventActivity> list){
 		freeActivites = list;
 	}
 	
@@ -40,7 +38,7 @@ public class AgendaApplication extends Application {
 	 * 
 	 * @return the activity list
 	 */
-	public LinkedList<Activity> getActivities(){
+	public LinkedList<EventActivity> getActivities(){
 		return freeActivites;
 				
 	}
@@ -49,7 +47,7 @@ public class AgendaApplication extends Application {
 	 * add activity to the list of free activities
 	 * @param activiy
 	 */
-	public void addAtivityToList(Activity activiy){
+	public void addAtivityToList(EventActivity activiy){
 		freeActivites.add(activiy);
 	}
 	
@@ -58,7 +56,7 @@ public class AgendaApplication extends Application {
 	 * 
 	 * @param activity to remove from list of free activities
 	 */
-	public void removeActivityFromList(Activity activity){
+	public void removeActivityFromList(EventActivity activity){
 		freeActivites.remove(activity);
 	}
 	

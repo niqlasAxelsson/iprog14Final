@@ -2,7 +2,7 @@ package model;
 
 import java.util.Observable;
 
-public class Activity extends Observable {
+public class EventActivity extends Observable {
 
 	// The possible types of the activity
 	public static final int WORKOUT = 1;
@@ -18,30 +18,32 @@ public class Activity extends Observable {
 	String description;
 
 	int length; // in minutes
-	int type;
+	int category;
+
+	int image;
 
 	int start;
 	int end;
 
 	/**
-	 * Creates an Activity
+	 * Creates an EventActivity
 	 * 
 	 * @param name
 	 * @param description
 	 * @param length
-	 * @param type
+	 * @param category
 	 */
-	public Activity(String name, String description, int length, int type) {
+	public EventActivity(String name, String description, int length, int category) {
 		this.name = name;
 		this.description = description;
 		this.length = length;
-		this.type = type;
+		this.category = category;
 		start = -1;
 		end = -1;
 	}
 
 	/**
-	 * set Start Time of an activity
+	 * set Start Time of an EventActivity
 	 * 
 	 * @param start
 	 */
@@ -50,7 +52,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * get start Time of an activity
+	 * get start Time of an EventActivity
 	 * 
 	 * @return
 	 */
@@ -59,7 +61,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * set end time of an activity
+	 * set end time of an EventActivity
 	 * 
 	 * @param end
 	 */
@@ -68,7 +70,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * get end time of an activity
+	 * get end time of an EventActivity
 	 * 
 	 * @return
 	 */
@@ -77,7 +79,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * get Name of an activity
+	 * get Name of an EventActivity
 	 * 
 	 * @return
 	 */
@@ -86,7 +88,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * Set name of an activity
+	 * Set name of an EventActivity
 	 * 
 	 * @param name
 	 */
@@ -97,7 +99,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * Get description of an activity
+	 * Get description of an EventActivity
 	 * 
 	 * @return
 	 */
@@ -106,7 +108,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * Set decription of an activity
+	 * Set decription of an EventActivity
 	 * 
 	 * @param description
 	 */
@@ -117,7 +119,7 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * Get length of an activity
+	 * Get length of an EventActivity
 	 * 
 	 * @return
 	 */
@@ -132,23 +134,32 @@ public class Activity extends Observable {
 	}
 
 	/**
-	 * Get type of an activity
+	 * Get type of an EventActivity
 	 * 
 	 * @return
 	 */
 	public int getType() {
-		return type;
+		return category;
 	}
 
 	/**
-	 * Set an type of an activity
+	 * Set an type of an EventActivity
 	 * 
 	 * @param type
 	 */
 	public void setType(int type) {
-		this.type = type;
+		this.category = type;
 		setChanged();
 		notifyObservers("TypeChanged");
+	}
+
+	
+	/**
+	 * 
+	 * @return retruns an int that pointsTo an EventActivity image
+	 */
+	public int getImage() {
+		return image;
 	}
 
 }

@@ -15,7 +15,7 @@ public class Day extends Observable {
 	int month;
 	int year;
 	
-	List<Activity> activities = new ArrayList<Activity>();
+	List<EventActivity> activities = new ArrayList<EventActivity>();
 	
 	public Day(int hour, int min,int day,int month,int year) {
 		start = hour*60 + min;
@@ -111,7 +111,7 @@ public class Day extends Observable {
 	 */
 	public int getTotalLength() {
 		int result = 0;
-		for(Activity act:activities) {
+		for(EventActivity act:activities) {
 			result += act.getLength();
 		}
 		return result;
@@ -127,7 +127,7 @@ public class Day extends Observable {
 	 */
 	public int getLengthByType(int type) {
 		int result = 0;
-		for(Activity act:activities) {
+		for(EventActivity act:activities) {
 			if(act.getType() == type) {
 				result += act.getLength();
 			}
@@ -140,7 +140,7 @@ public class Day extends Observable {
 	 * this method will be called when needed from the model
 	 * don't call it directly
 	 */
-	int addActivity(Activity act,int position){
+	int addActivity(EventActivity act,int position){
 		if(position > activities.size()) {
 			position = activities.size();
 		}
@@ -157,7 +157,7 @@ public class Day extends Observable {
 	 */
 	public boolean checkIfTimeIsEmpty(int startTime,int endTime){
 		
-		for(Activity act: activities){
+		for(EventActivity act: activities){
 			if(startTime>act.getStartTime() && startTime<act.getEndTime())
 				return false;
 			else if(endTime>act.getStartTime() && endTime<act.getEndTime())
@@ -173,8 +173,8 @@ public class Day extends Observable {
 	 * this method will be called when needed from the model
 	 * don't call it directly
 	 */
-	Activity removeActivity(int position) {
-		Activity act = activities.remove(position);
+	EventActivity removeActivity(int position) {
+		EventActivity act = activities.remove(position);
 		setChanged();
 		notifyObservers("ActivityRemoved");
 		return act;
@@ -189,7 +189,7 @@ public class Day extends Observable {
 		if(newPosition>oldPosition){
 			newPosition--;
 		}
-		Activity act = activities.remove(oldPosition);
+		EventActivity act = activities.remove(oldPosition);
 		activities.add(newPosition,act);
 		setChanged();
 		notifyObservers("ActivityMoved");
