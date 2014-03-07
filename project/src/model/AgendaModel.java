@@ -47,7 +47,13 @@ public class AgendaModel extends Observable {
 	}
 	
 	public EventActivity[] getParkedActivitiesArray(){
-		return (EventActivity[]) parkedActivites.toArray();
+		EventActivity[] pa = new EventActivity[parkedActivites.size()];
+		
+		for(int i = 0; i < parkedActivites.size(); i++){
+			pa[i] = parkedActivites.get(i);
+		}
+		
+		return pa;
 	}
 
 	/**
