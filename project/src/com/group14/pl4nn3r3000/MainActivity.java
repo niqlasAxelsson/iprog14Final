@@ -12,33 +12,47 @@ import com.example.pl4nn3r3000.R;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ClipData;
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnLongClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class MainActivity extends Activity {
 	
 	private AgendaModel model;
 	private EventActivityList adapter;
+	private EventActivity[] parkedEvents;
+	private int position;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	
 		
 		//get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
 		model.addExampleData();
 		String[] activityNames = model.getNameOfParkedActivities();
+		parkedEvents = model.getParkedActivitiesArray();
 		
 		// create the horizontal listview
 		HorizontalListView listview = (HorizontalListView) findViewById(R.id.listview);
 		adapter = new EventActivityList(this, model, activityNames);
 		listview.setAdapter(adapter);
+		listview.setOnItemLongClickListener(listener);
 
 		// starts fragment
 		AllDaysFragment frag = new AllDaysFragment();
@@ -50,40 +64,54 @@ public class MainActivity extends Activity {
 
 	
 	
-	//allt här under ska tas bort när EventActivityList är klar
-	
-	private static String[] dataObjects = new String[] { "Text #1", "Text #2",
-			"Text #3", "fnhiosw,", "fdsfvs", "few", "vfdsv", "Maddafukka",
-			"qwerty" };
+	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
-	private BaseAdapter mAdapter = new BaseAdapter() {
 
 		@Override
-		public int getCount() {
-			return dataObjects.length;
+		public boolean onItemLongClick(AdapterView<?> adapter, View v, int position, long arg3) {
+			
+			ImageView image = (ImageView) v.findViewById(R.id.list_item_image);
+			
+			DragShadow dragShadow = new DragShadow(v, image);
+			
+
+			ClipData data = ClipData.newPlainText("", "");
+
+			v.startDrag(data, dragShadow, v, 0);
+			return false;
 		}
-
-		@Override
-		public Object getItem(int position) {
-			return null;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return 0;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			View retval = LayoutInflater.from(parent.getContext()).inflate(
-					R.layout.list_item, null);
-			TextView title = (TextView) retval
-					.findViewById(R.id.list_item_title);
-			title.setText(dataObjects[position]);
-
-			return retval;
-		}
-
+		
 	};
+	
 
+	private class DragShadow extends View.DragShadowBuilder {
+
+		Drawable dragImage;
+
+		public DragShadow(View view, ImageView image) {
+			super(view);
+			
+			dragImage = image.getDrawable();
+			
+		}
+
+		@Override
+		public void onDrawShadow(Canvas canvas) {
+
+			dragImage.draw(canvas);
+		}
+
+		@Override
+		public void onProvideShadowMetrics(Point shadowSize,
+				Point shadowTouchPoint) {
+
+			Rect rect = dragImage.getBounds();
+
+			shadowSize.set(rect.height(), rect.width());
+
+			shadowTouchPoint.set(rect.height() / 2, rect.width() / 2);
+
+		}
+
+	}
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.util.Observable;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.pl4nn3r3000.R;
 
 public class EventActivity extends Observable {
