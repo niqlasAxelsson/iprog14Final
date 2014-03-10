@@ -3,8 +3,14 @@ package model;
 import com.example.pl4nn3r3000.R;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -61,5 +67,48 @@ public class EventActivityList extends ArrayAdapter<String>{
 		eventImage.setImageResource(selectedEvent.getImage());	
 	}
 	
+	OnLongClickListener longListen = new OnLongClickListener() {
+		
+		@Override
+		public boolean onLongClick(View v) {
+			
+			DragShadow dragShadow = new DragShadow(v);
+			
+			ClipData data = ClipData.newPlainText("", "");
+			
+			v.startDrag(data, dragShadow, v, 0);
+			
+			return false;
+		}
+	};
+	
+	private class DragShadow extends View.DragShadowBuilder{		
+		
+		Drawable dragImage;
+		
+		public DragShadow(View view) {
+			super(view);
+			
+			dragImage = eventImage.getDrawable();
+		}
+
+		@Override
+		public void onDrawShadow(Canvas canvas) {
+			
+			dragImage.draw(canvas);
+		}
+
+		@Override
+		public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint) {
+			
+			Rect rect = dragImage.getBounds();
+			
+			shadowSize.set(rect.height(), rect.width());
+			
+			shadowTouchPoint.set(rect.height()/2, rect.width()/2);
+			
+		}
+		
+	}
 
 }
