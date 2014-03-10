@@ -3,14 +3,8 @@ package model;
 import com.example.pl4nn3r3000.R;
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;

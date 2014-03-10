@@ -2,10 +2,11 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
-import com.group14.pl4nn3r3000.R;
-import model.AgendaModel;
-import model.EventActivity;
 
+import com.example.pl4nn3r3000.R;
+
+
+import model.AgendaModel;
 import android.view.View;
 import android.widget.Button;
 

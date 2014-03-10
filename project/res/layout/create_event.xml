@@ -14,7 +14,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="string/Create_Event"
+            android:text="Create new activity"
             android:textColor="#ffffff" />
     </LinearLayout>
 
@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:background="#ececec"
         android:padding="5dp"
-        android:paddingTop="5dp" 
-        android:paddingBottom="6dp">
+        android:paddingBottom="6dp"
+        android:paddingTop="5dp" >
 
         <TextView
             android:id="@+id/textView2"
@@ -33,11 +33,11 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
-            android:text="Event Name"
+            android:text="Activity Name"
             android:textColor="#393939" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/acitivty_name_id"
             android:layout_width="275dp"
             android:layout_height="35dp"
             android:layout_alignLeft="@+id/textView2"
@@ -48,8 +48,6 @@
             android:text="Type Event Name Here"
             android:textColor="#a7a7a7"
             android:textSize="12sp" >
-
-            <requestFocus />
         </EditText>
 
         <TextView
@@ -62,21 +60,71 @@
             android:layout_marginTop="75dp"
             android:text="Description" />
 
+        <TextView
+            android:id="@+id/numberPickerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="75dp"
+            android:text="Duration (h)" />
+
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/description_text_id"
             android:layout_width="200dp"
-            android:layout_height="75dp"
+            android:layout_height="85dp"
             android:layout_alignLeft="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:background="#ffffff"
             android:ems="10"
+            android:gravity="top"
             android:inputType="textMultiLine"
-            android:paddingTop="3dp" 
+            android:paddingTop="3dp"
             android:text="Type Decription Here"
             android:textColor="#dbdbdb"
-            android:textSize="12sp"
-           	android:gravity="top"
-            />
+            android:textSize="12sp" />
+
+        <NumberPicker
+            android:id="@+id/numberPicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editText1"
+            android:paddingTop="20dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#393939"
+        android:gravity="top" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose category"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="#ececec"
+        android:padding="5dp"
+        android:paddingBottom="6dp"
+        android:paddingTop="5dp" >
+
+        <Button
+            android:id="@+id/done_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Done" />
 
     </RelativeLayout>
 

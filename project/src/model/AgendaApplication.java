@@ -1,8 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-
-
 import android.app.Application;
 
 public class AgendaApplication extends Application {

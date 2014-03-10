@@ -1,33 +1,26 @@
 package com.group14.pl4nn3r3000;
 
-import java.util.List;
-
 import model.AgendaApplication;
 import model.AgendaModel;
 import model.EventActivity;
 import model.EventActivityList;
-
-import com.example.pl4nn3r3000.R;
-
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.example.pl4nn3r3000.R;
 
 public class MainActivity extends Activity {
 	
@@ -53,6 +46,18 @@ public class MainActivity extends Activity {
 		adapter = new EventActivityList(this, model, activityNames);
 		listview.setAdapter(adapter);
 		listview.setOnItemLongClickListener(listener);
+		
+		
+		Button newActivityButton  = (Button) findViewById(R.id.newActivityButton);
+		newActivityButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getBaseContext(),CreateEventActivity.class);
+				startActivity(i);
+				
+			}
+		});
 
 		// starts fragment
 		AllDaysFragment frag = new AllDaysFragment();
