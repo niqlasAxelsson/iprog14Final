@@ -27,7 +27,7 @@ public class CreateEventActivity extends Activity {
 	int duration;
 	String activityName;
 	String descriptionText;
-	int activityType;
+	int activityType = 8;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class CreateEventActivity extends Activity {
 		activityName = activityField.getText().toString();
 		descriptionText = descriptionField.getText().toString();
 		//TODO
-		activityType = 1; /// change this
+	 /// change this
 		duration = durationPicker.getValue();
 		
 	}
@@ -108,6 +108,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 1;
 	        }
 	    });
 		rbMeal.setOnClickListener(new OnClickListener() {
@@ -120,6 +121,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 2;
 	        }
 	    });
 		rbMeeting.setOnClickListener(new OnClickListener() {
@@ -132,6 +134,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 3;
 	        }
 	    });
 		rbParty.setOnClickListener(new OnClickListener() {
@@ -144,6 +147,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 4;
 	        }
 	    });
 		rbStudies.setOnClickListener(new OnClickListener() {
@@ -156,6 +160,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 5;
 	        }
 	    });
 		rbWork.setOnClickListener(new OnClickListener() {
@@ -168,6 +173,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(true);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
+	           activityType = 6;
 	        }
 	    });
 		rbPleasure.setOnClickListener(new OnClickListener() {
@@ -180,6 +186,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(true);
 	           rbOther.setChecked(false);
+	           activityType = 7;
 	        }
 	    });
 		rbOther.setOnClickListener(new OnClickListener() {
@@ -192,6 +199,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(true);
+	           activityType = 8;
 	        }
 	    });
 	}
