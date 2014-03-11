@@ -61,7 +61,7 @@ public class EventActivityList extends ArrayAdapter<String> {
 	private void setResourcesForComponents() {
 		EventActivity selectedEvent = parkedEvents[position];
 		eventTitle.setText("" + selectedEvent.getName());
-		eventDuration.setText("" + selectedEvent.getLength());
+		eventDuration.setText("" + selectedEvent.getLength() + "h");
 		eventImage.setImageResource(selectedEvent.getImage());
 	}
 
