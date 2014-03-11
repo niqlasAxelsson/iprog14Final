@@ -42,7 +42,7 @@ public final class R {
         public static final int all_days_layout=0x7f080005;
         public static final int button_test=0x7f080006;
         public static final int button_test2=0x7f080014;
-        public static final int description_text_id=0x7f08000c;
+        public static final int description_text_id=0x7f08000b;
         public static final int done_button_id=0x7f08000f;
         public static final int editText1=0x7f08000e;
         public static final int fragment_holder=0x7f080004;
@@ -54,7 +54,7 @@ public final class R {
         public static final int main_layout=0x7f080000;
         public static final int newActivityButton=0x7f080001;
         public static final int numberPicker1=0x7f08000d;
-        public static final int numberPickerTextView=0x7f08000b;
+        public static final int numberPickerTextView=0x7f08000c;
         public static final int selected_day_layout=0x7f080013;
         public static final int textView1=0x7f080007;
         public static final int textView2=0x7f080008;
