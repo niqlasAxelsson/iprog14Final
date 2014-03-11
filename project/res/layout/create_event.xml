@@ -134,88 +134,28 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:background="#ececec" >
-
+        
         <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="fill_parent"
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+ 
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
-            >
+            android:text="radio_male" 
+            android:checked="true" />
+ 
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="radio_female" />
+ 
+    </RadioGroup>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" 
-                android:paddingTop="15dp"
-                android:background="#FFFFFF">
-
-                <RadioButton
-                    android:id="@+id/workout_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/workout" 
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/meal_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/meal" 
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/meeting_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/meeting" 
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/party_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/party"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:background="#FFFFFF" >
-
-                <RadioButton
-                    android:id="@+id/studies_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/studies" 
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/work_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/work"
-                    android:layout_weight="1" />
-
-                <RadioButton
-                    android:id="@+id/pleasure_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/pleasure"
-                    android:layout_weight="1" />
-
-                <RadioButton
-                    android:id="@+id/other_rb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/other" 
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </RadioGroup>
+        
 
         <Button
             android:id="@+id/done_button_id"
