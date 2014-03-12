@@ -16,7 +16,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.View;
+import android.view.View.OnDragListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -31,27 +33,35 @@ public class MainActivity extends Activity {
 	private EventActivityList adapter;
 	private EventActivity[] parkedEvents;
 	private int position;
+	private HorizontalListView listview;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		
 		// builds the actionbar
 		buildActionBar();
+		buildComponents();
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-		// model.addExampleData();
-		String[] activityNames = model.getNameOfParkedActivities();
-		parkedEvents = model.getParkedActivitiesArray();
 
-		// create the horizontal listview
-		HorizontalListView listview = (HorizontalListView) findViewById(R.id.listview);
+		// starts fragment
+		buildFragment();
+	}
+
+	private void buildComponents() {
+		String[] activityNames = model.getNameOfParkedActivities();
+		parkedEvents = model.getParkedActivitiesArray();		
+		
+		listview = (HorizontalListView) findViewById(R.id.listview);
 		adapter = new EventActivityList(this, model, activityNames);
 		listview.setAdapter(adapter);
 		listview.setOnItemLongClickListener(listener);
-
+		
+		
 		Button newActivityButton = (Button) findViewById(R.id.newActivityButton);
 		newActivityButton.setOnClickListener(new View.OnClickListener() {
 
@@ -63,13 +73,46 @@ public class MainActivity extends Activity {
 
 			}
 		});
-
-		// starts fragment
-		buildFragment();
+		
 	}
 
 	private void buildActionBar() {
 		ActionBarView view = new ActionBarView(this, ViewGroup.VISIBLE);
+		
+		//setup the trashcan
+		view.getTrashImageView().setOnDragListener(new OnDragListener() {
+			
+			@Override
+			public boolean onDrag(View v, DragEvent event) {
+				
+				 int action = event.getAction();
+				    switch (event.getAction()) {
+				    case DragEvent.ACTION_DRAG_STARTED:
+				    	//nothing
+				      break;
+				    case DragEvent.ACTION_DRAG_ENTERED:
+				    	//nothing
+				      break;
+				    case DragEvent.ACTION_DRAG_EXITED:
+				    	//nothing				      
+				      break;
+				    case DragEvent.ACTION_DROP:
+				      //TODO
+				      ClipData.Item item = event.getClipData().getItemAt(0);
+				      String dragData = "" + item.getText();
+				      int position = Integer.parseInt(dragData);
+				      
+				      System.out.println(position);
+				      
+				      break;
+				    case DragEvent.ACTION_DRAG_ENDED:
+				      //nothing
+				      default:
+				      break;
+				    }
+				    return true;
+			}
+		});
 	}
 
 	public void buildFragment() {
@@ -90,7 +133,7 @@ public class MainActivity extends Activity {
 
 			DragShadow dragShadow = new DragShadow(v, image);
 
-			ClipData data = ClipData.newPlainText("", "");
+			ClipData data = ClipData.newPlainText("position", "" + position);
 
 			v.startDrag(data, dragShadow, v, 0);
 			return false;

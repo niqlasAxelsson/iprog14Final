@@ -6,13 +6,18 @@ import java.util.Observer;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.pl4nn3r3000.R;
 
 public class ActionBarView implements Observer{	
 	
+	Activity activity;
+	
 	public ActionBarView(Activity activity, int hasTrash){
 		final ViewGroup actionBarLayout = (ViewGroup) activity.getLayoutInflater().inflate(R.layout.action_bar_layout, null);
+		
+		this.activity = activity;
 		
 		buildComponents(actionBarLayout, activity, hasTrash);
 	}
@@ -32,6 +37,11 @@ public class ActionBarView implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		
 		
+	}
+	
+	public ImageView getTrashImageView(){
+		ImageView trash = (ImageView) activity.findViewById(R.id.trash);
+		return trash;
 	}
 
 	
