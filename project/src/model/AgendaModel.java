@@ -10,6 +10,11 @@ public class AgendaModel extends Observable {
 
 	List<Day> days = new ArrayList<Day>();
 	List<EventActivity> parkedActivites = new ArrayList<EventActivity>();
+	
+	public AgendaModel(){
+		
+		addExampleData();
+	}
 
 	/**
 	 * adds create and add a new day to model with starting time (hours and

@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-		model.addExampleData();
+		//model.addExampleData();
 		
 		buildComponents();
 
