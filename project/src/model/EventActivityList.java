@@ -70,6 +70,7 @@ public class EventActivityList extends ArrayAdapter<String> implements Observer 
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		parkedEvents = model.getParkedActivitiesArray();
 		setResourcesForComponents();
 		
 	}
