@@ -148,28 +148,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/workout" />
+                    android:drawableLeft="@drawable/workout_50" />
 
                 <RadioButton
                     android:id="@+id/meal_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/meal" />
+                    android:drawableLeft="@drawable/meal_50" />
 
                 <RadioButton
                     android:id="@+id/meeting_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/meeting" />
+                    android:drawableLeft="@drawable/meeting_50" />
 
                 <RadioButton
                     android:id="@+id/party_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/party" />
+                    android:drawableLeft="@drawable/party_50" />
             </LinearLayout>
 
             <LinearLayout
@@ -186,28 +186,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/studies" />
+                    android:drawableLeft="@drawable/studies_50" />
 
                 <RadioButton
                     android:id="@+id/work_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/work" />
+                    android:drawableLeft="@drawable/work_50" />
 
                 <RadioButton
                     android:id="@+id/pleasure_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/pleasure" />
+                    android:drawableLeft="@drawable/pleasure_50" />
 
                 <RadioButton
                     android:id="@+id/other_rb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/other" />
+                    android:drawableLeft="@drawable/other_50" />
             </LinearLayout>
         </LinearLayout>
 
