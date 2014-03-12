@@ -114,8 +114,8 @@ public class CreateEventActivity extends Activity {
 		rbMeal.setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
 	           rbWorkout.setChecked(false);
-	           rbMeal.setChecked(true);
-	           rbMeeting.setChecked(false);
+	           rbMeal.setChecked(false);
+	           rbMeeting.setChecked(true);
 	           rbParty.setChecked(false);
 	           rbStudies.setChecked(false);
 	           rbWork.setChecked(false);
@@ -127,8 +127,8 @@ public class CreateEventActivity extends Activity {
 		rbMeeting.setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
 	           rbWorkout.setChecked(false);
-	           rbMeal.setChecked(false);
-	           rbMeeting.setChecked(true);
+	           rbMeal.setChecked(true);
+	           rbMeeting.setChecked(false);
 	           rbParty.setChecked(false);
 	           rbStudies.setChecked(false);
 	           rbWork.setChecked(false);

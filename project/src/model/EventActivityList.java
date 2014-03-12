@@ -65,52 +65,5 @@ public class EventActivityList extends ArrayAdapter<String> {
 		eventImage.setImageResource(selectedEvent.getImage());
 	}
 
-//	OnLongClickListener longListen = new OnLongClickListener() {
-//
-//		@Override
-//		public boolean onLongClick(View v) {
-//
-//			DragShadow dragShadow = new DragShadow(v);
-//
-//			ClipData data = ClipData.newPlainText("", "");
-//
-//			v.startDrag(data, dragShadow, v, 0);
-//
-//			return false;
-//		}
-//	};
-//
-//	private class DragShadow extends View.DragShadowBuilder {
-//
-//		ImageView image;
-//		Drawable dragImage;
-//
-//		public DragShadow(View view) {
-//			super(view);
-//
-//			
-//			image.setImageResource(parkedEvents[position].getImage());
-//			dragImage = image.getDrawable();
-//		}
-//
-//		@Override
-//		public void onDrawShadow(Canvas canvas) {
-//
-//			dragImage.draw(canvas);
-//		}
-//
-//		@Override
-//		public void onProvideShadowMetrics(Point shadowSize,
-//				Point shadowTouchPoint) {
-//
-//			Rect rect = dragImage.getBounds();
-//
-//			shadowSize.set(rect.height(), rect.width());
-//
-//			shadowTouchPoint.set(rect.height() / 2, rect.width() / 2);
-//
-//		}
-//
-//	}
 
 }
