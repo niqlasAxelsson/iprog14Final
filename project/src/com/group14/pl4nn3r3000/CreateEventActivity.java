@@ -130,7 +130,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
-	           activityType = 2;
+	           activityType = 3;
 	        }
 	    });
 		rbMeeting.setOnClickListener(new OnClickListener() {
@@ -143,7 +143,7 @@ public class CreateEventActivity extends Activity {
 	           rbWork.setChecked(false);
 	           rbPleasure.setChecked(false);
 	           rbOther.setChecked(false);
-	           activityType = 3;
+	           activityType = 2;
 	        }
 	    });
 		rbParty.setOnClickListener(new OnClickListener() {
