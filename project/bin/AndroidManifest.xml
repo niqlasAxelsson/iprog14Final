@@ -27,7 +27,8 @@
         </activity>
         <activity
             android:name="com.group14.pl4nn3r3000.CreateEventActivity"
-            android:label="@string/title_activity_create_event" >
+            android:label="@string/title_activity_create_event" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.pl4nn3r3000.FuckActivity"
