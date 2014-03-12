@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
@@ -47,7 +48,7 @@ public class AgendaModel extends Observable {
 	}
 	
 	public List<String> getNameOfParkedActivities(){
-		List<String> array = new ArrayList<String>();
+		List<String> array = new LinkedList<String>();
 		
 		for(int i = 0; i < parkedActivites.size(); i++){
 			array.add(parkedActivites.get(i).getName());

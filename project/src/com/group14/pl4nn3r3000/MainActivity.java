@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 				      
 				      activityNames.remove(position);
 				      System.out.println(activityNames.toString());
-				      
+				      				      
 				      adapter.notifyDataSetChanged();
 				      
 				      break;
