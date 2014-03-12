@@ -1,5 +1,6 @@
 package com.group14.pl4nn3r3000;
 
+import view.ActionBarView;
 import model.AgendaApplication;
 import model.AgendaModel;
 import model.EventActivity;
@@ -7,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -35,6 +37,7 @@ public class CreateEventActivity extends Activity {
 		setContentView(R.layout.create_event);
 		setComponents();
 		setRbClickListeners();
+		buildActionBar();
 		
 		doneButton.setOnClickListener(new View.OnClickListener(){
 
@@ -54,6 +57,12 @@ public class CreateEventActivity extends Activity {
 	}
 	
 	
+
+	private void buildActionBar() {
+		ActionBarView view = new ActionBarView(this, ViewGroup.INVISIBLE);
+	}
+
+
 
 	/**
 	 * sets the compontents in the activity
