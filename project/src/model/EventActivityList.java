@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
 
-public class EventActivityList extends ArrayAdapter<String> implements Observer {
+public class EventActivityList extends ArrayAdapter<String>{
 
 	private Activity context;
 	private AgendaModel model;
@@ -68,12 +68,6 @@ public class EventActivityList extends ArrayAdapter<String> implements Observer 
 		eventImage.setImageResource(selectedEvent.getImage());
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		System.out.println("HEEEEEEEEEEEEEEEEEJ");
-		parkedEvents = model.getParkedActivitiesArray();
-		setResourcesForComponents();
-	}
 
 
 }
