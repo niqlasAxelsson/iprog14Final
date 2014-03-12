@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <shape
-        xmlns:android="http://schemas.android.com/apk/res/android">
-        
-        <corners android:radius="7dp" />
-        <solid android:color="#45BA66" />
-    </shape>
+    <item android:state_pressed="true" >
+        <shape>
+            <solid
+                android:color="#45BA66" />
+            <stroke />
+            <corners
+                android:radius="2dp" />
+            <padding
+                android:left="3dp"
+                android:top="3dp"
+                android:right="3dp"
+                android:bottom="3dp" />
+        </shape>
+    </item>
+    <item>
+       <shape>
+            <solid
+                android:color="#41af5e" />
+            <stroke />
+            <corners
+                android:radius="2dp" />
+            <padding
+                android:left="3dp"
+                android:top="3dp"
+                android:right="3dp"
+                android:bottom="3dp" />
+        </shape>
+    </item>
 
 </animation-list>
