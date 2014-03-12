@@ -103,8 +103,9 @@ public class MainActivity extends Activity {
 				      ClipData.Item item = event.getClipData().getItemAt(0);
 				      String dragData = "" + item.getText();
 				      int position = Integer.parseInt(dragData);
-				      
+				  
 				      System.out.println(position);
+				      model.removeParkedActivity(position);
 				      
 				      break;
 				    case DragEvent.ACTION_DRAG_ENDED:

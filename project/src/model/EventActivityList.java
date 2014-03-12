@@ -1,6 +1,7 @@
 package model;
 
-import com.example.pl4nn3r3000.R;
+import java.util.Observable;
+import java.util.Observer;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -10,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class EventActivityList extends ArrayAdapter<String> {
+import com.example.pl4nn3r3000.R;
+
+public class EventActivityList extends ArrayAdapter<String> implements Observer {
 
 	private Activity context;
 	private AgendaModel model;
@@ -63,6 +66,12 @@ public class EventActivityList extends ArrayAdapter<String> {
 		eventTitle.setText("" + selectedEvent.getName());
 		eventDuration.setText("" + selectedEvent.getLength() + "h");
 		eventImage.setImageResource(selectedEvent.getImage());
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		buildComponents();
+		
 	}
 
 
