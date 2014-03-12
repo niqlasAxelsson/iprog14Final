@@ -43,10 +43,12 @@ public class MainActivity extends Activity {
 		
 		// builds the actionbar
 		buildActionBar();
-		buildComponents();
+		
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
+		
+		buildComponents();
 
 		// starts fragment
 		buildFragment();
