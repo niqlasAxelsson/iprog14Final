@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item android:state_pressed="false" >
         <shape>
             <solid
                 android:color="#45BA66" />
@@ -14,20 +12,4 @@
                 android:right="3dp"
                 android:bottom="3dp" />
         </shape>
-    </item>
-    <item android:state_pressed="true">
-       <shape>
-            <solid
-                android:color="#41af5e" />
-            <stroke />
-            <corners
-                android:radius="2dp" />
-            <padding
-                android:left="3dp"
-                android:top="3dp"
-                android:right="3dp"
-                android:bottom="3dp" />
-        </shape>
-    </item>
-
 </animation-list>
