@@ -30,7 +30,7 @@ public class EventActivityList extends ArrayAdapter<String>{
 		super(context, R.layout.list_item, activityNames);
 		this.context = context;
 		this.model = model;
-		this.parkedEvents = model.getParkedActivitiesArray();
+		//this.parkedEvents = model.getParkedActivitiesArray();
 
 	}
 	
@@ -63,12 +63,11 @@ public class EventActivityList extends ArrayAdapter<String>{
 	 * Sets the resources for all of the components created in the list item
 	 */
 	private void setResourcesForComponents() {
-		EventActivity selectedEvent = parkedEvents[position];
+		EventActivity selectedEvent = model.getParkedActivitiesArray()[position];
 		eventTitle.setText("" + selectedEvent.getName());
 		eventDuration.setText("" + selectedEvent.getLength() + "h");
 		eventImage.setImageResource(selectedEvent.getImage());
 	}
-
 
 
 }
