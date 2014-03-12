@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
 		listview.setOnItemLongClickListener(listener);
 		
 		
+		
 		Button newActivityButton = (Button) findViewById(R.id.newActivityButton);
 		newActivityButton.setOnClickListener(new View.OnClickListener() {
 
@@ -106,6 +107,8 @@ public class MainActivity extends Activity {
 				  
 				      System.out.println(position);
 				      model.removeParkedActivity(position);
+				      
+				      adapter.notifyDataSetChanged();
 				      
 				      break;
 				    case DragEvent.ACTION_DRAG_ENDED:
