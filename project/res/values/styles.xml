@@ -28,4 +28,11 @@
 	    <item name="@android:icon">@drawable/logo</item>
 	    
 	</style>
-</resources>
+	
+	<style name="AgendaButtonStyle">
+	    <item name="android:singleLine">true</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:background">@drawable/button_style</item>
+	</style>
+	</resources>

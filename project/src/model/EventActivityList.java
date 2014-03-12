@@ -23,14 +23,12 @@ public class EventActivityList extends ArrayAdapter<String>{
 	private TextView eventDuration;
 	private ImageView eventImage;
 	private View listItemView;
-	private EventActivity[] parkedEvents;
 
 	public EventActivityList(Activity context, AgendaModel model,
 			List<String> activityNames) {
 		super(context, R.layout.list_item, activityNames);
 		this.context = context;
 		this.model = model;
-		//this.parkedEvents = model.getParkedActivitiesArray();
 
 	}
 	

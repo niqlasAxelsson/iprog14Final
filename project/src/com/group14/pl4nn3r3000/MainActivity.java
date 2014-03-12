@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
+		model.addExampleData();
 		
 		buildComponents();
 
@@ -60,7 +61,6 @@ public class MainActivity extends Activity {
 	private void buildComponents() {
 		activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();		
-		
 		listview = (HorizontalListView) findViewById(R.id.listview);
 		adapter = new EventActivityList(this, model, activityNames);
 		listview.setAdapter(adapter);
