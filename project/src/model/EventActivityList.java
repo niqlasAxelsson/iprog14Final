@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -25,7 +26,7 @@ public class EventActivityList extends ArrayAdapter<String>{
 	private EventActivity[] parkedEvents;
 
 	public EventActivityList(Activity context, AgendaModel model,
-			String[] activityNames) {
+			List<String> activityNames) {
 		super(context, R.layout.list_item, activityNames);
 		this.context = context;
 		this.model = model;

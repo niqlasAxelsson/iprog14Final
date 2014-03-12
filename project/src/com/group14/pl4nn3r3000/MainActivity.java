@@ -1,5 +1,7 @@
 package com.group14.pl4nn3r3000;
 
+import java.util.List;
+
 import view.ActionBarView;
 import model.AgendaApplication;
 import model.AgendaModel;
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
 	private EventActivity[] parkedEvents;
 	private int position;
 	private HorizontalListView listview;
+	List<String> activityNames;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void buildComponents() {
-		String[] activityNames = model.getNameOfParkedActivities();
+		activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();		
 		
 		listview = (HorizontalListView) findViewById(R.id.listview);
@@ -109,7 +112,7 @@ public class MainActivity extends Activity {
 				      System.out.println(position);
 				      model.removeParkedActivity(position);
 				      
-				      adapter.remove(removedActivity.getName());
+				      activityNames.remove(position);
 				      adapter.notifyDataSetChanged();
 				      
 				      break;
