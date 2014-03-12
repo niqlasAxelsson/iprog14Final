@@ -113,6 +113,8 @@ public class MainActivity extends Activity {
 				      model.removeParkedActivity(position);
 				      
 				      activityNames.remove(position);
+				      System.out.println(activityNames.toString());
+				      
 				      adapter.notifyDataSetChanged();
 				      
 				      break;
