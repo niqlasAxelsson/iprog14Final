@@ -1,5 +1,6 @@
 package com.group14.pl4nn3r3000;
 
+import view.ActionBarView;
 import model.AgendaApplication;
 import model.AgendaModel;
 import model.EventActivity;
@@ -68,15 +69,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void buildActionBar() {
-		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(
-				R.layout.action_bar_layout, null);
-		
-		final ActionBar actionBar = getActionBar();
-	    actionBar.setDisplayShowHomeEnabled(false);
-	    actionBar.setDisplayShowTitleEnabled(false);
-	    actionBar.setDisplayShowCustomEnabled(true);
-	    actionBar.setCustomView(actionBarLayout);
-
+		ActionBarView view = new ActionBarView(this, ViewGroup.VISIBLE);
 	}
 
 	public void buildFragment() {
