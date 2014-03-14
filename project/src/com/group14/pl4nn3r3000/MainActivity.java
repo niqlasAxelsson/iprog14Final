@@ -18,6 +18,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnDragListener;
@@ -38,7 +39,7 @@ public class MainActivity extends Activity {
 	private AgendaModel model;
 	private MainActivityView mainActivityView;
 	
-	
+	private Vibrator vibe;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
 		mainActivityView = new MainActivityView(this,model);
+		vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		setDragListenerOnListView();
 		setClickListenerOnButton();
 		setOnDragOnTrashCan();
@@ -146,11 +148,10 @@ public class MainActivity extends Activity {
 				int position, long arg3) {
 
 			ImageView image = (ImageView) v.findViewById(R.id.list_item_image);
-
+			vibe.vibrate(250);
 			DragShadow dragShadow = new DragShadow(v, image);
 
 			ClipData data = ClipData.newPlainText("position", "" + position);
-
 			v.startDrag(data, dragShadow, v, 0);
 			return false;
 		}
