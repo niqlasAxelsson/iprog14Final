@@ -2,12 +2,12 @@ package com.group14.pl4nn3r3000;
 
 import java.util.List;
 
-import view.ActionBarView;
 import model.AgendaApplication;
 import model.AgendaModel;
 import model.EventActivity;
 import model.EventActivityList;
-import android.app.ActionBar;
+import view.ActionBarView;
+import view.MainActivityView;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -36,11 +36,14 @@ import com.example.pl4nn3r3000.R;
 public class MainActivity extends Activity {
 
 	private AgendaModel model;
+	private MainActivityView mainActivityView;
 	private EventActivityList adapter;
 	private EventActivity[] parkedEvents;
 	private int position;
 	private HorizontalListView listview;
 	List<String> activityNames;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,23 +52,33 @@ public class MainActivity extends Activity {
 
 		
 		// builds the actionbar
-		buildActionBar();
+		//buildActionBar();
+		
 		
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
 		//model.addExampleData();
+		mainActivityView = new MainActivityView(this,model);
+		setDragListenerOnListView();
 		
-		buildComponents();
+		//buildComponents();
 
 		// starts fragment
-		buildFragment();
+		//buildFragment();
+	}
+	
+	
+	
+	private void setDragListenerOnListView(){
+		mainActivityView.getListView().setOnItemLongClickListener(listener);
 	}
 	
 	/**
 	 * builds the components
 	 * gets the parkedactivities, creates the the horizontallist
 	 */
+	
 	private void buildComponents() {
 		activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();		
