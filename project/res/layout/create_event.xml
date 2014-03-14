@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-   
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,6 +94,7 @@
                             android:layout_height="fill_parent"
                             android:layout_alignLeft="@+id/textView3"
                             android:layout_below="@+id/textView3"
+                            android:layout_marginBottom="20dp"
                             android:background="#ffffff"
                             android:ems="10"
                             android:gravity="top"
@@ -108,8 +116,9 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="5dp"
-                            android:text="Duration (h)" />
+                            android:layout_gravity="center_horizontal"
+                            android:text="Duration (h)"
+                            android:textSize="16dp" />
 
                         <NumberPicker
                             android:id="@+id/durationPicker_id"
@@ -117,8 +126,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_gravity="center_horizontal"
-                            android:scaleX="0.7"
-                            android:scaleY="0.7" />
+                            android:scaleX="1"
+                            android:scaleY="1" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -139,21 +148,22 @@
                     android:textSize="18dp" />
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:background="#ececec" >
+                android:background="#ececec"
+                android:orientation="vertical" >
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
                     android:orientation="vertical" >
 
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
                         android:paddingTop="15dp" >
 
                         <RadioButton
@@ -189,7 +199,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
                         android:orientation="horizontal"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp" >
@@ -227,11 +236,11 @@
                 <Button
                     android:id="@+id/done_button_id"
                     style="@style/AgendaButtonStyle"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
                     android:text="Done" />
-            </RelativeLayout>
-       
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
