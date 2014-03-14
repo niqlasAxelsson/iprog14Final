@@ -22,11 +22,12 @@
 
                 <TextView
                     android:id="@+id/textView1"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Create new activity"
                     android:textColor="#ffffff"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -50,7 +51,8 @@
                         android:layout_marginBottom="5dp"
                         android:text="Activity Name"
                         android:textColor="#393939"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                         />
 
                     <EditText
                         android:id="@+id/acitivty_name_id"
@@ -74,7 +76,7 @@
                     android:orientation="horizontal" >
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="fill_parent"
                         android:orientation="vertical" >
 
@@ -90,7 +92,7 @@
 
                         <EditText
                             android:id="@+id/description_text_id"
-                            android:layout_width="200dp"
+                            android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_alignLeft="@+id/textView3"
                             android:layout_below="@+id/textView3"
@@ -145,6 +147,7 @@
                     android:layout_height="wrap_content"
                     android:text="Choose category"
                     android:textColor="#ffffff"
+                    android:textStyle="bold"
                     android:textSize="18dp" />
             </LinearLayout>
 
@@ -237,7 +240,7 @@
                     android:id="@+id/done_button_id"
                     style="@style/AgendaButtonStyle"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="5dp"
+                    android:layout_margin="20dp"
                     android:text="Done" />
             </LinearLayout>
         </LinearLayout>
