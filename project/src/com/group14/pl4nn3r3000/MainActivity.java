@@ -143,6 +143,8 @@ public class MainActivity extends Activity {
 	 */
 	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
+
+		
 		@Override
 		public boolean onItemLongClick(AdapterView<?> adapter, View v,
 				int position, long arg3) {
