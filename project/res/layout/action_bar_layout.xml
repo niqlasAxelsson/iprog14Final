@@ -15,10 +15,11 @@
     
     <ImageView 
         android:id="@+id/trash"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/trash"
-        android:padding="3dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
     
 </RelativeLayout>
