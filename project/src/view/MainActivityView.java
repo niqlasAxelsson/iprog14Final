@@ -2,10 +2,6 @@ package view;
 
 import java.util.List;
 
-import com.example.pl4nn3r3000.R;
-import com.group14.pl4nn3r3000.AllDaysFragment;
-import com.group14.pl4nn3r3000.HorizontalListView;
-
 import model.AgendaModel;
 import model.EventActivity;
 import model.EventActivityList;
@@ -13,18 +9,25 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.pl4nn3r3000.R;
+import com.group14.pl4nn3r3000.AllDaysFragment;
+import com.group14.pl4nn3r3000.HorizontalListView;
 
 public class MainActivityView {
 
 	Activity activity;
 	AgendaModel model;
-	ActionBarView actionBar;
+	ActionBarView actionBarView;
 	
 	private EventActivityList adapter;
 	private EventActivity[] parkedEvents;
 	private int position;
 	private HorizontalListView listview;
 	List<String> activityNames;
+	
+	private Button newActivityButton;
 	
 	
 	
@@ -43,14 +46,15 @@ public class MainActivityView {
 	 */
 	private void buildActionBar(){
 		
-		ActionBarView actionBar = new ActionBarView(activity, ViewGroup.VISIBLE);
+		 actionBarView = new ActionBarView(activity, ViewGroup.VISIBLE);
 	}
 	
 	public ActionBarView getActionBar(){
 		
-		return actionBar;
+		return actionBarView;
 		
 	}
+	
 	
 	/**
 	 * builds the components in the MainActivity
@@ -62,9 +66,18 @@ public class MainActivityView {
 		listview = (HorizontalListView) activity.findViewById(R.id.listview);
 		adapter = new EventActivityList(activity, model, activityNames);
 		listview.setAdapter(adapter);
+		
+		newActivityButton = (Button) activity.findViewById(R.id.newActivityButton);
+		
 		//listview.setOnItemLongClickListener(listener);
 	}
 	
+	
+	
+	/**
+	 * return our horizontalListView
+	 * @return
+	 */
 	public HorizontalListView getListView(){
 		
 		return listview;
@@ -73,6 +86,15 @@ public class MainActivityView {
 	public EventActivityList getAdapter(){
 		
 		return adapter;
+	}
+	
+	/**
+	 * return the new activity button
+	 * @return
+	 */
+	public Button getNewActivityButton(){
+		
+		return newActivityButton;
 	}
 	
 	/**

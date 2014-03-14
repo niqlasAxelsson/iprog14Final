@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
 		//model.addExampleData();
 		mainActivityView = new MainActivityView(this,model);
 		setDragListenerOnListView();
+		setClickListenerOnButton();
 		
 		//buildComponents();
 
@@ -72,6 +73,67 @@ public class MainActivity extends Activity {
 	
 	private void setDragListenerOnListView(){
 		mainActivityView.getListView().setOnItemLongClickListener(listener);
+	}
+	
+	private void setClickListenerOnButton(){
+		
+		mainActivityView.getNewActivityButton().setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getBaseContext(),CreateEventActivity.class);
+				startActivity(i);
+				
+			}
+			
+			
+		});
+	}
+	
+	private void setOnDragOnTrashCan(){
+		
+		mainActivityView.getActionBar().getTrashImageView().setOnDragListener(new OnDragListener(){
+
+			@Override
+			public boolean onDrag(View v, DragEvent event) {
+				
+				 int action = event.getAction();
+				    switch (event.getAction()) {
+				    case DragEvent.ACTION_DRAG_STARTED:
+				    	//nothing
+				      break;
+				    case DragEvent.ACTION_DRAG_ENTERED:
+				    	//nothing
+				      break;
+				    case DragEvent.ACTION_DRAG_EXITED:
+				    	//nothing				      
+				      break;
+				    case DragEvent.ACTION_DROP:
+				      //TODO
+				      ClipData.Item item = event.getClipData().getItemAt(0);
+				      String dragData = "" + item.getText();
+				      int position = Integer.parseInt(dragData);
+				  
+				      EventActivity removedActivity = model.getParkedActivitiesArray()[position];
+				      System.out.println(position);
+				      model.removeParkedActivity(position);
+				      
+				      //activityNames.remove(position);
+				      //System.out.println(activityNames.toString());
+				      				      
+				      //adapter.notifyDataSetChanged();
+				      
+				      
+				      break;
+				    case DragEvent.ACTION_DRAG_ENDED:
+				      //nothing
+				      default:
+				      break;
+				    }
+				return true;
+			}
+			
+		});
 	}
 	
 	/**
