@@ -37,11 +37,6 @@ public class MainActivity extends Activity {
 
 	private AgendaModel model;
 	private MainActivityView mainActivityView;
-	private EventActivityList adapter;
-	private EventActivity[] parkedEvents;
-	private int position;
-	private HorizontalListView listview;
-	List<String> activityNames;
 	
 	
 
@@ -50,31 +45,26 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		
-		// builds the actionbar
-		//buildActionBar();
-		
-		
-
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-		//model.addExampleData();
 		mainActivityView = new MainActivityView(this,model);
 		setDragListenerOnListView();
 		setClickListenerOnButton();
+		setOnDragOnTrashCan();
 		
-		//buildComponents();
-
-		// starts fragment
-		//buildFragment();
 	}
 	
 	
-	
+	/**
+	 * sets DragListener on the Horizonztal Scroll list
+	 */
 	private void setDragListenerOnListView(){
 		mainActivityView.getListView().setOnItemLongClickListener(listener);
 	}
 	
+	/**
+	 * sets ClickListener on the "New Activity" button
+	 */
 	private void setClickListenerOnButton(){
 		
 		mainActivityView.getNewActivityButton().setOnClickListener(new View.OnClickListener(){
@@ -90,6 +80,10 @@ public class MainActivity extends Activity {
 		});
 	}
 	
+	
+	/**
+	 * sets OnDrag on the trashcan
+	 */
 	private void setOnDragOnTrashCan(){
 		
 		mainActivityView.getActionBar().getTrashImageView().setOnDragListener(new OnDragListener(){
@@ -114,14 +108,16 @@ public class MainActivity extends Activity {
 				      String dragData = "" + item.getText();
 				      int position = Integer.parseInt(dragData);
 				  
-				      EventActivity removedActivity = model.getParkedActivitiesArray()[position];
-				      System.out.println(position);
+				      //EventActivity removedActivity = model.getParkedActivitiesArray()[position];
+				      //System.out.println(position);
 				      model.removeParkedActivity(position);
-				      
+				      //mainActivityView.setActivityNames();
+				      mainActivityView.getActivityNamesList().remove(position);
+				     
 				      //activityNames.remove(position);
 				      //System.out.println(activityNames.toString());
 				      				      
-				      //adapter.notifyDataSetChanged();
+				      mainActivityView.getAdapter().notifyDataSetChanged();
 				      
 				      
 				      break;
@@ -136,95 +132,13 @@ public class MainActivity extends Activity {
 		});
 	}
 	
-	/**
-	 * builds the components
-	 * gets the parkedactivities, creates the the horizontallist
-	 */
 	
-	private void buildComponents() {
-		activityNames = model.getNameOfParkedActivities();
-		parkedEvents = model.getParkedActivitiesArray();		
-		listview = (HorizontalListView) findViewById(R.id.listview);
-		adapter = new EventActivityList(this, model, activityNames);
-		listview.setAdapter(adapter);
-		listview.setOnItemLongClickListener(listener);
-		
-		
-		
-		Button newActivityButton = (Button) findViewById(R.id.newActivityButton);
-		newActivityButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(getBaseContext(),
-						CreateEventActivity.class);
-				startActivity(i);
-
-			}
-		});
-		
-	}
-	
+	//the code inside this maybe should be removed to a view class:)?
 	/**
-	 * creates the actionbar and sets draglistner on the trashcan
+	 * Our class for listening when starting draging.
+	 * What shall happen when we drag? 
+	 * 
 	 */
-	private void buildActionBar() {
-		ActionBarView view = new ActionBarView(this, ViewGroup.VISIBLE);
-		
-		//setup the trashcan
-		view.getTrashImageView().setOnDragListener(new OnDragListener() {
-			
-			@Override
-			public boolean onDrag(View v, DragEvent event) {
-				
-				 int action = event.getAction();
-				    switch (event.getAction()) {
-				    case DragEvent.ACTION_DRAG_STARTED:
-				    	//nothing
-				      break;
-				    case DragEvent.ACTION_DRAG_ENTERED:
-				    	//nothing
-				      break;
-				    case DragEvent.ACTION_DRAG_EXITED:
-				    	//nothing				      
-				      break;
-				    case DragEvent.ACTION_DROP:
-				      //TODO
-				      ClipData.Item item = event.getClipData().getItemAt(0);
-				      String dragData = "" + item.getText();
-				      int position = Integer.parseInt(dragData);
-				  
-				      EventActivity removedActivity = model.getParkedActivitiesArray()[position];
-				      System.out.println(position);
-				      model.removeParkedActivity(position);
-				      
-				      activityNames.remove(position);
-				      System.out.println(activityNames.toString());
-				      				      
-				      adapter.notifyDataSetChanged();
-				      
-				      break;
-				    case DragEvent.ACTION_DRAG_ENDED:
-				      //nothing
-				      default:
-				      break;
-				    }
-				    return true;
-			}
-		});
-	}
-
-	/**
-	 * builds our fragment
-	 */
-	public void buildFragment() {
-		AllDaysFragment frag = new AllDaysFragment();
-		FragmentManager manager = getFragmentManager();
-		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.add(R.id.fragment_holder, frag, "alldaysfragment");
-		transaction.commit();
-	}
-
 	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
 		@Override

@@ -15,6 +15,11 @@ import com.example.pl4nn3r3000.R;
 import com.group14.pl4nn3r3000.AllDaysFragment;
 import com.group14.pl4nn3r3000.HorizontalListView;
 
+/**
+ * Our MainActivityView.
+ * @author julle
+ *
+ */
 public class MainActivityView {
 
 	Activity activity;
@@ -49,15 +54,30 @@ public class MainActivityView {
 		 actionBarView = new ActionBarView(activity, ViewGroup.VISIBLE);
 	}
 	
+	/**
+	 * returns the actionBar
+	 * @return
+	 */
 	public ActionBarView getActionBar(){
 		
 		return actionBarView;
 		
 	}
 	
+	/**
+	 * get the acitivtyNames list.
+	 * Using it to update the list 
+	 * @return
+	 */
+	public List<String> getActivityNamesList(){
+		
+		return activityNames;
+	}
+	
 	
 	/**
-	 * builds the components in the MainActivity
+	 * builds the components in.
+	 * For example, creates the adapter, our horizontallist
 	 */
 	private void buildComponents(){
 		
@@ -68,8 +88,7 @@ public class MainActivityView {
 		listview.setAdapter(adapter);
 		
 		newActivityButton = (Button) activity.findViewById(R.id.newActivityButton);
-		
-		//listview.setOnItemLongClickListener(listener);
+	
 	}
 	
 	
