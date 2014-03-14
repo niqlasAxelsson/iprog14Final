@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+ <ScrollView 
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#393939"
         android:gravity="top" 
-        android:padding="10dp">
 
+        android:padding="10dp">
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -25,9 +27,9 @@
         android:layout_height="wrap_content"
         android:background="#ECECEC"
         android:orientation="vertical"
-        android:padding="5dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" >
+        android:padding="10dp"
+
+         >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -41,18 +43,24 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:text="Activity Name"
-                android:textColor="#393939" />
+                android:textSize="16sp"
+                android:textColor="#393939"
+                android:layout_marginBottom="5dp" />
 
             <EditText
                 android:inputType="textCapSentences"
                 android:id="@+id/acitivty_name_id"
-                android:layout_width="275dp"
+                android:layout_width="fill_parent"
                 android:layout_height="35dp"
                 android:layout_alignLeft="@+id/textView2"
                 android:layout_below="@+id/textView2"
                 android:background="#ffffff"
                 android:ems="10"
-                android:hint="Type title here" >
+                android:hint="Type title here"
+                android:textColorHint="#dbdbdb" 
+                android:layout_marginBottom="20dp"
+                android:padding="5dp"
+                >
             </EditText>
         </LinearLayout>
 
@@ -72,7 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="Description" />
+                    android:text="Description" 
+                    android:textSize="16sp"
+                    android:layout_marginBottom="5dp"/>
 
                 <EditText
                     android:inputType="textCapSentences|textMultiLine"
@@ -85,7 +95,9 @@
                     android:ems="10"
                     android:gravity="top"
                     android:hint="Type decription here"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp"
+                    android:textColorHint="#dbdbdb" 
+                    android:padding="5dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -223,5 +235,5 @@
             android:text="Done" 
             android:layout_margin="3dp"/>
     </RelativeLayout>
-
+</ScrollView>
 </LinearLayout>

@@ -14,7 +14,9 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="#393939" >
+            android:background="#393939" 
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <TextView
                 android:layout_marginLeft="5dp"
@@ -30,7 +32,7 @@
                 android:text="New activity"
                 style="@style/AgendaButtonStyle"
                 android:layout_alignParentRight="true"
-                android:layout_margin="3dp"
+                android:layout_margin="7dp"
               />
         </RelativeLayout>
     </LinearLayout>
@@ -38,13 +40,14 @@
     <LinearLayout
         android:id="@+id/horizontalListlayout"
         android:layout_width="fill_parent"
-        android:layout_height="85dp"
+        android:layout_height="95dp"
         android:orientation="vertical" >
 
         <com.group14.pl4nn3r3000.HorizontalListView
             android:id="@+id/listview"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent" 
+            >
         </com.group14.pl4nn3r3000.HorizontalListView>
     </LinearLayout>
 
