@@ -11,6 +11,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
+/**
+ * fragment for a day. 
+ * 
+ * @author julle
+ *
+ */
 public class SelectedDayFragment extends Fragment {
 
 	AllDaysFragment frag;

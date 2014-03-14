@@ -10,6 +10,11 @@ import android.widget.ImageView;
 
 import com.example.pl4nn3r3000.R;
 
+/**
+ * View class for the actionbar
+ *
+ *
+ */
 public class ActionBarView implements Observer{	
 	
 	Activity activity;
@@ -22,6 +27,13 @@ public class ActionBarView implements Observer{
 		buildComponents(actionBarLayout, activity, hasTrash);
 	}
 	
+	/**
+	 * building all the components in the actionbar.
+	 * hasTrash is a int, depends if its gonna be invisible or not.
+	 * @param actionBarLayout
+	 * @param activity
+	 * @param hasTrash
+	 */
 	private void buildComponents(ViewGroup actionBarLayout, Activity activity, int hasTrash) {
 		final ActionBar actionBar = activity.getActionBar();
 	    actionBar.setDisplayShowHomeEnabled(false);
@@ -39,6 +51,10 @@ public class ActionBarView implements Observer{
 		
 	}
 	
+	/**
+	 * returns the imageView of the Trashcan
+	 * @return
+	 */
 	public ImageView getTrashImageView(){
 		ImageView trash = (ImageView) activity.findViewById(R.id.trash);
 		return trash;

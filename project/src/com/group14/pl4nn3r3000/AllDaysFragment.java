@@ -15,6 +15,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/**
+ * fragment for every day that is created.
+ * 
+ * 
+ *
+ */
 public class AllDaysFragment extends Fragment {
 
 	SelectedDayFragment frag;
@@ -22,13 +28,17 @@ public class AllDaysFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		
+		
+		//get the model
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
+		//the view of the all days fragment
 		AllDaysFragmentView view = new AllDaysFragmentView(inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);
 
 //		View view = inflater.inflate(R.layout.all_days_fragment_layout,
 //				container, false);
+		
+		//this button is just for test atm.
 		final Button button = (Button) view.getView().findViewById(R.id.button_test);
 		
 		

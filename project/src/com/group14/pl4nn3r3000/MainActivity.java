@@ -29,6 +29,10 @@ import android.widget.ImageView;
 
 import com.example.pl4nn3r3000.R;
 
+/**
+ * MainActivity, 
+ * our starting activity, with all the fragments, the scrollhorizontal list.
+ */
 public class MainActivity extends Activity {
 
 	private AgendaModel model;
@@ -57,7 +61,11 @@ public class MainActivity extends Activity {
 		// starts fragment
 		buildFragment();
 	}
-
+	
+	/**
+	 * builds the components
+	 * gets the parkedactivities, creates the the horizontallist
+	 */
 	private void buildComponents() {
 		activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();		
@@ -81,7 +89,10 @@ public class MainActivity extends Activity {
 		});
 		
 	}
-
+	
+	/**
+	 * creates the actionbar and sets draglistner on the trashcan
+	 */
 	private void buildActionBar() {
 		ActionBarView view = new ActionBarView(this, ViewGroup.VISIBLE);
 		
@@ -128,6 +139,9 @@ public class MainActivity extends Activity {
 		});
 	}
 
+	/**
+	 * builds our fragment
+	 */
 	public void buildFragment() {
 		AllDaysFragment frag = new AllDaysFragment();
 		FragmentManager manager = getFragmentManager();

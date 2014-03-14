@@ -3,6 +3,11 @@ package view;
 import java.util.Observable;
 import java.util.Observer;
 
+
+/**
+ * the VIEW of alldaysfragment
+ * Show every day that is created.
+ */
 import com.example.pl4nn3r3000.R;
 
 
@@ -22,10 +27,17 @@ public class AllDaysFragmentView implements Observer {
 	}
 	
 	
+	/**
+	 * returns the view
+	 * @return
+	 */
 	public View getView(){
 		return view;
 	}
 	
+	/**
+	 * builds the components in the view
+	 */
 	private void buildComponent(){
 		Button b = (Button) view.findViewById(R.id.button_test);
 		b.setText("Challa");
