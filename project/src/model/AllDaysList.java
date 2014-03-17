@@ -19,16 +19,18 @@ public class AllDaysList extends ArrayAdapter<String> {
 	Activity context;
 	
 	private View listItemView;
-	TextView dayTitle;
-	TextView dayDescription;
-	ImageView dayDelete;
-	AllDaysListView alldaysList;
+	private TextView dayTitle;
+	private TextView dayDescription;
+	private ImageView dayDelete;
+	private AllDaysListView alldaysList;
+	private List<String> dayTitles;
 	
 	int position;
 	
 
 	public AllDaysList(Activity context, List<String> dayTitles) {
 		super(context, R.layout.all_days_list_item, dayTitles);
+		this.dayTitles = dayTitles;
 		this.context = context;
 	}
 
@@ -47,15 +49,16 @@ public class AllDaysList extends ArrayAdapter<String> {
 	 * ClickListener on the "Delete X" in the lsitView
 	 */
 	private void setClickListenerOnDeleteImage(int position){
-		final int f = position;
+		final int pos = position;
 		alldaysList.getDayDelete().setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				
 				AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
-				//model.removeDay(f);
-				System.out.println("heeeeeej");
+				model.removeDay(pos);
+				notifyDataSetChanged();
+				dayTitles.remove(pos);
 	
 			}
 			
