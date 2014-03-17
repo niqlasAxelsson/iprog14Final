@@ -48,7 +48,7 @@ public class AllDaysFragmentView implements Observer {
 	private void buildComponent(){
 		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 
-		listView = (ListView) view.findViewById(R.id.listview);
+		listView = (ListView) view.findViewById(R.id.allDaysListView);
 		adapter = new AllDaysList(activity, model.getNameOfDays());
 		listView.setAdapter(adapter);
 				
