@@ -75,11 +75,11 @@ public class AllDaysFragment extends Fragment {
 						
 						AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 						model.addDay(datePicker.getDayOfMonth(), datePicker.getMonth()+1, datePicker.getYear());
-						view.getAdapter().updateDayTitles();
+						view.getDayTitles().add(model.getDays().get(model.getDays().size()-1).getDateString());
 						view.getAdapter().notifyDataSetChanged();
 						
-						Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
-						startActivity(i);
+//						Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
+//						startActivity(i);
 						
 					}
 

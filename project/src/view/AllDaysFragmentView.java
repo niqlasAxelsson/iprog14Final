@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,6 +24,7 @@ public class AllDaysFragmentView implements Observer {
 	private ListView listView;
 	private AllDaysList adapter;
 	private Activity activity;
+	private List<String> dayTitles;
 	
 	private Button newDayButton;
 	
@@ -47,10 +49,10 @@ public class AllDaysFragmentView implements Observer {
 	private void buildComponents(){
 		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 		
-		
+		dayTitles = model.getNameOfDays();
 		newDayButton = (Button) view.findViewById(R.id.newDayButton);
 		listView = (ListView) view.findViewById(R.id.allDaysListView);
-		adapter = new AllDaysList(activity, model.getNameOfDays());
+		adapter = new AllDaysList(activity, dayTitles);
 		listView.setAdapter(adapter);
 				
 	}
@@ -75,6 +77,10 @@ public class AllDaysFragmentView implements Observer {
 	@Override
 	public void update(Observable observable, Object data) {
 		
+	}
+	
+	public List<String> getDayTitles(){
+		return dayTitles;
 	}
 
 }
