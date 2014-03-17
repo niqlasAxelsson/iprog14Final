@@ -33,7 +33,7 @@ public class AllDaysFragment extends Fragment {
 		//get the model
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		//the view of the all days fragment
-		AllDaysFragmentView view = new AllDaysFragmentView(inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);		
+		AllDaysFragmentView view = new AllDaysFragmentView(this.getActivity(), inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);		
 		
 		
 //		final Button button = (Button) view.getView().findViewById(R.id.button_test);

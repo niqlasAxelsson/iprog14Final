@@ -3,24 +3,31 @@ package view;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.AgendaApplication;
+import model.AgendaModel;
+import model.AllDaysList;
+import model.EventActivityList;
+import android.app.Activity;
+import android.view.View;
+import android.widget.ListView;
 
+import com.example.pl4nn3r3000.R;
+import com.group14.pl4nn3r3000.HorizontalListView;
 /**
  * the VIEW of alldaysfragment
  * Show every day that is created.
  */
-import com.example.pl4nn3r3000.R;
-
-
-import model.AgendaModel;
-import android.view.View;
-import android.widget.Button;
 
 public class AllDaysFragmentView implements Observer {
 	
-	AgendaModel model;
-	View view;
+	private AgendaModel model;
+	private View view;
+	private ListView listView;
+	private AllDaysList adapter;
+	private Activity activity;
 	
-	public AllDaysFragmentView(View view, AgendaModel model){
+	public AllDaysFragmentView(Activity activity, View view, AgendaModel model){
+		this.activity = activity;
 		this.model = model;
 		this.view = view;
 		buildComponent();
@@ -39,8 +46,12 @@ public class AllDaysFragmentView implements Observer {
 	 * builds the components in the view
 	 */
 	private void buildComponent(){
-//		Button b = (Button) view.findViewById(R.id.button_test);
-//		b.setText("Challa");
+		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
+
+		listView = (ListView) view.findViewById(R.id.listview);
+		adapter = new AllDaysList(activity, model.getNameOfDays());
+		listView.setAdapter(adapter);
+				
 	}
 	
 	@Override

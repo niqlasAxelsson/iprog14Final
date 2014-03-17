@@ -33,6 +33,17 @@ public class AgendaModel extends Observable {
 		
 		return days;
 	}
+	
+	public List<String> getNameOfDays(){
+		List<String> array = new LinkedList<String>();
+		
+		for(int i = 0; i < days.size(); i++){
+			array.add(days.get(i).getDateString());
+		}
+		
+		return array;
+		
+	}
 
 	/**
 	 * add an activity to model
@@ -124,6 +135,11 @@ public class AgendaModel extends Observable {
 			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
 			addParkedActivity(ea);
 		}
+		
+		days.add(new Day(5, 6, 2014));
+		days.add(new Day(1, 7, 2015));
+		days.add(new Day(22, 12, 2014));
+		
 	}
 
 
