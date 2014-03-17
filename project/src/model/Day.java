@@ -127,7 +127,7 @@ public class Day extends Observable {
 		}
 		
 		
-		return  day + "-" + monthString + "-" + year;
+		return  day + " " + monthString + " " + year;
 	}
 
 	/**
