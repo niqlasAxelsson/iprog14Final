@@ -12,6 +12,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,9 +74,12 @@ public class AllDaysFragment extends Fragment {
 					public void onClick(DialogInterface dialog, int which) {
 						
 						AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
-						model.addDay(datePicker.getDayOfMonth(), datePicker.getMonth(), datePicker.getYear());
+						model.addDay(datePicker.getDayOfMonth(), datePicker.getMonth()+1, datePicker.getYear());
 						view.getAdapter().updateDayTitles();
 						view.getAdapter().notifyDataSetChanged();
+						
+						Intent i = new Intent(activity.getBaseContext(),MainActivity.class);
+						startActivity(i);
 						
 					}
 
