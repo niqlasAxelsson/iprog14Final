@@ -31,7 +31,7 @@ public class AllDaysFragmentView implements Observer {
 		this.activity = activity;
 		this.model = model;
 		this.view = view;
-		buildComponent();
+		buildComponents();
 	}
 	
 	
@@ -46,7 +46,7 @@ public class AllDaysFragmentView implements Observer {
 	/**
 	 * builds the components in the view
 	 */
-	private void buildComponent(){
+	private void buildComponents(){
 		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 		
 		
@@ -66,8 +66,18 @@ public class AllDaysFragmentView implements Observer {
 		return newDayButton;
 	}
 	
+	/**
+	 * returns the adapter for the listView
+	 * @return
+	 */
+	public AllDaysList getAdapter(){
+		return adapter;
+	}
+	
 	@Override
 	public void update(Observable observable, Object data) {
+		
+		
 		
 		
 	}

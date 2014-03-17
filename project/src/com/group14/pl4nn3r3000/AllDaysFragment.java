@@ -2,18 +2,24 @@ package com.group14.pl4nn3r3000;
 
 import model.AgendaApplication;
 import model.AgendaModel;
+import model.Day;
 import view.AllDaysFragmentView;
 
 import com.example.pl4nn3r3000.R;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 
 /**
  * fragment for every day that is created.
@@ -25,11 +31,13 @@ public class AllDaysFragment extends Fragment {
 
 	SelectedDayFragment frag;
 	AllDaysFragmentView view;
-
+	Activity activity;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+		this.activity = this.getActivity();
 		// get the model
 		AgendaModel model = ((AgendaApplication) this.getActivity()
 				.getApplication()).getModel();
@@ -47,16 +55,52 @@ public class AllDaysFragment extends Fragment {
 		view.getNewDayButton().setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("hej");
-				frag = new SelectedDayFragment();
+				
+				View alertView = View.inflate(activity, R.layout.new_day_alert_layout,
+						null);
+				AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+				
+				//we didn't want to make a new view class just for 3 lines of code, sue us
+				alert.setTitle("New day");
+				alert.setMessage("Enter date");
+				alert.setView(alertView);
 
-				final FragmentTransaction ft = getFragmentManager()
-						.beginTransaction();
-				ft.replace(R.id.fragment_holder, frag, "test");
-				ft.addToBackStack(null);
-				ft.commit();
+				final DatePicker datePicker;
+				datePicker = (DatePicker) alertView.findViewById(R.id.datePicker);
+
+				alert.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						
+						AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
+						model.addDay(datePicker.getDayOfMonth(), datePicker.getMonth(), datePicker.getYear());
+						
+						view.getAdapter().notifyDataSetChanged();
+					}
+
+				});
+
+				alert.show();
 			}
 		});
 	}
 
 }
+
+
+//private void setClickListenerOnNewDayButton() {
+//
+//	view.getNewDayButton().setOnClickListener(new OnClickListener() {
+//		@Override
+//		public void onClick(View v) {
+//			frag = new SelectedDayFragment();
+//
+//			final FragmentTransaction ft = getFragmentManager()
+//					.beginTransaction();
+//			ft.replace(R.id.fragment_holder, frag, "test");
+//			ft.addToBackStack(null);
+//			ft.commit();
+//		}
+//	});
+//}

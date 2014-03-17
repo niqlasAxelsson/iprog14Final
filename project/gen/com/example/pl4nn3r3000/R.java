@@ -48,11 +48,12 @@ public final class R {
     }
     public static final class id {
         public static final int acitivty_name_id=0x7f080010;
-        public static final int action_settings=0x7f080023;
+        public static final int action_settings=0x7f080024;
         public static final int allDaysListView=0x7f08000a;
         public static final int allDaysListViewLinearLayout=0x7f080009;
         public static final int all_days_layout=0x7f080007;
-        public static final int button_test2=0x7f080022;
+        public static final int button_test2=0x7f080023;
+        public static final int datePicker=0x7f080021;
         public static final int day_date=0x7f08000b;
         public static final int day_delete=0x7f08000d;
         public static final int day_description=0x7f08000c;
@@ -75,7 +76,7 @@ public final class R {
         public static final int other_rb=0x7f08001c;
         public static final int party_rb=0x7f080018;
         public static final int pleasure_rb=0x7f08001b;
-        public static final int selected_day_layout=0x7f080021;
+        public static final int selected_day_layout=0x7f080022;
         public static final int studies_rb=0x7f080019;
         public static final int textView1=0x7f08000e;
         public static final int textView2=0x7f08000f;
@@ -91,7 +92,8 @@ public final class R {
         public static final int all_days_list_item=0x7f030003;
         public static final int create_event=0x7f030004;
         public static final int list_item=0x7f030005;
-        public static final int selected_day_fragment_layout=0x7f030006;
+        public static final int new_day_alert_layout=0x7f030006;
+        public static final int selected_day_fragment_layout=0x7f030007;
     }
     public static final class menu {
         public static final int create_event=0x7f070000;

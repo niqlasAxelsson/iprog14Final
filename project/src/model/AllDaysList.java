@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.pl4nn3r3000.R;
 import com.group14.pl4nn3r3000.CreateEventActivity;
 
-public class AllDaysList extends ArrayAdapter<String> {
+public class AllDaysList extends ArrayAdapter<String>{
 
 	Activity context;
 	
@@ -59,7 +59,7 @@ public class AllDaysList extends ArrayAdapter<String> {
 				model.removeDay(pos);
 				notifyDataSetChanged();
 				dayTitles.remove(pos);
-	
+				
 			}
 			
 			
