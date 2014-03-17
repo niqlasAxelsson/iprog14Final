@@ -19,41 +19,44 @@ import android.widget.Button;
  * fragment for every day that is created.
  * 
  * 
- *
+ * 
  */
 public class AllDaysFragment extends Fragment {
 
 	SelectedDayFragment frag;
+	AllDaysFragmentView view;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
-		
-		//get the model
-		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
-		//the view of the all days fragment
-		AllDaysFragmentView view = new AllDaysFragmentView(this.getActivity(), inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);		
-		
-		
-//		final Button button = (Button) view.getView().findViewById(R.id.button_test);
-//		
-//		
-//		
-//		button.setOnClickListener(new OnClickListener() {
-//		@Override
-//			public void onClick(View v) {
-//				frag = new SelectedDayFragment();
-//				
-//				final FragmentTransaction ft = getFragmentManager()
-//						.beginTransaction();
-//				ft.replace(R.id.fragment_holder, frag, "test");
-//				ft.addToBackStack(null);
-//				ft.commit();
-//			}
-//		});
+
+		// get the model
+		AgendaModel model = ((AgendaApplication) this.getActivity()
+				.getApplication()).getModel();
+		// the view of the all days fragment
+		view = new AllDaysFragmentView(this.getActivity(), inflater.inflate(
+				R.layout.all_days_fragment_layout, container, false), model);
+
+		setClickListenerOnNewDayButton();
 
 		return view.getView();
+	}
+
+	private void setClickListenerOnNewDayButton() {
+
+		view.getNewDayButton().setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("hej");
+				frag = new SelectedDayFragment();
+
+				final FragmentTransaction ft = getFragmentManager()
+						.beginTransaction();
+				ft.replace(R.id.fragment_holder, frag, "test");
+				ft.addToBackStack(null);
+				ft.commit();
+			}
+		});
 	}
 
 }
