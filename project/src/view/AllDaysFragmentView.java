@@ -19,7 +19,6 @@ import com.example.pl4nn3r3000.R;
 
 public class AllDaysFragmentView implements Observer {
 	
-	private AgendaModel model;
 	private View view;
 	private ListView listView;
 	private AllDaysList adapter;
@@ -27,9 +26,8 @@ public class AllDaysFragmentView implements Observer {
 	
 	private Button newDayButton;
 	
-	public AllDaysFragmentView(Activity activity, View view, AgendaModel model){
+	public AllDaysFragmentView(Activity activity, View view){
 		this.activity = activity;
-		this.model = model;
 		this.view = view;
 		buildComponents();
 	}
@@ -76,9 +74,6 @@ public class AllDaysFragmentView implements Observer {
 	
 	@Override
 	public void update(Observable observable, Object data) {
-		
-		
-		
 		
 	}
 

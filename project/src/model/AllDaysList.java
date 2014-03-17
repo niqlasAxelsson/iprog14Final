@@ -71,6 +71,11 @@ public class AllDaysList extends ArrayAdapter<String>{
 	public void updateDayTitles(){
 		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
 		dayTitles = model.getNameOfDays();
+		for(int i = 0; i<dayTitles.size(); i++){
+			System.out.println(dayTitles.get(i));
+		}
+		System.out.println("dayTitles = " + dayTitles.size());
+		System.out.println("model = " + model.getDays().size());
 	}
 	
 

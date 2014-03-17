@@ -43,7 +43,7 @@ public class AllDaysFragment extends Fragment {
 				.getApplication()).getModel();
 		// the view of the all days fragment
 		view = new AllDaysFragmentView(this.getActivity(), inflater.inflate(
-				R.layout.all_days_fragment_layout, container, false), model);
+				R.layout.all_days_fragment_layout, container, false));
 
 		setClickListenerOnNewDayButton();
 
