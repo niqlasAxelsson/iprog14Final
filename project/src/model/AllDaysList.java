@@ -2,8 +2,8 @@ package model;
 
 import java.util.List;
 
+import view.AllDayListView;
 import android.app.Activity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -29,7 +29,12 @@ public class AllDaysList extends ArrayAdapter<String> {
 
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
-		this.position = position;
+		
+		
+		AllDayListView alldayList = new AllDayListView(context,view,position);
+		return alldayList.getListItemView();
+		
+		/*this.position = position;
 		LayoutInflater inflater = context.getLayoutInflater();
 		listItemView = inflater.inflate(R.layout.all_days_list_item, null, true);
 		
@@ -37,6 +42,7 @@ public class AllDaysList extends ArrayAdapter<String> {
 		setResourcesForComponents();
 		
 		return listItemView;
+		*/
 	}
 
 	private void buildComponents() {
