@@ -34,6 +34,10 @@ public class AgendaModel extends Observable {
 		return days;
 	}
 	
+	/**
+	 * get name of the days in a string List
+	 * @return
+	 */
 	public List<String> getNameOfDays(){
 		List<String> array = new LinkedList<String>();
 		
@@ -43,6 +47,16 @@ public class AgendaModel extends Observable {
 		
 		return array;
 		
+	}
+	/**
+	 * remove a day in the list
+	 * @param position
+	 */
+	public void removeDay(int position){
+		
+		days.remove(position);
+		setChanged();
+		notifyObservers();
 	}
 
 	/**

@@ -14,7 +14,14 @@ import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
 
-public class AllDayListView implements Observer {
+
+/**
+ * AllDayListView 
+ * View for the days list.
+ * @author julle
+ *
+ */
+public class AllDaysListView implements Observer {
 
 	private Activity activity;
 	private View view;
@@ -25,7 +32,8 @@ public class AllDayListView implements Observer {
 	private ImageView dayDelete;
 	
 	
-	public AllDayListView(Activity activity,View view,int position){
+	
+	public AllDaysListView(Activity activity,View view,int position){
 		
 		this.view = view;
 		this.activity = activity;
@@ -35,7 +43,9 @@ public class AllDayListView implements Observer {
 		
 	}
 	
-	
+	/**
+	 * builds the components in the list
+	 */
 	private void buildComponents(){
 		
 		LayoutInflater inflater = activity.getLayoutInflater();
@@ -47,10 +57,18 @@ public class AllDayListView implements Observer {
 
 	}
 	
+	/**
+	 * return hte lsitItemView
+	 * @return
+	 */
 	public View getListItemView(){
 		return listItemView;
 	}
 	
+	/**
+	 * set the resources for all the components in the list
+	 * @param position
+	 */
 	private void setResourcesForComponents(int position) {	
 		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 		Day selectedDay = model.getDays().get(position);
@@ -58,6 +76,16 @@ public class AllDayListView implements Observer {
 		dayTitle.setText(selectedDay.getDateString());
 		//dayDescription here		
 	}
+	
+	/**
+	 * returns the ImageView of dayDelete
+	 * @return
+	 */
+	public ImageView getDayDelete(){
+		
+		return dayDelete;
+	}
+	
 	
 	
 	@Override
