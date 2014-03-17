@@ -60,9 +60,8 @@ public class AllDaysFragment extends Fragment {
 						null);
 				AlertDialog.Builder alert = new AlertDialog.Builder(activity);
 				
-				//we didn't want to make a new view class just for 3 lines of code, sue us
+				//we didn't want to make a new view class just for 2 lines of code, sue us
 				alert.setTitle("New day");
-				alert.setMessage("Enter date");
 				alert.setView(alertView);
 
 				final DatePicker datePicker;
@@ -77,6 +76,7 @@ public class AllDaysFragment extends Fragment {
 						model.addDay(datePicker.getDayOfMonth(), datePicker.getMonth(), datePicker.getYear());
 						
 						view.getAdapter().notifyDataSetChanged();
+						view.getAdapter().updateDayTitles();
 					}
 
 				});

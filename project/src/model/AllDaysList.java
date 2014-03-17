@@ -68,5 +68,10 @@ public class AllDaysList extends ArrayAdapter<String>{
 		
 	}
 	
+	public void updateDayTitles(){
+		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
+		dayTitles = model.getNameOfDays();
+	}
+	
 
 }
