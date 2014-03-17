@@ -24,16 +24,25 @@ public class AllDaysList extends ArrayAdapter<String> {
 
 	public AllDaysList(Activity context, List<String> dayTitles) {
 		super(context, R.layout.all_days_list_item, dayTitles);
+		System.out.println("Created");
 		this.context = context;
 	}
 
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
+		
+		System.out.println("000000000000000");
+		
 		LayoutInflater inflater = context.getLayoutInflater();
 		listItemView = inflater.inflate(R.layout.all_days_list_item, null, true);
 		
+		System.out.println("11111111111111");
+		
 		buildComponents();
+		
+		System.out.println("22222222222222222");
+		
 		setResourcesForComponents();
 		
 		return super.getView(position, view, parent);
