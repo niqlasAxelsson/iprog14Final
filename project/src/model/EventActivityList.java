@@ -39,9 +39,7 @@ public class EventActivityList extends ArrayAdapter<String>{
 		listItemView = inflater.inflate(R.layout.list_item, null, true);
 
 		buildComponents();
-		setResourcesForComponents();
-		
-		//eventImage.setOnLongClickListener(longListen);
+		setResourcesForComponents();		
 
 		return listItemView;
 	}

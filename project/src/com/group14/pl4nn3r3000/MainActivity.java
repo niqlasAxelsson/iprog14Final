@@ -110,15 +110,10 @@ public class MainActivity extends Activity {
 				      String dragData = "" + item.getText();
 				      int position = Integer.parseInt(dragData);
 				  
-				      //EventActivity removedActivity = model.getParkedActivitiesArray()[position];
-				      //System.out.println(position);
 				      model.removeParkedActivity(position);
-				      //mainActivityView.setActivityNames();
+
 				      mainActivityView.getActivityNamesList().remove(position);
-				     
-				      //activityNames.remove(position);
-				      //System.out.println(activityNames.toString());
-				      				      
+				  				      				      
 				      mainActivityView.getAdapter().notifyDataSetChanged();
 				      
 				      

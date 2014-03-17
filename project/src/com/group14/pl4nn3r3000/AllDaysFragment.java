@@ -33,28 +33,25 @@ public class AllDaysFragment extends Fragment {
 		//get the model
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		//the view of the all days fragment
-		AllDaysFragmentView view = new AllDaysFragmentView(inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);
-
-//		View view = inflater.inflate(R.layout.all_days_fragment_layout,
-//				container, false);
-		
-		//this button is just for test atm.
-		final Button button = (Button) view.getView().findViewById(R.id.button_test);
+		AllDaysFragmentView view = new AllDaysFragmentView(inflater.inflate(R.layout.all_days_fragment_layout, container, false), model);		
 		
 		
-		
-		button.setOnClickListener(new OnClickListener() {
-		@Override
-			public void onClick(View v) {
-				frag = new SelectedDayFragment();
-				
-				final FragmentTransaction ft = getFragmentManager()
-						.beginTransaction();
-				ft.replace(R.id.fragment_holder, frag, "test");
-				ft.addToBackStack(null);
-				ft.commit();
-			}
-		});
+//		final Button button = (Button) view.getView().findViewById(R.id.button_test);
+//		
+//		
+//		
+//		button.setOnClickListener(new OnClickListener() {
+//		@Override
+//			public void onClick(View v) {
+//				frag = new SelectedDayFragment();
+//				
+//				final FragmentTransaction ft = getFragmentManager()
+//						.beginTransaction();
+//				ft.replace(R.id.fragment_holder, frag, "test");
+//				ft.addToBackStack(null);
+//				ft.commit();
+//			}
+//		});
 
 		return view.getView();
 	}

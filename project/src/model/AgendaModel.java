@@ -20,10 +20,18 @@ public class AgendaModel extends Observable {
 	 * adds create and add a new day to model with starting time (hours and
 	 * minutes)
 	 */
-	public Day addDay(int startHour, int startMin, int day, int month, int year) {
-		Day d = new Day(startHour, startMin, day, month, year);
+	public Day addDay(int day, int month, int year) {
+		Day d = new Day(day, month, year);
 		days.add(d);
 		return d;
+	}
+	/**
+	 * return the list of all days
+	 * @return
+	 */
+	public List<Day> getDays(){
+		
+		return days;
 	}
 
 	/**
@@ -118,25 +126,5 @@ public class AgendaModel extends Observable {
 		}
 	}
 
-	/**
-	 * you can use this method to create some test data and test your
-	 * implementation
-	 */
-	public static AgendaModel getModelWithExampleData() {
-		AgendaModel model = new AgendaModel();
 
-		Day d = model.addDay(8, 0,5,2,2013);
-		model.addActivity(new EventActivity("Introduction", "Intro to the meeting",
-				10, 0), d, 0);
-		model.addActivity(new EventActivity("Idea 1", "Presenting idea 1", 30, 0),
-				d, 1);
-		model.addActivity(new EventActivity("Working in groups",
-				"Working on business model for idea 1", 35, 1), d, 2);
-		model.addActivity(new EventActivity("Idea 1 discussion",
-				"Discussing the results of idea 1", 15, 2), d, 3);
-		model.addActivity(new EventActivity("Coffee break", "Time for some coffee",
-				20, 3), d, 4);
-
-		return model;
-	}
 }

@@ -39,8 +39,8 @@ public class AllDaysFragmentView implements Observer {
 	 * builds the components in the view
 	 */
 	private void buildComponent(){
-		Button b = (Button) view.findViewById(R.id.button_test);
-		b.setText("Challa");
+//		Button b = (Button) view.findViewById(R.id.button_test);
+//		b.setText("Challa");
 	}
 	
 	@Override

@@ -10,15 +10,13 @@ public class Day extends Observable {
 	/**
 	 * the start of the agenda in min, counted from midnight
 	 */
-	int start;
 	int day;
 	int month;
 	int year;
 	
 	List<EventActivity> activities = new ArrayList<EventActivity>();
 	
-	public Day(int hour, int min,int day,int month,int year) {
-		start = hour*60 + min;
+	public Day(int day, int month, int year) {
 		this.day = day;
 		this.month = month;
 		this.year = year;
@@ -77,33 +75,59 @@ public class Day extends Observable {
 		setChanged();
 		notifyObservers("YearChanged");
 	}
-
-
-	/**
-	 * Get Start time of day
-	 * @return
-	 */
-	public int getStart() {
-		return start;
-	}
-
-	/**
-	 * Set Start time on a day
-	 * @param start
-	 */
-	public void setStart(int start) {
-		this.start = start;
-		setChanged();
-		notifyObservers("StartChanged");
-	}
 	
 	/**
 	 * get date in a string
 	 * @return
 	 */
 	public String getDateString(){
-	
-		return  year + "-" + month + "-" + day;
+		String monthString;
+		
+		switch (month) {
+		case 1:
+			monthString = "January";
+			break;
+		case 2:
+			monthString = "February";
+			break;
+		case 3:
+			monthString = "March";
+			break;
+		case 4:
+			monthString = "April";
+			break;
+		case 5:
+			monthString = "May";
+			break;
+		case 6:
+			monthString = "June";
+			break;
+		case 7:
+			monthString = "July";
+			break;
+		case 8:
+			monthString = "August";
+			break;
+		case 9:
+			monthString = "September";
+			break;
+		case 10:
+			monthString = "October";
+			break;
+		case 11:
+			monthString = "November";
+			break;
+		case 12:
+			monthString = "December";
+			break;
+
+		default:
+			monthString = "Whatup, some kind of error yo";
+			break;
+		}
+		
+		
+		return  day + "-" + monthString + "-" + year;
 	}
 
 	/**
@@ -115,10 +139,6 @@ public class Day extends Observable {
 			result += act.getLength();
 		}
 		return result;
-	}
-	
-	public int getEnd() {
-		return getStart() + getTotalLength();
 	}
 	
 	
