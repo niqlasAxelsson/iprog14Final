@@ -58,7 +58,7 @@ public class AllDaysList extends ArrayAdapter<String> {
 				AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
 				model.removeDay(pos);
 				notifyDataSetChanged();
-				dayTitles.remove(pos);
+				//dayTitles.remove(pos);
 	
 			}
 			
