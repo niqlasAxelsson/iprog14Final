@@ -139,6 +139,21 @@ public class AgendaModel extends Observable {
 		days.add(new Day(5, 6, 2014));
 		days.add(new Day(1, 7, 2015));
 		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 1, 2014));
+		days.add(new Day(22, 2, 2014));
+		days.add(new Day(22, 2, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
+		days.add(new Day(22, 12, 2014));
 		
 	}
 
