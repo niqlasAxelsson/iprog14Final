@@ -91,9 +91,10 @@ public final class R {
         public static final int all_days_fragment_layout=0x7f030002;
         public static final int all_days_list_item=0x7f030003;
         public static final int create_event=0x7f030004;
-        public static final int list_item=0x7f030005;
-        public static final int new_day_alert_layout=0x7f030006;
-        public static final int selected_day_fragment_layout=0x7f030007;
+        public static final int hour_list_item=0x7f030005;
+        public static final int list_item=0x7f030006;
+        public static final int new_day_alert_layout=0x7f030007;
+        public static final int selected_day_fragment_layout=0x7f030008;
     }
     public static final class menu {
         public static final int create_event=0x7f070000;
