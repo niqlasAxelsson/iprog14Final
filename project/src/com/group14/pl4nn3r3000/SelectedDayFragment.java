@@ -1,5 +1,6 @@
 package com.group14.pl4nn3r3000;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.example.pl4nn3r3000.R;
@@ -25,7 +26,7 @@ public class SelectedDayFragment extends Fragment {
 
 	private AllDaysFragment frag;
 	private SelectedDayFragmentView view;
-	private List<String> scheduleTimes;
+	private LinkedList<String> scheduleTimes;
 	private ScheduleList adapter;
 	
 	@Override
@@ -63,7 +64,7 @@ public class SelectedDayFragment extends Fragment {
 			System.out.println(s);
 			scheduleTimes.add(s);
 		}	
-		System.out.println(scheduleTimes);
+		System.out.println(scheduleTimes.toString());
 	}
 
 	/**
