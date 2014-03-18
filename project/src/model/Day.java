@@ -15,12 +15,17 @@ public class Day extends Observable {
 	int month;
 	int year;
 	
-	List<EventActivity> activities = new ArrayList<EventActivity>();
+	ArrayList<EventActivity> activities;
 	
 	public Day(int day, int month, int year) {
+		activities = new ArrayList<EventActivity>();
 		this.day = day;
 		this.month = month;
 		this.year = year;
+	}
+	
+	public ArrayList<EventActivity> getActivities(){
+		return activities;
 	}
 	
 	/**
