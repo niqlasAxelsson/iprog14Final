@@ -26,7 +26,7 @@ public class SelectedDayFragment extends Fragment {
 
 	private AllDaysFragment frag;
 	private SelectedDayFragmentView view;
-	private LinkedList<String> scheduleTimes;
+	private LinkedList<String> scheduleTimes = new LinkedList<String>();
 	private ScheduleList adapter;
 	
 	@Override
@@ -61,7 +61,6 @@ public class SelectedDayFragment extends Fragment {
 			}else{
 				s = i + ":00";
 			}
-			System.out.println(s);
 			scheduleTimes.add(s);
 		}	
 		System.out.println(scheduleTimes.toString());
