@@ -26,7 +26,7 @@ public class Day extends Observable {
 
 	private void fillListWithNullElements() {
 		for(int i = 0; i< activities.size(); i++){
-			activities.add(i, null);
+			activities.add(null);
 		}
 		
 	}
@@ -235,7 +235,7 @@ public class Day extends Observable {
 	}
 
 	public String dayToString() {
-		String s = "";
+		String s = "size = " + activities.size();
 
 		for (int i = 0; i < activities.size(); i++) {
 			if (activities.get(i) != null) {
