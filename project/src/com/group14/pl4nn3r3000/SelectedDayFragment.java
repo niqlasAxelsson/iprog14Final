@@ -1,5 +1,8 @@
 package com.group14.pl4nn3r3000;
 
+import model.AgendaApplication;
+import model.AgendaModel;
+
 import com.example.pl4nn3r3000.R;
 
 import android.app.Fragment;
@@ -28,6 +31,9 @@ public class SelectedDayFragment extends Fragment {
 		View view = inflater.inflate(R.layout.selected_day_fragment_layout,
 				container, false);
 		final Button button = (Button) view.findViewById(R.id.button_test2);
+		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
+		button.setText(model.getSelectedDay().getDateString());
+		
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
