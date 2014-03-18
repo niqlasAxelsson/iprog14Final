@@ -17,7 +17,7 @@ public class Day extends Observable {
 	ArrayList<EventActivity> activities;
 
 	public Day(int day, int month, int year) {
-		activities = new ArrayList<EventActivity>();
+		activities = new ArrayList<EventActivity>(18);
 		this.day = day;
 		this.month = month;
 		this.year = year;
@@ -204,7 +204,9 @@ public class Day extends Observable {
 	 * when needed from the model don't call it directly
 	 */
 	public EventActivity removeActivity(int position) {
+		
 		EventActivity act = activities.remove(position);
+		
 		setChanged();
 		notifyObservers("ActivityRemoved");
 		return act;
