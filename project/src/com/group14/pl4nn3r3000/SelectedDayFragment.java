@@ -55,7 +55,7 @@ public class SelectedDayFragment extends Fragment {
 	 * creates the list of strings for the arrayadapter
 	 */
 	private void initScheduleTimes() {
-		for(int i = 6; i<= 24; i++){
+		for(int i = 6; i <= 24; i++){
 			String s = "";
 			if(i < 10){
 				s = "0" + i + ":00";
