@@ -48,7 +48,7 @@ public class ScheduleList extends ArrayAdapter<String>{
 	private void checkIfActivityOnThisTime() {
 		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
 		System.out.println("modellen hämtad");
-		EventActivity thisActivity = model.getSelectedDay().activities.get(position);
+		EventActivity thisActivity = model.getSelectedDay().getActivities().get(position);
 		
 		System.out.println("kollar om det finns nåt på denna tiden");
 		
