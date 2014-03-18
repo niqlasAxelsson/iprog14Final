@@ -27,7 +27,6 @@ public class Day extends Observable {
 	private void fillListWithNullElements() {
 		for(int i = 0; i < 18; i++){
 			activities.add(null);
-			System.out.println(activities.get(i));
 		}
 		
 	}
