@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
@@ -30,6 +31,7 @@ public class AllDaysListView implements Observer {
 	private TextView dayTitle;
 	private TextView dayDescription;
 	private ImageView dayDelete;
+	private LinearLayout clickLayout;
 	
 	
 	
@@ -54,6 +56,7 @@ public class AllDaysListView implements Observer {
 		dayTitle = (TextView) listItemView.findViewById(R.id.day_date);
 		dayDescription = (TextView) listItemView.findViewById(R.id.day_description);
 		dayDelete  =  (ImageView) listItemView.findViewById(R.id.day_delete);
+		clickLayout = (LinearLayout) listItemView.findViewById(R.id.dayClickLayout);
 
 	}
 	
@@ -64,6 +67,11 @@ public class AllDaysListView implements Observer {
 	public View getListItemView(){
 		return listItemView;
 	}
+	
+	public LinearLayout getClickLayout(){
+		return clickLayout;
+	}
+	
 	
 	/**
 	 * set the resources for all the components in the list

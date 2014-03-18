@@ -11,6 +11,7 @@
         android:layout_height="wrap_content" >
 
         <LinearLayout
+            android:id="@+id/dayClickLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -35,6 +36,11 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
         <ImageView
             android:id="@+id/day_delete"
             android:layout_width="20dp"
@@ -43,6 +49,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:src="@drawable/delete" />
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

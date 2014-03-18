@@ -44,7 +44,7 @@ public class AllDaysList extends ArrayAdapter<String>{
 	
 	}
 	
-	
+
 	/**
 	 * ClickListener on the "Delete X" in the lsitView
 	 */

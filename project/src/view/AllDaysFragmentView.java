@@ -83,4 +83,7 @@ public class AllDaysFragmentView implements Observer {
 		return dayTitles;
 	}
 
+	public ListView getListView(){
+		return listView;
+	}
 }

@@ -10,10 +10,24 @@ public class AgendaModel extends Observable {
 
 	List<Day> days = new ArrayList<Day>();
 	List<EventActivity> parkedActivites = new ArrayList<EventActivity>();
+	Day selectedDay;
 	
 	public AgendaModel(){
 		
 		addExampleData();
+	}
+	
+	public Day getSelectedDay(){
+		return selectedDay;
+	}
+	
+	public void setSelectedDay(Day day){
+		selectedDay = day;
+	}
+	
+	
+	public Day getDayFromPos(int pos){
+		return days.get(pos);
 	}
 
 	/**
