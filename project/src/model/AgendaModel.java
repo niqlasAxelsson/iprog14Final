@@ -168,9 +168,10 @@ public class AgendaModel extends Observable {
 		days.add(new Day(1, 7, 2015));
 		days.add(new Day(22, 12, 2014));
 		
+		
 		//adding activities to a day
-		Day awesomeDay = new Day(13,3,37);
-		for(int i=0;i<3;i++){
+		Day awesomeDay = new Day(13,3,2007);
+		for(int i=0;i<6;i+=2){
 			
 			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
 			addActivity(ea,awesomeDay,i);

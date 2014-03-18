@@ -32,19 +32,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="description here"
+                android:text=""
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/day_delete"
+            android:id="@+id/hour_image"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/work" />
+            android:layout_marginRight="10dp" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 
@@ -14,6 +15,7 @@ public class Day extends Observable {
 	int month;
 	int year;
 	
+	//HashMap<Integer, EventActivity> activities = new HashMap<Integer, EventActivity>();
 	List<EventActivity> activities = new ArrayList<EventActivity>();
 	
 	public Day(int day, int month, int year) {

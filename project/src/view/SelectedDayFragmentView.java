@@ -1,5 +1,7 @@
 package view;
 
+import model.ScheduleList;
+
 import com.example.pl4nn3r3000.R;
 
 import android.app.Activity;
@@ -15,11 +17,10 @@ import android.widget.TextView;
  */
 public class SelectedDayFragmentView {
 
-	Activity activity;
-	View view;
-	
-	ListView listView;
-	TextView dayTitle;
+	private Activity activity;
+	private View view;
+	private ListView listView;
+	private TextView dayTitle;
 	
 	public SelectedDayFragmentView(Activity activity,View view){
 		this.view = view;
@@ -33,9 +34,8 @@ public class SelectedDayFragmentView {
 	 */
 	private void buildComponents(){
 		
-		ListView listView = (ListView)view.findViewById(R.id.selectedDayListView);
-		dayTitle = (TextView) view.findViewById(R.id.selectedDayTextView);
-		
+		listView = (ListView) view.findViewById(R.id.selectedDayListView);  
+		dayTitle = (TextView) view.findViewById(R.id.selectedDayTextView);		
 		
 	}
 	

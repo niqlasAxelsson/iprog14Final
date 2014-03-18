@@ -2,6 +2,8 @@ package model;
 
 import java.util.Observable;
 
+import android.graphics.Color;
+
 import com.example.pl4nn3r3000.R;
 
 public class EventActivity extends Observable {
@@ -23,6 +25,7 @@ public class EventActivity extends Observable {
 	int category;
 
 	int image;
+	int color;
 
 	int start;
 	int end;
@@ -49,27 +52,35 @@ public class EventActivity extends Observable {
 		switch (category) {
 		case 1:
 			image = R.drawable.workout;
+			color = Color.parseColor("#ff5959");
 			break;
 		case 2:
 			image = R.drawable.meeting;
+			color = Color.parseColor("#00b4ff");
 			break;
 		case 3:
 			image = R.drawable.meal;
+			color = Color.parseColor("#45ba66");
 			break;
 		case 4:
 			image = R.drawable.party;
+			color = Color.parseColor("#ff8a00");
 			break;
 		case 5:
 			image = R.drawable.studies;
+			color = Color.parseColor("#ff53d0");
 			break;
 		case 6:
 			image = R.drawable.work;
+			color = Color.parseColor("#ffd927");
 			break;
 		case 7:
 			image = R.drawable.pleasure;
+			color = Color.parseColor("#7e00ff");
 			break;
 		default: 
 			image = R.drawable.other;
+			color = Color.parseColor("#393939");
 			break;
 		}
 		
@@ -193,6 +204,10 @@ public class EventActivity extends Observable {
 	 */
 	public int getImage() {
 		return image;
+	}
+	
+	public int getColor(){
+		return color;
 	}
 
 }

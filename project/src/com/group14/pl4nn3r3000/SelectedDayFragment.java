@@ -1,9 +1,12 @@
 package com.group14.pl4nn3r3000;
 
+import java.util.List;
+
 import com.example.pl4nn3r3000.R;
 
 import model.AgendaApplication;
 import model.AgendaModel;
+import model.ScheduleList;
 import view.SelectedDayFragmentView;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -20,22 +23,47 @@ import android.view.ViewGroup;
  */
 public class SelectedDayFragment extends Fragment {
 
-	AllDaysFragment frag;
-	SelectedDayFragmentView view;
+	private AllDaysFragment frag;
+	private SelectedDayFragmentView view;
+	private List<String> scheduleTimes;
+	private ScheduleList adapter;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		//View view = inflater.inflate(R.layout.selected_day_fragment_layout,
-			//	container, false);
 		
 		view = new SelectedDayFragmentView(this.getActivity(),inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
 		initTextView();
+		initScheduleTimes();
+		setAdapterForList();
 		
 		
 		return view.getView();
 	}
 	
+	
+	private void setAdapterForList() {
+		adapter = new ScheduleList(this.getActivity(), scheduleTimes);
+		view.getListView().setAdapter(adapter);
+		
+	}
+
+
+	/**
+	 * creates the list of strings for the arrayadapter
+	 */
+	private void initScheduleTimes() {
+		for(int i = 6; i<= 24; i++){
+			String s;
+			if(i < 10){
+				s = "0" + i + ":00";
+			}else{
+				s = i + ":00";
+			}
+			scheduleTimes.add(s);
+		}		
+	}
+
 	/**
 	 * init the dayTitle text.
 	 */
@@ -43,6 +71,12 @@ public class SelectedDayFragment extends Fragment {
 		
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		view.getDayTitleTextView().setText(model.getSelectedDay().getDateString());
+		
+	}
+	
+	private void initSelectedDayList(){
+		
+		
 		
 	}
 
