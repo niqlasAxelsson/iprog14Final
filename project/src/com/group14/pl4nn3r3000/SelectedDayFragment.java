@@ -54,14 +54,15 @@ public class SelectedDayFragment extends Fragment {
 	 */
 	private void initScheduleTimes() {
 		for(int i = 6; i<= 24; i++){
-			String s;
+			String s = "";
 			if(i < 10){
 				s = "0" + i + ":00";
 			}else{
 				s = i + ":00";
 			}
 			scheduleTimes.add(s);
-		}		
+		}	
+		System.out.println(scheduleTimes);
 	}
 
 	/**
