@@ -174,10 +174,11 @@ public class AgendaModel extends Observable {
 		for(int i=0;i<6;i+=2){
 			
 			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
-			addActivity(ea,awesomeDay,i);
+			awesomeDay.addActivity(ea, i);
 		}
 		days.add(awesomeDay);
-		System.out.println(awesomeDay.getActivities().toString());
+		
+		System.out.println(awesomeDay.dayToString());
 		
 		
 	}

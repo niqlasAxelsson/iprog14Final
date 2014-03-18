@@ -5,39 +5,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 
-
 public class Day extends Observable {
-	 
+
 	/**
 	 * the start of the agenda in min, counted from midnight
 	 */
 	int day;
 	int month;
 	int year;
-	
+
 	ArrayList<EventActivity> activities;
-	
+
 	public Day(int day, int month, int year) {
 		activities = new ArrayList<EventActivity>();
 		this.day = day;
 		this.month = month;
 		this.year = year;
 	}
-	
-	public ArrayList<EventActivity> getActivities(){
+
+	public ArrayList<EventActivity> getActivities() {
 		return activities;
 	}
-	
+
 	/**
 	 * get day
+	 * 
 	 * @return
 	 */
 	public int getDay() {
 		return day;
 	}
-	
+
 	/**
 	 * set day
+	 * 
 	 * @param day
 	 */
 	public void setDay(int day) {
@@ -48,6 +49,7 @@ public class Day extends Observable {
 
 	/**
 	 * get month
+	 * 
 	 * @return
 	 */
 	public int getMonth() {
@@ -56,6 +58,7 @@ public class Day extends Observable {
 
 	/**
 	 * set Month of a day
+	 * 
 	 * @param month
 	 */
 	public void setMonth(int month) {
@@ -66,6 +69,7 @@ public class Day extends Observable {
 
 	/**
 	 * get the year of the day
+	 * 
 	 * @return
 	 */
 	public int getYear() {
@@ -74,6 +78,7 @@ public class Day extends Observable {
 
 	/**
 	 * set the year of the day
+	 * 
 	 * @param year
 	 */
 	public void setYear(int year) {
@@ -81,14 +86,15 @@ public class Day extends Observable {
 		setChanged();
 		notifyObservers("YearChanged");
 	}
-	
+
 	/**
 	 * get date in a string
+	 * 
 	 * @return
 	 */
-	public String getDateString(){
+	public String getDateString() {
 		String monthString;
-		
+
 		switch (month) {
 		case 1:
 			monthString = "January";
@@ -131,9 +137,8 @@ public class Day extends Observable {
 			monthString = "Whatup, some kind of error yo";
 			break;
 		}
-		
-		
-		return  day + " " + monthString + " " + year;
+
+		return day + " " + monthString + " " + year;
 	}
 
 	/**
@@ -141,85 +146,95 @@ public class Day extends Observable {
 	 */
 	public int getTotalLength() {
 		int result = 0;
-		for(EventActivity act:activities) {
+		for (EventActivity act : activities) {
 			result += act.getLength();
 		}
 		return result;
 	}
-	
-	
+
 	/**
 	 * returns the length (in minutes) of activities of certain type
 	 */
 	public int getLengthByType(int type) {
 		int result = 0;
-		for(EventActivity act:activities) {
-			if(act.getType() == type) {
+		for (EventActivity act : activities) {
+			if (act.getType() == type) {
 				result += act.getLength();
 			}
 		}
 		return result;
 	}
-	
+
 	/**
-	 * adds an activity to specific position
-	 * this method will be called when needed from the model
-	 * don't call it directly
+	 * adds an activity to specific position this method will be called when
+	 * needed from the model don't call it directly
 	 */
-	int addActivity(EventActivity act,int position){
-		if(position > activities.size()) {
-			position = activities.size();
+	public void addActivity(EventActivity act, int position) {
+		if (position > activities.size()) {
+			position = activities.size() - 1;
 		}
 		activities.add(position, act);
 		setChanged();
 		notifyObservers("ActivityAdded");
-		return position;
 	}
+
 	/**
-	 * check if the time is free for booking 
+	 * check if the time is free for booking
+	 * 
 	 * @param startTime
 	 * @param endTime
 	 * @return
 	 */
-	public boolean checkIfTimeIsEmpty(int startTime,int endTime){
-		
-		for(EventActivity act: activities){
-			if(startTime>act.getStartTime() && startTime<act.getEndTime())
+	public boolean checkIfTimeIsEmpty(int startTime, int endTime) {
+
+		for (EventActivity act : activities) {
+			if (startTime > act.getStartTime() && startTime < act.getEndTime())
 				return false;
-			else if(endTime>act.getStartTime() && endTime<act.getEndTime())
+			else if (endTime > act.getStartTime() && endTime < act.getEndTime())
 				return false;
-			else if(startTime<act.getStartTime() && endTime>act.getEndTime())
+			else if (startTime < act.getStartTime()
+					&& endTime > act.getEndTime())
 				return false;
 		}
 		return true;
 	}
-	
+
 	/**
-	 * removes an activity from specific position
-	 * this method will be called when needed from the model
-	 * don't call it directly
+	 * removes an activity from specific position this method will be called
+	 * when needed from the model don't call it directly
 	 */
-	EventActivity removeActivity(int position) {
+	public EventActivity removeActivity(int position) {
 		EventActivity act = activities.remove(position);
 		setChanged();
 		notifyObservers("ActivityRemoved");
 		return act;
 	}
-	
+
 	/**
-	 * moves activity inside one day
-	 * this method will be called when needed from the model
-	 * don't call it directly
+	 * moves activity inside one day this method will be called when needed from
+	 * the model don't call it directly
 	 */
-	void moveActivity(int oldPosition, int newPosition) {
-		if(newPosition>oldPosition){
+	public void moveActivity(int oldPosition, int newPosition) {
+		if (newPosition > oldPosition) {
 			newPosition--;
 		}
 		EventActivity act = activities.remove(oldPosition);
-		activities.add(newPosition,act);
+		activities.add(newPosition, act);
 		setChanged();
 		notifyObservers("ActivityMoved");
 	}
-	
 
+	public String dayToString() {
+		String s = "";
+
+		for (int i = 0; i < activities.size(); i++) {
+			if (activities.get(i) != null) {
+				s += activities.get(i).getName() + " ";
+			} else {
+				s += "*tomt* ";
+			}
+		}
+
+		return s;
+	}
 }
