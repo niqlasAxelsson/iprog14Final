@@ -26,7 +26,6 @@ public class SelectedDayFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		//View view = inflater.inflate(R.layout.selected_day_fragment_layout,
 			//	container, false);
 		
@@ -37,7 +36,9 @@ public class SelectedDayFragment extends Fragment {
 		return view.getView();
 	}
 	
-	
+	/**
+	 * init the dayTitle text.
+	 */
 	private void initTextView(){
 		
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
