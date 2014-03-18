@@ -23,6 +23,9 @@ public class ScheduleList extends ArrayAdapter<String>{
 
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
+		
+		System.out.println("listan skapas");
+		
 		this.context = context;
 		this.scheduleTimes = scheduleTimes;
 		
@@ -32,6 +35,8 @@ public class ScheduleList extends ArrayAdapter<String>{
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
 		this.scheduleListView = new ScheduleListView(context,view,position);
+		
+		System.out.println("i getview i listan");
 		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
@@ -43,6 +48,8 @@ public class ScheduleList extends ArrayAdapter<String>{
 	private void checkIfActivityOnThisTime() {
 		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
 		EventActivity thisActivity = model.getSelectedDay().activities.get(position);
+		
+		System.out.println("kollar om det finns nåt på denna tiden");
 		
 		if(thisActivity != null){
 			scheduleListView.getTimeTextView().setTextColor(Color.WHITE);

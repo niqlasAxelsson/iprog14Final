@@ -45,6 +45,7 @@ public class SelectedDayFragment extends Fragment {
 	
 	private void setAdapterForList() {
 		adapter = new ScheduleList(this.getActivity(), scheduleTimes);
+		System.out.println("innan listan får adapter");
 		view.getListView().setAdapter(adapter);
 		
 	}
