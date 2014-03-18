@@ -18,9 +18,17 @@ public class Day extends Observable {
 
 	public Day(int day, int month, int year) {
 		activities = new ArrayList<EventActivity>(18);
+		fillListWithNullElements();
 		this.day = day;
 		this.month = month;
 		this.year = year;
+	}
+
+	private void fillListWithNullElements() {
+		for(int i = 0; i< activities.size(); i++){
+			activities.add(i, null);
+		}
+		
 	}
 
 	public ArrayList<EventActivity> getActivities() {
@@ -232,8 +240,8 @@ public class Day extends Observable {
 		for (int i = 0; i < activities.size(); i++) {
 			if (activities.get(i) != null) {
 				s += activities.get(i).getName() + " ";
-			} else {
-				s += "*tomt* ";
+			} else if(activities.get(i) == null){
+				s += "null ";
 			}
 		}
 
