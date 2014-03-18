@@ -60,6 +60,7 @@ public class SelectedDayFragment extends Fragment {
 			}else{
 				s = i + ":00";
 			}
+			System.out.println(s);
 			scheduleTimes.add(s);
 		}	
 		System.out.println(scheduleTimes);
