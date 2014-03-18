@@ -182,6 +182,7 @@ public class Day extends Observable {
 		if (position > activities.size()) {
 			position = activities.size() - 1;
 		}
+		activities.remove(position);
 		activities.add(position, act);
 		setChanged();
 		notifyObservers("ActivityAdded");
