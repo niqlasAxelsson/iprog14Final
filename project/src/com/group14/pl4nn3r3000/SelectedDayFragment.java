@@ -33,25 +33,6 @@ public class SelectedDayFragment extends Fragment {
 		AgendaModel model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		View view = inflater.inflate(R.layout.selected_day_fragment_layout,
 				container, false);
-		
-		
-		
-		final Button button = (Button) view.findViewById(R.id.button_test2);
-		
-		button.setText(model.getSelectedDay().getDateString());
-		
-		button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				frag = new AllDaysFragment();
-
-				final FragmentTransaction ft = getFragmentManager()
-						.beginTransaction();
-				ft.replace(R.id.fragment_holder, frag, "test 2");
-				ft.addToBackStack(null);
-				ft.commit();
-			}
-		});
 
 		return view;
 	}
