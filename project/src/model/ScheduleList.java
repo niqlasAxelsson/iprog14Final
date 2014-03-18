@@ -36,7 +36,6 @@ public class ScheduleList extends ArrayAdapter<String>{
 		this.position = position;
 		this.scheduleListView = new ScheduleListView(context,view,position);
 		
-		System.out.println("i getview i listan");
 		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
@@ -47,13 +46,12 @@ public class ScheduleList extends ArrayAdapter<String>{
 
 	private void checkIfActivityOnThisTime() {
 		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
-		System.out.println("modellen hämtad");
 		System.out.println("This is the Position : " + position);
 		EventActivity thisActivity = model.getSelectedDay().getActivities().get(position);
 		
-		System.out.println("kollar om det finns nåt på denna tiden");
 		
 		if(thisActivity != null){
+			System.out.println("Här finns något!!!");
 			scheduleListView.getTimeTextView().setTextColor(Color.WHITE);
 			scheduleListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
 			scheduleListView.getHourImageView().setImageResource(thisActivity.getImage());

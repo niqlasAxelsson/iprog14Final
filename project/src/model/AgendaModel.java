@@ -177,6 +177,7 @@ public class AgendaModel extends Observable {
 			addActivity(ea,awesomeDay,i);
 		}
 		days.add(awesomeDay);
+		System.out.println(awesomeDay.getActivities().toString());
 		
 		
 	}
