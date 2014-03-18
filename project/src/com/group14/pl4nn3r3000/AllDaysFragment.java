@@ -77,7 +77,7 @@ public class AllDaysFragment extends Fragment {
 
 		};
 
-		view.getListView();
+		view.getListView().setOnItemClickListener(listener);
 
 	}
 
