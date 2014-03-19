@@ -56,9 +56,13 @@ public class ScheduleList extends ArrayAdapter<String>{
 			scheduleListView.getHourImageView().setImageResource(thisActivity.getImage());
 			scheduleListView.getDescrTextView().setText(thisActivity.getDescription());
 			
-			for(int i=position+1;i<position+thisActivity.getLength();i++){
-				ScheduleListView tempListView = new ScheduleListView(context,view,i);
-				tempListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
+		}else if(thisActivity == null && model.getSelectedDay().getPositionBoolean()[position] == true){
+			for(int i = position; i >= 0; i--){
+				if(model.getSelectedDay().getActivities().get(i) != null){
+					scheduleListView.getListItemHolder().setBackgroundColor(model.getSelectedDay().getActivities().get(i).getColor());
+					break;
+				}
+				
 			}
 		}
 		

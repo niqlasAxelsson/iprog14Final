@@ -45,6 +45,10 @@ public class Day extends Observable {
 	public int getDay() {
 		return day;
 	}
+	
+	public boolean[] getPositionBoolean(){
+		return positions;
+	}
 
 	/**
 	 * set day
