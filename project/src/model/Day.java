@@ -25,10 +25,10 @@ public class Day extends Observable {
 	}
 
 	private void fillListWithNullElements() {
-		for(int i = 0; i < 19; i++){
+		for (int i = 0; i < 19; i++) {
 			activities.add(null);
 		}
-		
+
 	}
 
 	public ArrayList<EventActivity> getActivities() {
@@ -178,15 +178,32 @@ public class Day extends Observable {
 	 * needed from the model don't call it directly
 	 */
 	public void addActivity(EventActivity act, int position) {
-		if (position > activities.size()) {
-			position = activities.size() - 1;
+
+		boolean isEmpty = false;
+
+		//controls if the activity is being placed out of bounds
+		//and if there is already an activity on that spot
+		if (activities.size() > position + act.length) {
+			for (int i = position; i < position + act.length; i++) {
+				if (activities.get(i) != null) {
+					isEmpty = false;
+					break;
+				}
+				isEmpty = true;
+			}
 		}
-		activities.remove(position);
-		activities.add(position, act);
-		setChanged();
-		notifyObservers("ActivityAdded");
+
+		//if the spot is empty and not out of bounds
+		//complete the add
+		if(isEmpty){
+			activities.remove(position);
+			activities.add(position, act);
+			setChanged();
+			notifyObservers("ActivityAdded");
+		}
 	}
 
+	
 	/**
 	 * check if the time is free for booking
 	 * 
@@ -213,9 +230,9 @@ public class Day extends Observable {
 	 * when needed from the model don't call it directly
 	 */
 	public EventActivity removeActivity(int position) {
-		
+
 		EventActivity act = activities.remove(position);
-		
+
 		setChanged();
 		notifyObservers("ActivityRemoved");
 		return act;
@@ -241,7 +258,7 @@ public class Day extends Observable {
 		for (int i = 0; i < activities.size(); i++) {
 			if (activities.get(i) != null) {
 				s += activities.get(i).getName() + " ";
-			} else if(activities.get(i) == null){
+			} else if (activities.get(i) == null) {
 				s += "null ";
 			}
 		}

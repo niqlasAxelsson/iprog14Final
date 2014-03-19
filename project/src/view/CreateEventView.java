@@ -61,7 +61,7 @@ public class CreateEventView implements Observer {
 		durationPicker = (NumberPicker) view
 				.findViewById(R.id.durationPicker_id);
 
-		durationPicker.setMaxValue(24);
+		durationPicker.setMaxValue(19);
 		durationPicker.setMinValue(1);
 		durationPicker.setWrapSelectorWheel(false);
 
