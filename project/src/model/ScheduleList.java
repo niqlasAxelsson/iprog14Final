@@ -61,6 +61,8 @@ public class ScheduleList extends ArrayAdapter<String> {
 	private class CustomDragListener implements OnDragListener{
 		
 		private int position;
+		AgendaModel model = ((AgendaApplication) context.getApplication())
+				.getModel();
 		
 		public CustomDragListener(int pos){
 			position = pos;
@@ -68,38 +70,25 @@ public class ScheduleList extends ArrayAdapter<String> {
 
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
-			int action = event.getAction();
-            boolean changedBg = false;
             
-            int color = Color.TRANSPARENT;
-            
-            Drawable background;
             switch (event.getAction()) {
             case DragEvent.ACTION_DRAG_STARTED:
                 // nothing
                 break;
             case DragEvent.ACTION_DRAG_ENTERED:
             	System.out.println("Entered: " + position);
-            	background = v.getBackground();
-                if (background instanceof ColorDrawable){
-                    color = ((ColorDrawable) background).getColor();
-                }
+            	
                 
-                if(color == Color.parseColor("#ececec")){
+                if(model.getSelectedDay().getPositionBoolean()[position] == false){
                 	 v.setBackgroundColor(Color.parseColor("#dbdbdb"));
                 }
                 
-                changedBg = true;
                
                 break;
             case DragEvent.ACTION_DRAG_EXITED:
             	System.out.println("Exited: " + position);
-            	background = v.getBackground();
-            	if (background instanceof ColorDrawable){
-                    color = ((ColorDrawable) background).getColor();
-                }
-                
-                if(color == Color.parseColor("#dbdbdb")){
+            	
+                if(model.getSelectedDay().getPositionBoolean()[position] == false){
                 	 v.setBackgroundColor(Color.parseColor("#ececec"));
                 }
             	
