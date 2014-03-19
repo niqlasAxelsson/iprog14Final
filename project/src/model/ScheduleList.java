@@ -14,6 +14,7 @@ import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 
 public class ScheduleList extends ArrayAdapter<String> {
 
@@ -21,7 +22,8 @@ public class ScheduleList extends ArrayAdapter<String> {
 	private List<String> scheduleTimes;
 	private int position;
 	private ScheduleListView scheduleListView;
-
+	LinearLayout listItemHolder;
+	
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
 
@@ -35,6 +37,8 @@ public class ScheduleList extends ArrayAdapter<String> {
 		this.position = position;
 		this.scheduleListView = new ScheduleListView(context, view, position);
 
+		listItemHolder = (LinearLayout) scheduleListView.getListItemView().findViewById(R.id.hour);
+		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
 		setOnDragListenerForLayout();
@@ -45,7 +49,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	private void setOnDragListenerForLayout() {
 		
 		
-		scheduleListView.getListItemHolder().setOnDragListener(
+		listItemHolder.setOnDragListener(
 				new View.OnDragListener() {
 
 					@Override
@@ -57,11 +61,11 @@ public class ScheduleList extends ArrayAdapter<String> {
 							break;
 						case DragEvent.ACTION_DRAG_ENTERED:
 							System.out.println("Entered: " + position);
-							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#FF8A00"));
+							listItemHolder.setBackgroundColor(Color.parseColor("#FF8A00"));
 							break;
 						case DragEvent.ACTION_DRAG_EXITED:
 							System.out.println("Exited: " + position);
-							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#ececec"));
+							listItemHolder.setBackgroundColor(Color.parseColor("#ececec"));
 							break;
 						case DragEvent.ACTION_DROP:
 							//nothing

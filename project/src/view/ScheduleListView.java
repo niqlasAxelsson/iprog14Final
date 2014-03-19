@@ -36,7 +36,7 @@ public class ScheduleListView implements Observer {
 		LayoutInflater inflater = activity.getLayoutInflater();
 		listItemView = inflater.inflate(R.layout.hour_list_item, null, true);
 		
-		listItemHolder = (LinearLayout) listItemView.findViewById(R.id.hour);
+		//listItemHolder = (LinearLayout) listItemView.findViewById(R.id.hour);
 		timeTextView = (TextView) listItemView.findViewById(R.id.time);
 		descrTextView = (TextView) listItemView.findViewById(R.id.hour_description);
 		hourImageView = (ImageView) listItemView.findViewById(R.id.hour_image);
