@@ -59,7 +59,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                        break;
 	                    case DragEvent.ACTION_DRAG_ENTERED:
 	                        System.out.println("Entered: " + position);
-	                        v.setBackgroundColor(Color.parseColor("#a7a7a7"));
+	                        v.setBackgroundColor(Color.parseColor("#dbdbdb"));
 	                        break;
 	                    case DragEvent.ACTION_DRAG_EXITED:
 	                        System.out.println("Exited: " + position);
