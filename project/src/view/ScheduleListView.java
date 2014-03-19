@@ -22,8 +22,6 @@ public class ScheduleListView implements Observer {
 	private TextView descrTextView;
 	private ImageView hourImageView;
 	
-	private TextView titleTextView;
-	
 
 	public ScheduleListView(Activity activity, View view, int position) {
 
@@ -46,11 +44,6 @@ public class ScheduleListView implements Observer {
 		
 	}
 	
-
-	public TextView getTitleTextView(){
-		
-		return titleTextView;
-	}
 	
 	public View getListItemView() {
 		return listItemView;
