@@ -189,7 +189,7 @@ public class Day extends Observable {
 
 		// controls if the activity is being placed out of bounds
 		// and if there is already an activity on that spot
-		if (positions.length > position + act.length) {
+		if (positions.length >= position + act.length) {
 			for (int i = position; i < position + act.length; i++) {
 				if (positions[i] == true) {
 					isEmpty = false;
