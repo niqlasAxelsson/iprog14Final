@@ -48,11 +48,11 @@ public final class R {
     }
     public static final class id {
         public static final int acitivty_name_id=0x7f080011;
-        public static final int action_settings=0x7f08002c;
+        public static final int action_settings=0x7f08002b;
         public static final int allDaysListView=0x7f08000a;
         public static final int allDaysListViewLinearLayout=0x7f080009;
         public static final int all_days_layout=0x7f080007;
-        public static final int datePicker=0x7f080027;
+        public static final int datePicker=0x7f080026;
         public static final int dayClickLayout=0x7f08000b;
         public static final int day_date=0x7f08000c;
         public static final int day_delete=0x7f08000e;
@@ -63,11 +63,11 @@ public final class R {
         public static final int fragment_holder=0x7f080006;
         public static final int horizontalListlayout=0x7f080004;
         public static final int hour=0x7f08001f;
-        public static final int hour_description=0x7f080022;
-        public static final int hour_image=0x7f080023;
-        public static final int list_item_duration=0x7f080026;
-        public static final int list_item_image=0x7f080025;
-        public static final int list_item_title=0x7f080024;
+        public static final int hour_description=0x7f080021;
+        public static final int hour_image=0x7f080022;
+        public static final int list_item_duration=0x7f080025;
+        public static final int list_item_image=0x7f080024;
+        public static final int list_item_title=0x7f080023;
         public static final int listview=0x7f080005;
         public static final int logo=0x7f080000;
         public static final int main_layout=0x7f080002;
@@ -79,16 +79,15 @@ public final class R {
         public static final int other_rb=0x7f08001d;
         public static final int party_rb=0x7f080019;
         public static final int pleasure_rb=0x7f08001c;
-        public static final int selectedDayListView=0x7f08002b;
-        public static final int selectedDayListViewLinearLayout=0x7f08002a;
-        public static final int selectedDayTextView=0x7f080029;
-        public static final int selected_day_layout=0x7f080028;
+        public static final int selectedDayListView=0x7f08002a;
+        public static final int selectedDayListViewLinearLayout=0x7f080029;
+        public static final int selectedDayTextView=0x7f080028;
+        public static final int selected_day_layout=0x7f080027;
         public static final int studies_rb=0x7f08001a;
         public static final int textView1=0x7f08000f;
         public static final int textView2=0x7f080010;
         public static final int textView3=0x7f080012;
         public static final int time=0x7f080020;
-        public static final int titleOfEvent=0x7f080021;
         public static final int trash=0x7f080001;
         public static final int work_rb=0x7f08001b;
         public static final int workout_rb=0x7f080016;

@@ -31,16 +31,6 @@
                 android:textColor="#a7a7a7"
                 android:textSize="10sp" />
             
-             <TextView
-                android:id="@+id/titleOfEvent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-            
             </LinearLayout>
             <TextView
                 android:id="@+id/hour_description"

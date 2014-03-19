@@ -43,7 +43,6 @@ public class ScheduleListView implements Observer {
 		descrTextView = (TextView) listItemView.findViewById(R.id.hour_description);
 		hourImageView = (ImageView) listItemView.findViewById(R.id.hour_image);
 		
-		titleTextView = (TextView) listItemView.findViewById(R.id.titleOfEvent);
 		
 	}
 	
