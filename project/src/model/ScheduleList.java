@@ -35,81 +35,78 @@ public class ScheduleList extends ArrayAdapter<String> {
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
-		ScheduleListView scheduleListView = new ScheduleListView(context, view, position);
-		setOnDragListenerForLayout(scheduleListView);
-		this.scheduleListView = scheduleListView;
+		ScheduleListView temporaryView = new ScheduleListView(context, view, position);
+		this.scheduleListView = temporaryView;
 		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
+		setOnDragListenerForLayout(temporaryView);
 
 		return scheduleListView.getListItemView();
 	}
 
-	private void setOnDragListenerForLayout(ScheduleListView view) {
+	private void setOnDragListenerForLayout(ScheduleListView temporaryView) {
 		
-		LinearLayout l = view.getListItemHolder();
-		System.out.println("listholder finns");
-		l.setOnDragListener(new CustomDragListener());
-		
-//		scheduleListView.getListItemHolder().setOnDragListener(
-//				new View.OnDragListener() {
-//
-//					@Override
-//					public boolean onDrag(View v, DragEvent event) {
-//						int action = event.getAction();
-//						switch (event.getAction()) {
-//						case DragEvent.ACTION_DRAG_STARTED:
-//							// nothing
-//							break;
-//						case DragEvent.ACTION_DRAG_ENTERED:
-//							System.out.println("Entered: " + position);
-//							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#FF8A00"));
-//							break;
-//						case DragEvent.ACTION_DRAG_EXITED:
-//							System.out.println("Exited: " + position);
-//							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#ececec"));
-//							break;
-//						case DragEvent.ACTION_DROP:
-//							//nothing
-//							break;
-//						case DragEvent.ACTION_DRAG_ENDED:
-//							// nothing
-//						default:
-//							break;
-//						}
-//
-//						return true;
-//					}
-//				});
+		temporaryView.getListItemHolder().setOnDragListener(
+				new View.OnDragListener() {
+					
+
+					@Override
+					public boolean onDrag(View v, DragEvent event) {
+						int action = event.getAction();
+						switch (event.getAction()) {
+						case DragEvent.ACTION_DRAG_STARTED:
+							// nothing
+							break;
+						case DragEvent.ACTION_DRAG_ENTERED:
+							System.out.println("Entered: " + position);
+							v.setBackgroundColor(Color.parseColor("#FF8A00"));
+							break;
+						case DragEvent.ACTION_DRAG_EXITED:
+							System.out.println("Exited: " + position);
+							v.setBackgroundColor(Color.parseColor("#ececec"));
+							break;
+						case DragEvent.ACTION_DROP:
+							//nothing
+							break;
+						case DragEvent.ACTION_DRAG_ENDED:
+							// nothing
+						default:
+							break;
+						}
+
+						return true;
+					}
+				});
 
 	}
 	
-	private class CustomDragListener implements OnDragListener{
-
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			switch (event.getAction()) {
-			case DragEvent.ACTION_DRAG_STARTED:
-				// nothing
-				break;
-			case DragEvent.ACTION_DRAG_ENTERED:
-				v.setBackgroundColor(Color.parseColor("#FF8A00"));
-				break;
-			case DragEvent.ACTION_DRAG_EXITED:
-				v.setBackgroundColor(Color.parseColor("#ececec"));
-				break;
-			case DragEvent.ACTION_DROP:
-				//nothing
-				break;
-			case DragEvent.ACTION_DRAG_ENDED:
-				// nothing
-			default:
-				break;
-			}
-
-			return true;
-		}
-	}
+//	private class CustomDragListener implements OnDragListener{
+//
+//		@Override
+//		public boolean onDrag(View v, DragEvent event) {
+//			switch (event.getAction()) {
+//			case DragEvent.ACTION_DRAG_STARTED:
+//				// nothing
+//				break;
+//			case DragEvent.ACTION_DRAG_ENTERED:
+//				v.setBackgroundColor(Color.parseColor("#FF8A00"));
+//				break;
+//			case DragEvent.ACTION_DRAG_EXITED:
+//				v.setBackgroundColor(Color.parseColor("#ececec"));
+//				break;
+//			case DragEvent.ACTION_DROP:
+//				//nothing
+//				break;
+//			case DragEvent.ACTION_DRAG_ENDED:
+//				// nothing
+//			default:
+//				break;
+//			}
+//
+//			return true;
+//		}
+//	}
 
 	/**
 	 * checks if there is any activities on this time and loads them if there is
