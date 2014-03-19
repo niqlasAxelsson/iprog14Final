@@ -35,19 +35,18 @@ public class ScheduleList extends ArrayAdapter<String> {
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
-		ScheduleListView temporaryView = new ScheduleListView(context, view, position);
-		this.scheduleListView = temporaryView;
+		scheduleListView = new ScheduleListView(context, view, position);
 		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
-		setOnDragListenerForLayout(temporaryView);
+		setOnDragListenerForLayout();
 
 		return scheduleListView.getListItemView();
 	}
 
-	private void setOnDragListenerForLayout(ScheduleListView temporaryView) {
+	private void setOnDragListenerForLayout() {
 		
-		temporaryView.getListItemHolder().setOnDragListener(
+		scheduleListView.getListItemHolder().setOnDragListener(
 				new View.OnDragListener() {
 					
 
