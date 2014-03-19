@@ -5,28 +5,26 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
-
 public class AgendaModel extends Observable {
 
 	List<Day> days = new ArrayList<Day>();
 	List<EventActivity> parkedActivites = new ArrayList<EventActivity>();
 	Day selectedDay;
-	
-	public AgendaModel(){
-		
+
+	public AgendaModel() {
+
 		addExampleData();
 	}
-	
-	public Day getSelectedDay(){
+
+	public Day getSelectedDay() {
 		return selectedDay;
 	}
-	
-	public void setSelectedDay(Day day){
+
+	public void setSelectedDay(Day day) {
 		selectedDay = day;
 	}
-	
-	
-	public Day getDayFromPos(int pos){
+
+	public Day getDayFromPos(int pos) {
 		return days.get(pos);
 	}
 
@@ -39,35 +37,40 @@ public class AgendaModel extends Observable {
 		days.add(d);
 		return d;
 	}
+
 	/**
 	 * return the list of all days
+	 * 
 	 * @return
 	 */
-	public List<Day> getDays(){
-		
+	public List<Day> getDays() {
+
 		return days;
 	}
-	
+
 	/**
 	 * get name of the days in a string List
+	 * 
 	 * @return
 	 */
-	public List<String> getNameOfDays(){
+	public List<String> getNameOfDays() {
 		List<String> array = new LinkedList<String>();
-		
-		for(int i = 0; i < days.size(); i++){
+
+		for (int i = 0; i < days.size(); i++) {
 			array.add(days.get(i).getDateString());
 		}
-		
+
 		return array;
-		
+
 	}
+
 	/**
 	 * remove a day in the list
+	 * 
 	 * @param position
 	 */
-	public void removeDay(int position){
-		
+	public void removeDay(int position) {
+
 		days.remove(position);
 		setChanged();
 		notifyObservers();
@@ -90,32 +93,33 @@ public class AgendaModel extends Observable {
 		setChanged();
 		notifyObservers("ActivityParked");
 	}
-	
+
 	/**
 	 * return the list of parked activities
+	 * 
 	 * @return
 	 */
-	public List<EventActivity> getParkedActivities(){
+	public List<EventActivity> getParkedActivities() {
 		return parkedActivites;
 	}
-	
-	public List<String> getNameOfParkedActivities(){
+
+	public List<String> getNameOfParkedActivities() {
 		List<String> array = new LinkedList<String>();
-		
-		for(int i = 0; i < parkedActivites.size(); i++){
+
+		for (int i = 0; i < parkedActivites.size(); i++) {
 			array.add(parkedActivites.get(i).getName());
 		}
-		
+
 		return array;
 	}
-	
-	public EventActivity[] getParkedActivitiesArray(){
+
+	public EventActivity[] getParkedActivitiesArray() {
 		EventActivity[] pa = new EventActivity[parkedActivites.size()];
-		
-		for(int i = 0; i < parkedActivites.size(); i++){
+
+		for (int i = 0; i < parkedActivites.size(); i++) {
 			pa[i] = parkedActivites.get(i);
 		}
-		
+
 		return pa;
 	}
 
@@ -152,36 +156,41 @@ public class AgendaModel extends Observable {
 		setChanged();
 		notifyObservers();
 	};
-	
-	public void addExampleData(){
-		String[] titles = {"Workout", "Meeting", "Meal", "Party", "Studies", "Work", "Pleasure", "Other"};
-		String[] descriptions = {"Workout", "Meeting", "Meal", "Party", "Studies", "Work", "Pleasure", "Other"};
-		Integer[] durations = {1, 2, 3, 4, 5, 6, 7, 8};
-		Integer[] categories = {1, 2, 3, 4, 5, 6, 7, 8};
-		
-		for(int i = 0; i < 8; i++){
-			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
+
+	public void addExampleData() {
+		String[] titles = { "Workout", "Meeting", "Meal", "Party", "Studies",
+				"Work", "Pleasure", "Other" };
+		String[] descriptions = { "Workout", "Meeting", "Meal", "Party",
+				"Studies", "Work", "Pleasure", "Other" };
+		Integer[] durations = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		Integer[] categories = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+		for (int i = 0; i < 8; i++) {
+			EventActivity ea = new EventActivity(titles[i], descriptions[i],
+					durations[i], categories[i]);
 			addParkedActivity(ea);
 		}
-		
+
 		days.add(new Day(5, 6, 2014));
 		days.add(new Day(1, 7, 2015));
 		days.add(new Day(22, 12, 2014));
-		
-		
-		//adding activities to a day
-		Day awesomeDay = new Day(13,3,2007);
-		for(int i=0;i<6;i+=2){
-			
-			EventActivity ea = new EventActivity(titles[i], descriptions[i], durations[i], categories[i]);
-			awesomeDay.addActivity(ea, i);
-		}
-		days.add(awesomeDay);
-		
-		System.out.println(awesomeDay.dayToString());
-		
-		
-	}
 
+		// adding activities to a day
+		Day awesomeDay = new Day(13, 3, 2007);
+
+		EventActivity ea = new EventActivity("Träning", "", 2, 1);
+		awesomeDay.addActivity(ea, 0);
+		
+		EventActivity ea2 = new EventActivity("Möte", "", 1, 2);
+		awesomeDay.addActivity(ea2, 0);
+		
+		EventActivity ea3 = new EventActivity("Fest", "", 1, 4);
+		awesomeDay.addActivity(ea3, 1);
+		
+		days.add(awesomeDay);
+
+		System.out.println(awesomeDay.dayToString());
+
+	}
 
 }
