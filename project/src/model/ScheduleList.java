@@ -36,73 +36,89 @@ public class ScheduleList extends ArrayAdapter<String> {
 
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
+		int tempPosition = position;
 	    this.position = position;
 	    this.scheduleListView = new ScheduleListView(context, view, position);
 
 	    setResourcesForComponents();
 	    checkIfActivityOnThisTime();
-	    setOnDragListenerForLayout();
+	    setOnDragListenerForLayout(tempPosition);
 
 	    return scheduleListView.getListItemView();
 	}
 
-	private void setOnDragListenerForLayout() {
-
+	
+	private void setOnDragListenerForLayout(int pos) {
 		
-	    scheduleListView.getListItemHolder().setOnDragListener(
-	            new View.OnDragListener() {
+		scheduleListView.getListItemHolder().setOnDragListener(new CustomDragListener(pos));
+	}
+	
+	/**
+	 * private class for a custom ondraglistener
+	 * @author julle
+	 *
+	 */
+	private class CustomDragListener implements OnDragListener{
+		
+		private int position;
+		
+		public CustomDragListener(int pos){
+			position = pos;
+		}
 
-	                @Override
-	                public boolean onDrag(View v, DragEvent event) {
-	                    int action = event.getAction();
-	                    boolean changedBg = false;
-	                    
-	                    int color = Color.TRANSPARENT;
-	                    
-                        Drawable background;
-	                    switch (event.getAction()) {
-	                    case DragEvent.ACTION_DRAG_STARTED:
-	                        // nothing
-	                        break;
-	                    case DragEvent.ACTION_DRAG_ENTERED:
-	                    	System.out.println("Entered: " + position);
-	                    	background = v.getBackground();
-	                        if (background instanceof ColorDrawable){
-	                            color = ((ColorDrawable) background).getColor();
-	                        }
-	                        
-	                        if(color == Color.parseColor("#ececec")){
-	                        	 v.setBackgroundColor(Color.parseColor("#dbdbdb"));
-	                        }
-	                        
-	                        changedBg = true;
-	                       
-	                        break;
-	                    case DragEvent.ACTION_DRAG_EXITED:
-	                    	System.out.println("Exited: " + position);
-	                    	background = v.getBackground();
-	                    	if (background instanceof ColorDrawable){
-	                            color = ((ColorDrawable) background).getColor();
-	                        }
-	                        
-	                        if(color == Color.parseColor("#dbdbdb")){
-	                        	 v.setBackgroundColor(Color.parseColor("#ececec"));
-	                        }
-	                    	
-	                        break;
-	                    case DragEvent.ACTION_DROP:
-	                        
-	                        break;
-	                    case DragEvent.ACTION_DRAG_ENDED:
-	                        // nothing
-	                    default:
-	                        break;
-	                    }
+		@Override
+		public boolean onDrag(View v, DragEvent event) {
+			int action = event.getAction();
+            boolean changedBg = false;
+            
+            int color = Color.TRANSPARENT;
+            
+            Drawable background;
+            switch (event.getAction()) {
+            case DragEvent.ACTION_DRAG_STARTED:
+                // nothing
+                break;
+            case DragEvent.ACTION_DRAG_ENTERED:
+            	System.out.println("Entered: " + position);
+            	background = v.getBackground();
+                if (background instanceof ColorDrawable){
+                    color = ((ColorDrawable) background).getColor();
+                }
+                
+                if(color == Color.parseColor("#ececec")){
+                	 v.setBackgroundColor(Color.parseColor("#dbdbdb"));
+                }
+                
+                changedBg = true;
+               
+                break;
+            case DragEvent.ACTION_DRAG_EXITED:
+            	System.out.println("Exited: " + position);
+            	background = v.getBackground();
+            	if (background instanceof ColorDrawable){
+                    color = ((ColorDrawable) background).getColor();
+                }
+                
+                if(color == Color.parseColor("#dbdbdb")){
+                	 v.setBackgroundColor(Color.parseColor("#ececec"));
+                }
+            	
+                break;
+            case DragEvent.ACTION_DROP:
+                
+                break;
+            case DragEvent.ACTION_DRAG_ENDED:
+                // nothing
+            default:
+                break;
+            }
 
-	                    return true;
-	                }
-	            });
-
+            return true;
+		}
+		
+		public int getPos(){
+			return position;
+		}
 	}
 
 	/**
