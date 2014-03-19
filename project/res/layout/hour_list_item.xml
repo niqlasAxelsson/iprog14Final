@@ -38,7 +38,8 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="5dp"
                 android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
             
             </LinearLayout>
             <TextView
