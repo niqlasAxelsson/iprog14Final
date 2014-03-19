@@ -42,10 +42,13 @@ public class ScheduleList extends ArrayAdapter<String> {
 		checkIfActivityOnThisTime();
 		setOnDragListenerForLayout();
 
+		scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#FF8A00"));
 		return scheduleListView.getListItemView();
 	}
 
 	private void setOnDragListenerForLayout() {
+		
+		
 		scheduleListView.getListItemHolder().setOnDragListener(
 				new View.OnDragListener() {
 
@@ -57,7 +60,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 							// nothing
 							break;
 						case DragEvent.ACTION_DRAG_ENTERED:
-							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#a7a7a7"));
+							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#FF8A00"));
 							break;
 						case DragEvent.ACTION_DRAG_EXITED:
 							scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#ececec"));
