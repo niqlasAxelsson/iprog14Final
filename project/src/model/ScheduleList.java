@@ -20,6 +20,7 @@ public class ScheduleList extends ArrayAdapter<String>{
 	private int position;
 	private View scheduleList;
 	private ScheduleListView scheduleListView;
+	private View view;
 
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
@@ -33,6 +34,7 @@ public class ScheduleList extends ArrayAdapter<String>{
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
+		this.view = view;
 		this.scheduleListView = new ScheduleListView(context,view,position);
 		
 		
@@ -53,6 +55,11 @@ public class ScheduleList extends ArrayAdapter<String>{
 			scheduleListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
 			scheduleListView.getHourImageView().setImageResource(thisActivity.getImage());
 			scheduleListView.getDescrTextView().setText(thisActivity.getDescription());
+			
+			for(int i=position+1;i<position+thisActivity.getLength();i++){
+				ScheduleListView tempListView = new ScheduleListView(context,view,i);
+				tempListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
+			}
 		}
 		
 	}
