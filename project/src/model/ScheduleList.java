@@ -22,8 +22,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	private List<String> scheduleTimes;
 	private int position;
 	private ScheduleListView scheduleListView;
-	LinearLayout listItemHolder;
-	
+
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
 
@@ -35,51 +34,59 @@ public class ScheduleList extends ArrayAdapter<String> {
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		this.position = position;
-		this.scheduleListView = new ScheduleListView(context, view, position);
+		ScheduleListView scheduleListView = new ScheduleListView(context, view,
+				position);
+		setOnDragListenerForLayout(scheduleListView);
+		this.scheduleListView = scheduleListView;
 
-		listItemHolder = (LinearLayout) scheduleListView.getListItemView().findViewById(R.id.hour);
-		
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
-		setOnDragListenerForLayout();
 
 		return scheduleListView.getListItemView();
 	}
 
-	private void setOnDragListenerForLayout() {
-		
-		
-		listItemHolder.setOnDragListener(
-				new View.OnDragListener() {
+	private void setOnDragListenerForLayout(ScheduleListView scheduleListView) {
 
-					@Override
-					public boolean onDrag(View v, DragEvent event) {
-						int action = event.getAction();
-						switch (event.getAction()) {
-						case DragEvent.ACTION_DRAG_STARTED:
-							// nothing
-							break;
-						case DragEvent.ACTION_DRAG_ENTERED:
-							System.out.println("Entered: " + position);
-							listItemHolder.setBackgroundColor(Color.parseColor("#FF8A00"));
-							break;
-						case DragEvent.ACTION_DRAG_EXITED:
-							System.out.println("Exited: " + position);
-							listItemHolder.setBackgroundColor(Color.parseColor("#ececec"));
-							break;
-						case DragEvent.ACTION_DROP:
-							//nothing
-							break;
-						case DragEvent.ACTION_DRAG_ENDED:
-							// nothing
-						default:
-							break;
-						}
+		scheduleListView.getListItemHolder().setOnDragListener(
+				new MyDragListener(scheduleListView));
+	}
 
-						return true;
-					}
-				});
+	private class MyDragListener implements View.OnDragListener {
 
+		ScheduleListView view;
+
+		public MyDragListener(ScheduleListView view) {
+			this.view = view;
+		}
+
+		@Override
+		public boolean onDrag(View v, DragEvent event) {
+			int action = event.getAction();
+			switch (event.getAction()) {
+			case DragEvent.ACTION_DRAG_STARTED:
+				// nothing
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				System.out.println("Entered: " + position);
+				view.getListItemHolder().setBackgroundColor(
+						Color.parseColor("#FF8A00"));
+				break;
+			case DragEvent.ACTION_DRAG_EXITED:
+				System.out.println("Exited: " + position);
+				view.getListItemHolder().setBackgroundColor(
+						Color.parseColor("#ececec"));
+				break;
+			case DragEvent.ACTION_DROP:
+				// nothing
+				break;
+			case DragEvent.ACTION_DRAG_ENDED:
+				// nothing
+			default:
+				break;
+			}
+
+			return true;
+		}
 	}
 
 	/**
