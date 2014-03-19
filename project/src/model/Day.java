@@ -14,9 +14,11 @@ public class Day extends Observable {
 	int month;
 	int year;
 
+	private boolean[] positions;
 	ArrayList<EventActivity> activities;
 
 	public Day(int day, int month, int year) {
+		positions = new boolean[19];
 		activities = new ArrayList<EventActivity>();
 		fillListWithNullElements();
 		this.day = day;
@@ -181,11 +183,11 @@ public class Day extends Observable {
 
 		boolean isEmpty = false;
 
-		//controls if the activity is being placed out of bounds
-		//and if there is already an activity on that spot
-		if (activities.size() > position + act.length) {
+		// controls if the activity is being placed out of bounds
+		// and if there is already an activity on that spot
+		if (positions.length > position + act.length) {
 			for (int i = position; i < position + act.length; i++) {
-				if (activities.get(i) != null) {
+				if (positions[i] == true) {
 					isEmpty = false;
 					break;
 				}
@@ -193,17 +195,22 @@ public class Day extends Observable {
 			}
 		}
 
-		//if the spot is empty and not out of bounds
-		//complete the add
-		if(isEmpty){
+		// if the spot is empty and not out of bounds
+		// complete the add
+		if (isEmpty) {
+
 			activities.remove(position);
 			activities.add(position, act);
+			
+			for(int i = position; i < position + act.length;i++){
+				positions[i] = true;
+			}
+
 			setChanged();
 			notifyObservers("ActivityAdded");
 		}
 	}
 
-	
 	/**
 	 * check if the time is free for booking
 	 * 

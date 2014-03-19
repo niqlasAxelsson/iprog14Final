@@ -24,7 +24,6 @@ public class ScheduleList extends ArrayAdapter<String>{
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
 		
-		System.out.println("listan skapas");
 		
 		this.context = context;
 		this.scheduleTimes = scheduleTimes;
@@ -50,7 +49,6 @@ public class ScheduleList extends ArrayAdapter<String>{
 		
 		
 		if(thisActivity != null){
-			System.out.println("Här finns något!!!");
 			scheduleListView.getTimeTextView().setTextColor(Color.WHITE);
 			scheduleListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
 			scheduleListView.getHourImageView().setImageResource(thisActivity.getImage());
@@ -61,8 +59,6 @@ public class ScheduleList extends ArrayAdapter<String>{
 
 	private void setResourcesForComponents() {
 		scheduleListView.getTimeTextView().setText(scheduleTimes.get(position));
-		
-		System.out.println("setResrouces har gjorts");
 	}
 	
 	
