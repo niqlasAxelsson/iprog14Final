@@ -52,6 +52,7 @@ public class ScheduleList extends ArrayAdapter<String>{
 		
 		if(thisActivity != null){
 			scheduleListView.getTimeTextView().setTextColor(Color.WHITE);
+			scheduleListView.getTitleTextView().setText(thisActivity.getName());
 			scheduleListView.getListItemHolder().setBackgroundColor(thisActivity.getColor());
 			scheduleListView.getHourImageView().setImageResource(thisActivity.getImage());
 			scheduleListView.getDescrTextView().setText(thisActivity.getDescription());
