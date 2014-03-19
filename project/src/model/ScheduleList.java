@@ -60,6 +60,7 @@ public class ScheduleList extends ArrayAdapter<String>{
 			for(int i = position; i >= 0; i--){
 				if(model.getSelectedDay().getActivities().get(i) != null){
 					scheduleListView.getListItemHolder().setBackgroundColor(model.getSelectedDay().getActivities().get(i).getColor());
+					scheduleListView.getTimeTextView().setTextColor(Color.WHITE);
 					break;
 				}
 				
