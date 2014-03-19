@@ -184,8 +184,14 @@ public class AgendaModel extends Observable {
 		EventActivity ea2 = new EventActivity("Möte", "möte osv", 1, 2);
 		awesomeDay.addActivity(ea2, 0);
 		
-		EventActivity ea3 = new EventActivity("Fest", "krök", 1, 4);
-		awesomeDay.addActivity(ea3, 1);
+		EventActivity ea3 = new EventActivity("Fest", "krök", 4, 4);
+		awesomeDay.addActivity(ea3, 5);
+		
+		EventActivity ea4 = new EventActivity("Other", "hej", 2, 8);
+		awesomeDay.addActivity(ea4, 18);
+		
+		EventActivity ea5 = new EventActivity("hejhej", "hej", 1, 7);
+		awesomeDay.addActivity(ea5, 18);
 		
 		days.add(awesomeDay);
 
