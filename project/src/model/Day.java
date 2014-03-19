@@ -241,8 +241,15 @@ public class Day extends Observable {
 	 * when needed from the model don't call it directly
 	 */
 	public EventActivity removeActivity(int position) {
-
+		
 		EventActivity act = activities.remove(position);
+		activities.add(position, null);
+		
+		if(act != null){
+			for(int i = position; i < position + act.length; i++){
+				positions[i] = false;
+			}
+		}
 
 		setChanged();
 		notifyObservers("ActivityRemoved");
