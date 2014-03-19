@@ -10,6 +10,8 @@ import com.example.pl4nn3r3000.R;
 import android.app.Activity;
 import android.content.ClipData;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,12 +60,29 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                        // nothing
 	                        break;
 	                    case DragEvent.ACTION_DRAG_ENTERED:
-	                        System.out.println("Entered: " + position);
-	                        v.setBackgroundColor(Color.parseColor("#dbdbdb"));
+	                    	int color = Color.TRANSPARENT;
+	                        Drawable background = v.getBackground();
+	                        
+	                        if (background instanceof ColorDrawable){
+	                            color = ((ColorDrawable) background).getColor();
+	                        }
+	                        
+	                        if(color == Color.parseColor("#ececec")){
+	                        	 v.setBackgroundColor(Color.parseColor("#dbdbdb"));
+	                        }
+	                       
 	                        break;
 	                    case DragEvent.ACTION_DRAG_EXITED:
-	                        System.out.println("Exited: " + position);
-	                        v.setBackgroundColor(Color.parseColor("#ececec"));
+	                    	int color2 = Color.TRANSPARENT;
+	                        Drawable background2 = v.getBackground();
+	                        
+	                        if (background2 instanceof ColorDrawable){
+	                            color = ((ColorDrawable) background2).getColor();
+	                        }
+	                        
+	                        if(color2 == Color.parseColor("#dbdbdb")){
+	                        	 v.setBackgroundColor(Color.parseColor("#ececec"));
+	                        }
 	                        break;
 	                    case DragEvent.ACTION_DROP:
 	                        //nothing
