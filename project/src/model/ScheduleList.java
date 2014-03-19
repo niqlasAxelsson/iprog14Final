@@ -42,7 +42,6 @@ public class ScheduleList extends ArrayAdapter<String> {
 		checkIfActivityOnThisTime();
 		setOnDragListenerForLayout();
 
-		scheduleListView.getListItemHolder().setBackgroundColor(Color.parseColor("#FF8A00"));
 		return scheduleListView.getListItemView();
 	}
 
@@ -74,7 +73,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 							break;
 						}
 
-						return false;
+						return true;
 					}
 				});
 
