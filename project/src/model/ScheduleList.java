@@ -56,14 +56,16 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                public boolean onDrag(View v, DragEvent event) {
 	                    int action = event.getAction();
 	                    boolean changedBg = false;
+	                    
+	                    int color = Color.TRANSPARENT;
+	                    
+                        Drawable background;
 	                    switch (event.getAction()) {
 	                    case DragEvent.ACTION_DRAG_STARTED:
 	                        // nothing
 	                        break;
 	                    case DragEvent.ACTION_DRAG_ENTERED:
-	                    	int color = Color.TRANSPARENT;
-	                        Drawable background = v.getBackground();
-	                        
+	                    	background = v.getBackground();
 	                        if (background instanceof ColorDrawable){
 	                            color = ((ColorDrawable) background).getColor();
 	                        }
@@ -76,10 +78,15 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                       
 	                        break;
 	                    case DragEvent.ACTION_DRAG_EXITED:
-	                    	if(changedBg){
-	                    		v.setBackgroundColor(Color.parseColor("#ececec"));
-	                    		changedBg = false;
-	                    	}
+	                    	background = v.getBackground();
+	                    	if (background instanceof ColorDrawable){
+	                            color = ((ColorDrawable) background).getColor();
+	                        }
+	                        
+	                        if(color == Color.parseColor("#dbdbdb")){
+	                        	 v.setBackgroundColor(Color.parseColor("#ececec"));
+	                        }
+	                    	
 	                        break;
 	                    case DragEvent.ACTION_DROP:
 	                        //nothing
