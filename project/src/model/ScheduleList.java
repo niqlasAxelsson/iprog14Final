@@ -65,6 +65,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                        // nothing
 	                        break;
 	                    case DragEvent.ACTION_DRAG_ENTERED:
+	                    	System.out.println("Entered: " + position);
 	                    	background = v.getBackground();
 	                        if (background instanceof ColorDrawable){
 	                            color = ((ColorDrawable) background).getColor();
@@ -78,6 +79,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                       
 	                        break;
 	                    case DragEvent.ACTION_DRAG_EXITED:
+	                    	System.out.println("Exited: " + position);
 	                    	background = v.getBackground();
 	                    	if (background instanceof ColorDrawable){
 	                            color = ((ColorDrawable) background).getColor();
@@ -89,7 +91,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 	                    	
 	                        break;
 	                    case DragEvent.ACTION_DROP:
-	                        //nothing
+	                        
 	                        break;
 	                    case DragEvent.ACTION_DRAG_ENDED:
 	                        // nothing
