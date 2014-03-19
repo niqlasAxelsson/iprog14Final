@@ -47,7 +47,9 @@ public class ScheduleList extends ArrayAdapter<String> {
 
 	private void setOnDragListenerForLayout(ScheduleListView view) {
 		
-		view.getListItemHolder().setOnDragListener(new CustomDragListener());
+		LinearLayout l = view.getListItemHolder();
+		System.out.println("listholder finns");
+		l.setOnDragListener(new CustomDragListener());
 		
 //		scheduleListView.getListItemHolder().setOnDragListener(
 //				new View.OnDragListener() {
