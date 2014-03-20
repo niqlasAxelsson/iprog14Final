@@ -38,9 +38,9 @@ public class MainActivityView implements Observer {
 	private Button newActivityButton;
 
 	public MainActivityView(Activity activity, AgendaModel model) {
-
 		this.activity = activity;
 		this.model = model;
+		model.addObserver(this);
 		buildActionBar();
 		buildComponents();
 		buildFragment();
