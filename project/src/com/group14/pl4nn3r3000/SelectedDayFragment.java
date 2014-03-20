@@ -12,6 +12,7 @@ import view.SelectedDayFragmentView;
 import android.app.Fragment;
 import android.content.ClipData;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -62,11 +63,17 @@ public class SelectedDayFragment extends Fragment {
 				int position, long arg3) {
 
 			if(model.getSelectedDay().getPositionBoolean()[position] == true){
-				ImageView image = (ImageView) v.findViewById(R.id.hour_image);
-				DragShadow dragShadow = new DragShadow(v, image);
+				for (int i = position; i >= 0; i--) {
+					if (model.getSelectedDay().getActivities().get(i) != null) {
+						ImageView image = (ImageView) v.findViewById(R.id.hour_image);
+						DragShadow dragShadow = new DragShadow(v, image);
 
-				ClipData data = ClipData.newPlainText("position", "" + position);
-				v.startDrag(data, dragShadow, v, 0);
+						ClipData data = ClipData.newPlainText("position", "" + position);
+						v.startDrag(data, dragShadow, v, 0);
+						
+						break;
+					}
+				}
 			}
 			
 			return false;
