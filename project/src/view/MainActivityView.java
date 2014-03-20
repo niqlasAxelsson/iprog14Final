@@ -133,12 +133,11 @@ public class MainActivityView implements Observer {
 
 		String[] strings =  arg1.toString().split(" ");
 		
-		activityNames = model.getNameOfParkedActivities();
-		
 		System.out.println("Inne i update");
-		System.out.println(strings);
+		System.out.println(strings.toString());
 		//System.out.println(strings[0] + " " + strings[1]);
 		if (strings[0].equals("ParkedActivityRemoved")) {
+			System.out.println(getActivityNamesList().size());
 			getActivityNamesList().remove(Integer.parseInt(strings[1]));
 
 			getAdapter().notifyDataSetChanged();
