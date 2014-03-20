@@ -169,10 +169,18 @@ public class MainActivity extends Activity {
 							ClipData.Item item = event.getClipData().getItemAt(
 									0);
 							String dragData = "" + item.getText();
-							int position = Integer.parseInt(dragData);
+							String[] strings = dragData.split(" ");
+							
+							if(strings.length == 2){
+								int positionFromWithinList = Integer.parseInt(strings[0]);
+								model.removeActivityFromSelectedDay(positionFromWithinList);
+									
+							}else{
+								int position = Integer.parseInt(dragData);
 
-							model.removeParkedActivity(position);
-
+								model.removeParkedActivity(position);
+							}
+							
 							break;
 						case DragEvent.ACTION_DRAG_ENDED:
 							// nothing
