@@ -71,9 +71,10 @@ public class SelectedDayFragmentView implements Observer{
 	@Override
 	public void update(Observable observable, Object data) {
 		
+		String s = data.toString();
 		System.out.println("observern har hittat");
 		
-		if(data.equals("ActivityRemoved")){
+		if(s.equals("ActivityRemoved")){
 			System.out.println("hej");
 			fragment.adapter.notifyDataSetChanged();
 		}
