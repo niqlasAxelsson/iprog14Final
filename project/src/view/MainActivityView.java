@@ -37,7 +37,8 @@ public class MainActivityView implements Observer {
 
 	private Button newActivityButton;
 
-	public MainActivityView(Activity activity, AgendaModel model) {
+	public MainActivityView(Activity activity, AgendaModel model, List<String> activityNames) {
+		this.activityNames = activityNames;
 		this.activity = activity;
 		this.model = model;
 		model.addObserver(this);
@@ -81,7 +82,7 @@ public class MainActivityView implements Observer {
 	 */
 	private void buildComponents() {
 
-		activityNames = model.getNameOfParkedActivities();
+		//activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();
 		listview = (HorizontalListView) activity.findViewById(R.id.listview);
 		adapter = new EventActivityList(activity, model, activityNames);

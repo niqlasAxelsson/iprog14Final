@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-		mainActivityView = new MainActivityView(this,model);
+		mainActivityView = new MainActivityView(this,model, model.getNameOfParkedActivities());
 		vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		setDragListenerOnListView();
 		setClickListenerOnButton();
