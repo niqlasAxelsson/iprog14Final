@@ -69,7 +69,7 @@ public class SelectedDayFragment extends Fragment {
 						
 						System.out.println("Hittat aktiviteten på pos " + i);
 						
-						ImageView image = getImageFromActivity(model.getSelectedDay().getActivities().get(i).getType());
+						ImageView image = (ImageView) v.findViewById(R.id.hour_image);
 						DragShadow dragShadow = new DragShadow(v, image);
 
 						ClipData data = ClipData.newPlainText("position", "" + i);

@@ -155,6 +155,8 @@ public class ScheduleList extends ArrayAdapter<String> {
 									.getColor());
 					scheduleListView.getTimeTextView()
 							.setTextColor(Color.WHITE);
+					scheduleListView.getHourImageView().setImageResource(model.getSelectedDay().getActivities().get(i).getImage());
+					scheduleListView.getHourImageView().setVisibility(0);
 					break;
 				}
 
