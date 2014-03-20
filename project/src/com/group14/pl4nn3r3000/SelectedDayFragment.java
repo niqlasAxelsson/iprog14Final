@@ -45,6 +45,7 @@ public class SelectedDayFragment extends Fragment {
 		
 		model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		view = new SelectedDayFragmentView(this,inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
+		model.addObserver(view);
 		initTextView();
 		initScheduleTimes();
 		setAdapterForList();
