@@ -89,6 +89,8 @@ public class MainActivity extends Activity {
 					if (dragData.endsWith(".")) {
 						int positionsFromWithinList = Integer.parseInt(strings[0]);
 						
+						System.out.println("on drop");
+						
 						model.addParkedActivity(model.getSelectedDay().getActivities().get(positionsFromWithinList));
 
 						System.out.println("removing from within list");
