@@ -144,6 +144,11 @@ public class MainActivityView implements Observer {
 			getActivityNamesList().remove(Integer.parseInt(strings[1]));
 			getAdapter().notifyDataSetChanged();
 		}
+		
+		if(strings[0].equals("ActivityParked")){
+			System.out.println("activity parked!");
+			
+		}
 
 	}
 

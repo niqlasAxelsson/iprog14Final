@@ -38,6 +38,8 @@ public class CreateEventView implements Observer {
 		this.view = view;
 		//this.model = model;
 		this.activity = activity;
+		
+		model.addObserver(this);
 		buildActionBar();
 		setComponents();
 	}
@@ -136,7 +138,7 @@ public class CreateEventView implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
