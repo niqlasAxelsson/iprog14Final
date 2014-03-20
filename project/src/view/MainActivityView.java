@@ -34,6 +34,7 @@ public class MainActivityView implements Observer {
 	private int position;
 	private HorizontalListView listview;
 	List<String> activityNames;
+	AllDaysFragment frag;
 
 	private Button newActivityButton;
 
@@ -120,11 +121,15 @@ public class MainActivityView implements Observer {
 		return newActivityButton;
 	}
 
+	public AllDaysFragment getFragment(){
+		return frag;
+	}
+	
 	/**
 	 * builds the fragment
 	 */
 	private void buildFragment() {
-		AllDaysFragment frag = new AllDaysFragment();
+		frag = new AllDaysFragment();
 		FragmentManager manager = activity.getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.add(R.id.fragment_holder, frag, "alldaysfragment");

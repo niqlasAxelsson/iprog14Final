@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
+import com.group14.pl4nn3r3000.SelectedDayFragment;
 
 
 /**
@@ -18,14 +19,14 @@ import com.example.pl4nn3r3000.R;
  */
 public class SelectedDayFragmentView implements Observer{
 
-	private Activity activity;
+	SelectedDayFragment fragment;
 	private View view;
 	private ListView listView;
 	private TextView dayTitle;
 	
-	public SelectedDayFragmentView(Activity activity,View view){
+	public SelectedDayFragmentView(SelectedDayFragment fragment,View view){
 		this.view = view;
-		this.activity=activity;
+		this.fragment=fragment;
 		buildComponents();
 		
 	}
@@ -71,6 +72,9 @@ public class SelectedDayFragmentView implements Observer{
 	@Override
 	public void update(Observable observable, Object data) {
 		
+		if(data.equals("ActivityRemoved")){
+			fragment.adapter.notifyDataSetChanged();
+		}
 		
 	}
 	

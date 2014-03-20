@@ -129,19 +129,3 @@ public class AllDaysFragment extends Fragment {
 	}
 
 }
-
-// private void setClickListenerOnNewDayButton() {
-//
-// view.getNewDayButton().setOnClickListener(new OnClickListener() {
-// @Override
-// public void onClick(View v) {
-// frag = new SelectedDayFragment();
-//
-// final FragmentTransaction ft = getFragmentManager()
-// .beginTransaction();
-// ft.replace(R.id.fragment_holder, frag, "test");
-// ft.addToBackStack(null);
-// ft.commit();
-// }
-// });
-// }

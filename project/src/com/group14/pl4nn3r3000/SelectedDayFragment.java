@@ -34,9 +34,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class SelectedDayFragment extends Fragment {
 	
 	private AllDaysFragment frag;
-	private SelectedDayFragmentView view;
+	SelectedDayFragmentView view;
 	private LinkedList<String> scheduleTimes = new LinkedList<String>();
-	private ScheduleList adapter;
+	public ScheduleList adapter;
 	AgendaModel model;
 	
 	@Override
@@ -44,11 +44,12 @@ public class SelectedDayFragment extends Fragment {
 			Bundle savedInstanceState) {
 		
 		model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
-		view = new SelectedDayFragmentView(this.getActivity(),inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
+		view = new SelectedDayFragmentView(this,inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
 		initTextView();
 		initScheduleTimes();
 		setAdapterForList();
 		view.getListView().setOnItemLongClickListener(listener);
+		
 		
 		return view.getView();
 	}
@@ -85,37 +86,6 @@ public class SelectedDayFragment extends Fragment {
 
 	};
 	
-	public ImageView getImageFromActivity(int category){
-		ImageView image = new ImageView(this.getActivity().getBaseContext());
-		switch (category) {
-		case 1:
-			image.setImageResource(R.drawable.workout);
-			break;
-		case 2:
-			image.setImageResource(R.drawable.meeting);
-			break;
-		case 3:
-			image.setImageResource(R.drawable.meal);
-			break;
-		case 4:
-			image.setImageResource(R.drawable.party);
-			break;
-		case 5:
-			image.setImageResource(R.drawable.studies);
-			break;
-		case 6:
-			image.setImageResource(R.drawable.work);
-			break;
-		case 7:
-			image.setImageResource(R.drawable.pleasure);
-			break;
-		default: 
-			image.setImageResource(R.drawable.other);
-			break;
-		}
-		
-		return image;
-	}
 
 	
 	private void setAdapterForList() {

@@ -37,7 +37,7 @@ import com.example.pl4nn3r3000.R;
 public class MainActivity extends Activity {
 
 	private AgendaModel model;
-	private MainActivityView mainActivityView;
+	MainActivityView mainActivityView;
 
 	private Vibrator vibe;
 
@@ -82,15 +82,20 @@ public class MainActivity extends Activity {
 					ClipData.Item item = event.getClipData().getItemAt(0);
 					String dragData = "" + item.getText();
 
+					String[] strings = dragData.split(" ");
+					
 					// if the clipdata ends with a . that means it comes from
 					// the vertical listview i.e proceed with drop
 					if (dragData.endsWith(".")) {
-						System.out.println("drop from hour view");
+						int positionsFromWithinList = Integer.parseInt(strings[0]);
+						
+						model.addParkedActivity(model.getSelectedDay().getActivities().get(positionsFromWithinList));
+
+						System.out.println("removing from within list");
+						
+						model.getSelectedDay().removeActivity(positionsFromWithinList);
+							
 					}
-
-					int position = Integer.parseInt(dragData);
-
-					model.removeParkedActivity(position);
 
 					break;
 				case DragEvent.ACTION_DRAG_ENDED:
