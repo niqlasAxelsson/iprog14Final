@@ -100,6 +100,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 				boolean wasAdded = model.getSelectedDay().addActivity(model.getParkedActivities().get(positionFromParkedEvents), getPos());
 				
 				if(wasAdded){
+					System.out.println("removing");
 					model.removeParkedActivity(position);
 					
 				}
