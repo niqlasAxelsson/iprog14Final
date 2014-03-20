@@ -135,7 +135,7 @@ public class MainActivityView implements Observer {
 		
 		System.out.println("Inne i update");
 		
-		System.out.println(strings[0] + " " + strings[1]);
+		//System.out.println(strings[0] + " " + strings[1]);
 		if (strings[0].equals("ParkedActivityRemoved")) {
 			getActivityNamesList().remove(Integer.parseInt(strings[1]));
 
