@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 				  
 				      model.removeParkedActivity(position);
 
-				      mainActivityView.getActivityNamesList().remove(position);
+				      //mainActivityView.getActivityNamesList().remove(position);
 				  				      				      
 				      mainActivityView.getAdapter().notifyDataSetChanged();
 				      
