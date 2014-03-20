@@ -11,12 +11,14 @@ import model.ScheduleList;
 import view.SelectedDayFragmentView;
 import android.app.Fragment;
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,7 @@ public class SelectedDayFragment extends Fragment {
 	private LinkedList<String> scheduleTimes = new LinkedList<String>();
 	public ScheduleList adapter;
 	AgendaModel model;
+	private Vibrator vibe;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +49,7 @@ public class SelectedDayFragment extends Fragment {
 		model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		view = new SelectedDayFragmentView(this,inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
 		model.addObserver(view);
+		vibe = (Vibrator) this.getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 		initTextView();
 		initScheduleTimes();
 		setAdapterForList();
@@ -70,6 +74,8 @@ public class SelectedDayFragment extends Fragment {
 					if (model.getSelectedDay().getActivities().get(i) != null) {
 						
 						System.out.println("Hittat aktiviteten på pos " + i);
+						
+						vibe.vibrate(250);
 						
 						ImageView image = (ImageView) v.findViewById(R.id.hour_image);
 						DragShadow dragShadow = new DragShadow(v, image);
