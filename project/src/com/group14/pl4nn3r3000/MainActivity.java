@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				
 				Intent i = new Intent(getBaseContext(),CreateEventActivity.class);
-				startActivity(i);
+				startActivityForResult(i, 1234);
 				
 			}
 			
