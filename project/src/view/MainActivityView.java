@@ -149,7 +149,6 @@ public class MainActivityView implements Observer {
 			System.out.println("activity parked!");
 			getActivityNamesList().add(model.getNameOfParkedActivities().get(model.getNameOfParkedActivities().size()-1));
 			getAdapter().notifyDataSetChanged();
-			
 		}
 
 	}
