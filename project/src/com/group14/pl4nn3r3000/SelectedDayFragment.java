@@ -61,18 +61,17 @@ public class SelectedDayFragment extends Fragment {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> adapter, View v,
 				int position, long arg3) {
-
-			System.out.println("pos clicked: " + position);
 			
 			if(model.getSelectedDay().getPositionBoolean()[position] == true){
 				
-				
 				for (int i = position; i >= 0; i--) {
 					if (model.getSelectedDay().getActivities().get(i) != null) {
-						ImageView image = (ImageView) v.findViewById(R.id.hour_image);
+						
+						System.out.println("Hittat aktiviteten på pos " + i);
+						ImageView image = (ImageView) v.findViewById(model.getSelectedDay().getActivities().get(i).getImage());
 						DragShadow dragShadow = new DragShadow(v, image);
 
-						ClipData data = ClipData.newPlainText("position", "" + position);
+						ClipData data = ClipData.newPlainText("position", "" + i);
 						v.startDrag(data, dragShadow, v, 0);
 						break;
 					}
