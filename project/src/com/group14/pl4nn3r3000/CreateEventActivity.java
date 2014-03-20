@@ -68,7 +68,7 @@ public class CreateEventActivity extends Activity {
 				model.addParkedActivity(newEventActivity);
 				// Intent i = new Intent(getBaseContext(),MainActivity.class);
 				// startActivity();
-				finishActivity(1234);
+				finish();
 			}
 
 		});
