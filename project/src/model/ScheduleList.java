@@ -101,7 +101,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 				
 				if(wasAdded){
 					System.out.println("removing");
-					model.removeParkedActivity(position);
+					model.removeParkedActivity(positionFromParkedEvents);
 					
 				}
 						

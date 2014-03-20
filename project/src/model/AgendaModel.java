@@ -12,7 +12,6 @@ public class AgendaModel extends Observable {
 	Day selectedDay;
 
 	public AgendaModel() {
-
 		addExampleData();
 	}
 
