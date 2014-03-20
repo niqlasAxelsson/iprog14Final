@@ -69,7 +69,7 @@ public class SelectedDayFragment extends Fragment {
 						
 						System.out.println("Hittat aktiviteten på pos " + i);
 						
-						ImageView image = getImageFromCode(model.getSelectedDay().getActivities().get(i).getImage());
+						ImageView image = getImageFromActivity(model.getSelectedDay().getActivities().get(i).getType());
 						DragShadow dragShadow = new DragShadow(v, image);
 
 						ClipData data = ClipData.newPlainText("position", "" + i);
@@ -85,10 +85,36 @@ public class SelectedDayFragment extends Fragment {
 
 	};
 	
-	public ImageView getImageFromCode(int code){
-		ImageView iv = (ImageView) view.getView().findViewById(code);
+	public ImageView getImageFromActivity(int category){
+		ImageView image = new ImageView(this.getActivity().getBaseContext());
+		switch (category) {
+		case 1:
+			image.setImageResource(R.drawable.workout);
+			break;
+		case 2:
+			image.setImageResource(R.drawable.meeting);
+			break;
+		case 3:
+			image.setImageResource(R.drawable.meal);
+			break;
+		case 4:
+			image.setImageResource(R.drawable.party);
+			break;
+		case 5:
+			image.setImageResource(R.drawable.studies);
+			break;
+		case 6:
+			image.setImageResource(R.drawable.work);
+			break;
+		case 7:
+			image.setImageResource(R.drawable.pleasure);
+			break;
+		default: 
+			image.setImageResource(R.drawable.other);
+			break;
+		}
 		
-		return iv;
+		return image;
 	}
 
 	
@@ -156,38 +182,6 @@ public class SelectedDayFragment extends Fragment {
 
 		}
 
-	}
-	
-	private class DragShadow2 extends View.DragShadowBuilder {
-
-		Drawable dragImage;
-
-		public DragShadow2(View view, ImageView image) {
-			super(view);
-
-			dragImage = image.getDrawable();
-
-		}
-
-		@Override
-		public void onDrawShadow(Canvas canvas) {
-
-			dragImage.draw(canvas);
-		}
-
-		@Override
-		public void onProvideShadowMetrics(Point shadowSize,
-				Point shadowTouchPoint) {
-
-			Rect rect = dragImage.getBounds();
-
-			shadowSize.set(rect.height(), rect.width());
-
-			shadowTouchPoint.set(rect.height() / 2, rect.width() / 2);
-
-		}
-
-	}
-	
+	}	
 
 }
