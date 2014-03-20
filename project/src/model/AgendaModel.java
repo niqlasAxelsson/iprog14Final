@@ -124,6 +124,13 @@ public class AgendaModel extends Observable {
 
 		return pa;
 	}
+	
+	public void removeActivityFromSelectedDay(int pos){
+		selectedDay.removeActivity(pos);
+		
+		setChanged();
+		notifyObservers("ActivityRemoved");
+	}
 
 	/**
 	 * remove an activity on provided position from parked activites

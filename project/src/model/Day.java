@@ -246,20 +246,16 @@ public class Day extends Observable {
 		
 		EventActivity act = activities.remove(position);
 		activities.add(position, null);
-		
-		System.out.println("1111111");
-		
+				
 		if(act != null){
 			for(int i = position; i < position + act.length; i++){
 				positions[i] = false;
 			}
 		}
 
-		System.out.println("2222222222222");
 		
 		setChanged();
 		notifyObservers("ActivityRemoved");
-		//return act;
 	}
 
 	/**
