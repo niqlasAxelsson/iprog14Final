@@ -47,6 +47,7 @@ public class SelectedDayFragment extends Fragment {
 		initTextView();
 		initScheduleTimes();
 		setAdapterForList();
+		view.getListView().setOnItemLongClickListener(listener);
 		
 		return view.getView();
 	}
