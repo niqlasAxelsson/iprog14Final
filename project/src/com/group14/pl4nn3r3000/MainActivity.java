@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 
 						System.out.println("removing from within list");
 						
-						model.getSelectedDay().removeActivity(positionsFromWithinList);
+						model.removeActivityFromSelectedDay(positionsFromWithinList);
 							
 					}
 
