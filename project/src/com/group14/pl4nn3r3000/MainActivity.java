@@ -154,6 +154,7 @@ public class MainActivity extends Activity {
 			DragShadow dragShadow = new DragShadow(v, image);
 
 			ClipData data = ClipData.newPlainText("position", "" + position);
+			System.out.println("POSITION : " + position);
 			v.startDrag(data, dragShadow, v, 0);
 			return false;
 		}
