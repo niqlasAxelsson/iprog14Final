@@ -63,7 +63,7 @@ public class ScheduleList extends ArrayAdapter<String> {
 
 		private int position;
 		private ScheduleList list;
-		
+
 		AgendaModel model = ((AgendaApplication) context.getApplication())
 				.getModel();
 
@@ -98,21 +98,40 @@ public class ScheduleList extends ArrayAdapter<String> {
 			case DragEvent.ACTION_DROP:
 				ClipData.Item item = event.getClipData().getItemAt(0);
 				String dragData = "" + item.getText();
-				int positionFromParkedEvents = Integer.parseInt(dragData);
-				
-				boolean wasAdded = model.getSelectedDay().addActivity(model.getParkedActivities().get(positionFromParkedEvents), getPos());
-				
-				
-				if(wasAdded){
-					System.out.println("removing");
-					model.removeParkedActivity(positionFromParkedEvents);
+
+				String[] strings = dragData.split(" ");
+
+				// if strings.lenght is 2, that means the clipdata comes from
+				// within the vertical listview
+				// otherwise, the lenght will be 1 and it comes from the
+				// horizontal listview
+				if (strings.length == 2) {
+					int positionsFromWithinList = Integer.parseInt(strings[0]);
 					
-					list.notifyDataSetChanged();
+					boolean wasAdded = model.getSelectedDay().addActivity(model.getSelectedDay().getActivities().get(positionsFromWithinList), getPos());
 					
-					
+					if(wasAdded){
+						System.out.println("removing from within list");
+						model.getSelectedDay().removeActivity(positionsFromWithinList);
+						
+						list.notifyDataSetChanged();
+					}
+				} else {
+					int positionFromParkedEvents = Integer.parseInt(dragData);
+
+					boolean wasAdded = model.getSelectedDay().addActivity(
+							model.getParkedActivities().get(
+									positionFromParkedEvents), getPos());
+
+					if (wasAdded) {
+						System.out.println("removing");
+						model.removeParkedActivity(positionFromParkedEvents);
+
+						list.notifyDataSetChanged();
+
+					}
 				}
-						
-						
+
 				break;
 			case DragEvent.ACTION_DRAG_ENDED:
 				// nothing
@@ -155,8 +174,11 @@ public class ScheduleList extends ArrayAdapter<String> {
 									.getColor());
 					scheduleListView.getTimeTextView()
 							.setTextColor(Color.WHITE);
-					scheduleListView.getHourImageView().setImageResource(model.getSelectedDay().getActivities().get(i).getImage());
-					scheduleListView.getHourImageView().setVisibility(View.INVISIBLE);
+					scheduleListView.getHourImageView().setImageResource(
+							model.getSelectedDay().getActivities().get(i)
+									.getImage());
+					scheduleListView.getHourImageView().setVisibility(
+							View.INVISIBLE);
 					break;
 				}
 

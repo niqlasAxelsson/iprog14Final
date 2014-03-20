@@ -72,7 +72,7 @@ public class SelectedDayFragment extends Fragment {
 						ImageView image = (ImageView) v.findViewById(R.id.hour_image);
 						DragShadow dragShadow = new DragShadow(v, image);
 
-						ClipData data = ClipData.newPlainText("position", "" + i);
+						ClipData data = ClipData.newPlainText("position", i + " .");
 						v.startDrag(data, dragShadow, v, 0);
 						break;
 					}
