@@ -64,7 +64,7 @@ public class SelectedDayFragment extends Fragment {
 			}
 			scheduleTimes.add(s);
 		}	
-		System.out.println(scheduleTimes.toString());
+		
 	}
 
 	/**
