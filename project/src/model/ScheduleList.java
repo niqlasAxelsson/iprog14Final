@@ -42,15 +42,15 @@ public class ScheduleList extends ArrayAdapter<String> {
 
 		setResourcesForComponents();
 		checkIfActivityOnThisTime();
-		setOnDragListenerForLayout(tempPosition);
+		setOnDragListenerForLayout(tempPosition, this);
 
 		return scheduleListView.getListItemView();
 	}
 
-	private void setOnDragListenerForLayout(int pos) {
+	private void setOnDragListenerForLayout(int pos, ScheduleList list) {
 
 		scheduleListView.getListItemHolder().setOnDragListener(
-				new CustomDragListener(pos));
+				new CustomDragListener(pos, list));
 	}
 
 	/**
@@ -62,11 +62,14 @@ public class ScheduleList extends ArrayAdapter<String> {
 	private class CustomDragListener implements OnDragListener {
 
 		private int position;
+		private ScheduleList list;
+		
 		AgendaModel model = ((AgendaApplication) context.getApplication())
 				.getModel();
 
-		public CustomDragListener(int pos) {
+		public CustomDragListener(int pos, ScheduleList list) {
 			position = pos;
+			this.list = list;
 		}
 
 		@Override
@@ -102,6 +105,9 @@ public class ScheduleList extends ArrayAdapter<String> {
 				if(wasAdded){
 					System.out.println("removing");
 					model.removeParkedActivity(positionFromParkedEvents);
+					
+					list.notifyDataSetChanged();
+					
 					
 				}
 						

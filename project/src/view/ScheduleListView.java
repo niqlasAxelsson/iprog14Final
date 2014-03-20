@@ -27,6 +27,7 @@ public class ScheduleListView implements Observer {
 
 		this.view = view;
 		this.activity = activity;
+		
 
 		buildComponents();
 
@@ -40,6 +41,7 @@ public class ScheduleListView implements Observer {
 		timeTextView = (TextView) listItemView.findViewById(R.id.time);
 		descrTextView = (TextView) listItemView.findViewById(R.id.hour_description);
 		hourImageView = (ImageView) listItemView.findViewById(R.id.hour_image);
+		
 		
 		
 	}
