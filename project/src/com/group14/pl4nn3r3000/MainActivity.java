@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
 
 				      //mainActivityView.getActivityNamesList().remove(position);
 				  				      				      
-				      mainActivityView.getAdapter().notifyDataSetChanged();
+				      //mainActivityView.getAdapter().notifyDataSetChanged();
 				      
 				      
 				      break;
