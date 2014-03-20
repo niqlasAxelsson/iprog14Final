@@ -77,10 +77,5 @@ public class SelectedDayFragment extends Fragment {
 		
 	}
 	
-	private void initSelectedDayList(){
-		
-		
-		
-	}
 
 }

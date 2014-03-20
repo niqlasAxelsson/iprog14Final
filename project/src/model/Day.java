@@ -183,7 +183,7 @@ public class Day extends Observable {
 	 * adds an activity to specific position this method will be called when
 	 * needed from the model don't call it directly
 	 */
-	public void addActivity(EventActivity act, int position) {
+	public boolean addActivity(EventActivity act, int position) {
 
 		boolean isEmpty = false;
 
@@ -212,7 +212,9 @@ public class Day extends Observable {
 
 			setChanged();
 			notifyObservers("ActivityAdded");
+			return true;
 		}
+		return false;
 	}
 
 	/**
@@ -252,7 +254,7 @@ public class Day extends Observable {
 		}
 
 		setChanged();
-		notifyObservers("ActivityRemoved");
+		notifyObservers("ActivityRemoved " + position);
 		return act;
 	}
 

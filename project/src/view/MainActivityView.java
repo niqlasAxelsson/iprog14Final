@@ -1,6 +1,8 @@
 package view;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import model.AgendaModel;
 import model.EventActivity;
@@ -17,105 +19,104 @@ import com.group14.pl4nn3r3000.HorizontalListView;
 
 /**
  * Our MainActivityView.
+ * 
  * @author julle
- *
+ * 
  */
-public class MainActivityView {
+public class MainActivityView implements Observer {
 
 	Activity activity;
 	AgendaModel model;
 	ActionBarView actionBarView;
-	
+
 	private EventActivityList adapter;
 	private EventActivity[] parkedEvents;
 	private int position;
 	private HorizontalListView listview;
 	List<String> activityNames;
-	
+
 	private Button newActivityButton;
-	
-	
-	
-	public MainActivityView(Activity activity, AgendaModel model){
-		
+
+	public MainActivityView(Activity activity, AgendaModel model) {
+
 		this.activity = activity;
-		this.model=model;
+		this.model = model;
 		buildActionBar();
 		buildComponents();
 		buildFragment();
 	}
-	
-	
+
 	/**
 	 * creates the actionbar
 	 */
-	private void buildActionBar(){
-		
-		 actionBarView = new ActionBarView(activity, ViewGroup.VISIBLE);
+	private void buildActionBar() {
+
+		actionBarView = new ActionBarView(activity, ViewGroup.VISIBLE);
 	}
-	
+
 	/**
 	 * returns the actionBar
+	 * 
 	 * @return
 	 */
-	public ActionBarView getActionBar(){
-		
+	public ActionBarView getActionBar() {
+
 		return actionBarView;
-		
+
 	}
-	
+
 	/**
-	 * get the acitivtyNames list.
-	 * Using it to update the list 
+	 * get the acitivtyNames list. Using it to update the list
+	 * 
 	 * @return
 	 */
-	public List<String> getActivityNamesList(){
-		
+	public List<String> getActivityNamesList() {
+
 		return activityNames;
 	}
-	
-	
+
 	/**
-	 * builds the components in.
-	 * For example, creates the adapter, our horizontallist
+	 * builds the components in. For example, creates the adapter, our
+	 * horizontallist
 	 */
-	private void buildComponents(){
-		
+	private void buildComponents() {
+
 		activityNames = model.getNameOfParkedActivities();
-		parkedEvents = model.getParkedActivitiesArray();		
+		parkedEvents = model.getParkedActivitiesArray();
 		listview = (HorizontalListView) activity.findViewById(R.id.listview);
 		adapter = new EventActivityList(activity, model, activityNames);
 		listview.setAdapter(adapter);
-		
-		newActivityButton = (Button) activity.findViewById(R.id.newActivityButton);
-	
+
+		newActivityButton = (Button) activity
+				.findViewById(R.id.newActivityButton);
+
 	}
-	
-	
-	
+
 	/**
 	 * return our horizontalListView
+	 * 
 	 * @return
 	 */
-	public HorizontalListView getListView(){
-		
+	public HorizontalListView getListView() {
+
 		return listview;
 	}
-	
-	public EventActivityList getAdapter(){
-		
+
+	public EventActivityList getAdapter() {
+
 		return adapter;
 	}
-	
+
 	/**
 	 * return the new activity button
+	 * 
 	 * @return
 	 */
-	public Button getNewActivityButton(){
-		
+	public Button getNewActivityButton() {
+
 		return newActivityButton;
 	}
-	
+
 	/**
 	 * builds the fragment
 	 */
@@ -127,5 +128,19 @@ public class MainActivityView {
 		transaction.commit();
 	}
 
+	@Override
+	public void update(Observable arg0, Object arg1) {
+
+		String[] strings =  arg1.toString().split(" ");
+		
+		
+		System.out.println(strings[0] + " " + strings[1]);
+		if (strings[0].equals("ActivityRemoved")) {
+			getActivityNamesList().remove(Integer.parseInt(strings[1]));
+
+			getAdapter().notifyDataSetChanged();
+		}
+
+	}
 
 }

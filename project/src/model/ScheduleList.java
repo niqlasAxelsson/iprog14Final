@@ -21,11 +21,11 @@ import android.widget.LinearLayout;
 
 public class ScheduleList extends ArrayAdapter<String> {
 
-	private Activity context;
+	public Activity context;
 	private List<String> scheduleTimes;
 	private int position;
 	private ScheduleListView scheduleListView;
-	
+
 	public ScheduleList(Activity context, List<String> scheduleTimes) {
 		super(context, R.layout.hour_list_item, scheduleTimes);
 
@@ -37,75 +37,85 @@ public class ScheduleList extends ArrayAdapter<String> {
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		int tempPosition = position;
-	    this.position = position;
-	    this.scheduleListView = new ScheduleListView(context, view, position);
+		this.position = position;
+		this.scheduleListView = new ScheduleListView(context, view, position);
 
-	    setResourcesForComponents();
-	    checkIfActivityOnThisTime();
-	    setOnDragListenerForLayout(tempPosition);
+		setResourcesForComponents();
+		checkIfActivityOnThisTime();
+		setOnDragListenerForLayout(tempPosition);
 
-	    return scheduleListView.getListItemView();
+		return scheduleListView.getListItemView();
 	}
 
-	
 	private void setOnDragListenerForLayout(int pos) {
-		
-		scheduleListView.getListItemHolder().setOnDragListener(new CustomDragListener(pos));
+
+		scheduleListView.getListItemHolder().setOnDragListener(
+				new CustomDragListener(pos));
 	}
-	
+
 	/**
 	 * private class for a custom ondraglistener
+	 * 
 	 * @author julle
-	 *
+	 * 
 	 */
-	private class CustomDragListener implements OnDragListener{
-		
+	private class CustomDragListener implements OnDragListener {
+
 		private int position;
 		AgendaModel model = ((AgendaApplication) context.getApplication())
 				.getModel();
-		
-		public CustomDragListener(int pos){
+
+		public CustomDragListener(int pos) {
 			position = pos;
 		}
 
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
-            
-            switch (event.getAction()) {
-            case DragEvent.ACTION_DRAG_STARTED:
-                // nothing
-                break;
-            case DragEvent.ACTION_DRAG_ENTERED:
-            	System.out.println("Entered: " + position);
-            	
-                
-                if(model.getSelectedDay().getPositionBoolean()[position] == false){
-                	 v.setBackgroundColor(Color.parseColor("#dbdbdb"));
-                }
-                
-               
-                break;
-            case DragEvent.ACTION_DRAG_EXITED:
-            	System.out.println("Exited: " + position);
-            	
-                if(model.getSelectedDay().getPositionBoolean()[position] == false){
-                	 v.setBackgroundColor(Color.parseColor("#ececec"));
-                }
-            	
-                break;
-            case DragEvent.ACTION_DROP:
-                
-                break;
-            case DragEvent.ACTION_DRAG_ENDED:
-                // nothing
-            default:
-                break;
-            }
 
-            return true;
+			switch (event.getAction()) {
+			case DragEvent.ACTION_DRAG_STARTED:
+				// nothing
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				System.out.println("Entered: " + position);
+
+				if (model.getSelectedDay().getPositionBoolean()[position] == false) {
+					v.setBackgroundColor(Color.parseColor("#dbdbdb"));
+				}
+
+				break;
+			case DragEvent.ACTION_DRAG_EXITED:
+				System.out.println("Exited: " + position);
+
+				if (model.getSelectedDay().getPositionBoolean()[position] == false) {
+					v.setBackgroundColor(Color.parseColor("#ececec"));
+				}
+
+				break;
+			case DragEvent.ACTION_DROP:
+				ClipData.Item item = event.getClipData().getItemAt(0);
+				String dragData = "" + item.getText();
+				int positionFromParkedEvents = Integer.parseInt(dragData);
+				
+				boolean wasAdded = model.getSelectedDay().addActivity(model.getParkedActivities().get(positionFromParkedEvents), getPos());
+				
+				if(wasAdded){
+					model.removeParkedActivity(position);
+					
+				}
+						
+						
+				break;
+			case DragEvent.ACTION_DRAG_ENDED:
+				// nothing
+			default:
+				break;
+			}
+
+			return true;
 		}
-		
-		public int getPos(){
+
+		public int getPos() {
 			return position;
 		}
 	}

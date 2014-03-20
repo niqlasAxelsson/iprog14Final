@@ -57,6 +57,11 @@ public class MainActivity extends Activity {
 	}
 	
 	
+	public MainActivityView getMainActivityView(){
+		return mainActivityView;
+	}
+	
+	
 	/**
 	 * sets DragListener on the Horizonztal Scroll list
 	 */
