@@ -28,7 +28,6 @@ public class SelectedDayFragmentView implements Observer{
 		this.view = view;
 		this.fragment=fragment;
 		buildComponents();
-		
 	}
 	
 	/**
@@ -71,6 +70,8 @@ public class SelectedDayFragmentView implements Observer{
 
 	@Override
 	public void update(Observable observable, Object data) {
+		
+		System.out.println("observern har hittat");
 		
 		if(data.equals("ActivityRemoved")){
 			System.out.println("hej");
