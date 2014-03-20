@@ -242,10 +242,12 @@ public class Day extends Observable {
 	 * removes an activity from specific position this method will be called
 	 * when needed from the model don't call it directly
 	 */
-	public EventActivity removeActivity(int position) {
+	public void removeActivity(int position) {
 		
 		EventActivity act = activities.remove(position);
 		activities.add(position, null);
+		
+		System.out.println("1111111");
 		
 		if(act != null){
 			for(int i = position; i < position + act.length; i++){
@@ -253,9 +255,11 @@ public class Day extends Observable {
 			}
 		}
 
+		System.out.println("2222222222222");
+		
 		setChanged();
 		notifyObservers("ActivityRemoved");
-		return act;
+		//return act;
 	}
 
 	/**

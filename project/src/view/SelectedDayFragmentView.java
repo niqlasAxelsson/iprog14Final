@@ -72,7 +72,7 @@ public class SelectedDayFragmentView implements Observer{
 	public void update(Observable observable, Object data) {
 		
 		String s = data.toString();
-		System.out.println("observern har hittat");
+		System.out.println(s);
 		
 		if(s.equals("ActivityRemoved")){
 			System.out.println("hej");

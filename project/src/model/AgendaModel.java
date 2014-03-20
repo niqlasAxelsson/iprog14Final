@@ -136,29 +136,29 @@ public class AgendaModel extends Observable {
 		return act;
 	}
 
-	/**
-	 * moves activity between the days, or day and parked activities. to park
-	 * activity you need to set the newday to null to move a parked activity to
-	 * let's say first day you set oldday to null and newday to first day
-	 * instance
-	 */
-	public void moveActivity(Day oldday, int oldposition, Day newday,
-			int newposition) {
-		if (oldday != null && oldday == newday) {
-			oldday.moveActivity(oldposition, newposition);
-		} else if (oldday == null && newday != null) {
-			EventActivity act = removeParkedActivity(oldposition);
-			newday.addActivity(act, newposition);
-		} else if (oldday != null && newday == null) {
-			EventActivity act = oldday.removeActivity(oldposition);
-			addParkedActivity(act);
-		} else if (oldday != null && newday != null) {
-			EventActivity activity = oldday.removeActivity(oldposition);
-			newday.addActivity(activity, newposition);
-		}
-		setChanged();
-		notifyObservers();
-	};
+//	/**
+//	 * moves activity between the days, or day and parked activities. to park
+//	 * activity you need to set the newday to null to move a parked activity to
+//	 * let's say first day you set oldday to null and newday to first day
+//	 * instance
+//	 */
+//	public void moveActivity(Day oldday, int oldposition, Day newday,
+//			int newposition) {
+//		if (oldday != null && oldday == newday) {
+//			oldday.moveActivity(oldposition, newposition);
+//		} else if (oldday == null && newday != null) {
+//			EventActivity act = removeParkedActivity(oldposition);
+//			newday.addActivity(act, newposition);
+//		} else if (oldday != null && newday == null) {
+//			EventActivity act = oldday.removeActivity(oldposition);
+//			addParkedActivity(act);
+//		} else if (oldday != null && newday != null) {
+//			EventActivity activity = oldday.removeActivity(oldposition);
+//			newday.addActivity(activity, newposition);
+//		}
+//		setChanged();
+//		notifyObservers();
+//	};
 
 	public void addExampleData() {
 		String[] titles = { "Workout", "Meeting", "Meal", "Party", "Studies",
