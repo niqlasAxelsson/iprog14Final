@@ -254,7 +254,7 @@ public class Day extends Observable {
 		}
 
 		setChanged();
-		notifyObservers("ActivityRemoved " + position);
+		notifyObservers("ActivityRemoved");
 		return act;
 	}
 

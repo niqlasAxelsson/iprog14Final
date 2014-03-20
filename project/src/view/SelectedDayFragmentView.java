@@ -1,13 +1,14 @@
 package view;
 
-import model.ScheduleList;
-
-import com.example.pl4nn3r3000.R;
+import java.util.Observable;
+import java.util.Observer;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.pl4nn3r3000.R;
 
 
 /**
@@ -15,7 +16,7 @@ import android.widget.TextView;
  * @author julle
  *
  */
-public class SelectedDayFragmentView {
+public class SelectedDayFragmentView implements Observer{
 
 	private Activity activity;
 	private View view;
@@ -36,6 +37,7 @@ public class SelectedDayFragmentView {
 		
 		listView = (ListView) view.findViewById(R.id.selectedDayListView);  
 		dayTitle = (TextView) view.findViewById(R.id.selectedDayTextView);		
+		
 		
 	}
 	
@@ -64,6 +66,12 @@ public class SelectedDayFragmentView {
 	public ListView getListView(){
 		
 		return listView;
+	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		
+		
 	}
 	
 }
