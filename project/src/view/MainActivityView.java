@@ -86,6 +86,8 @@ public class MainActivityView implements Observer {
 		parkedEvents = model.getParkedActivitiesArray();
 		listview = (HorizontalListView) activity.findViewById(R.id.listview);
 		adapter = new EventActivityList(activity, model, activityNames);
+		
+		System.out.println(activityNames.toString());
 		listview.setAdapter(adapter);
 
 		newActivityButton = (Button) activity
@@ -138,9 +140,8 @@ public class MainActivityView implements Observer {
 		System.out.println(strings.toString());
 		//System.out.println(strings[0] + " " + strings[1]);
 		if (strings[0].equals("ParkedActivityRemoved")) {
-			System.out.println(getActivityNamesList().size());
+			System.out.println("size :" + getActivityNamesList().size());
 			getActivityNamesList().remove(Integer.parseInt(strings[1]));
-
 			getAdapter().notifyDataSetChanged();
 		}
 
