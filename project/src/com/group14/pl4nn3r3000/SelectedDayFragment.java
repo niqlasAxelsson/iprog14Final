@@ -32,7 +32,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
  *
  */
 public class SelectedDayFragment extends Fragment {
-
+	
+	
+	Fragment thisFragment;
 	private AllDaysFragment frag;
 	private SelectedDayFragmentView view;
 	private LinkedList<String> scheduleTimes = new LinkedList<String>();
@@ -45,6 +47,7 @@ public class SelectedDayFragment extends Fragment {
 		
 		model = ((AgendaApplication) this.getActivity().getApplication()).getModel();
 		view = new SelectedDayFragmentView(this.getActivity(),inflater.inflate(R.layout.selected_day_fragment_layout,container, false));
+		thisFragment = this;
 		initTextView();
 		initScheduleTimes();
 		setAdapterForList();
@@ -68,7 +71,7 @@ public class SelectedDayFragment extends Fragment {
 					if (model.getSelectedDay().getActivities().get(i) != null) {
 						
 						System.out.println("Hittat aktiviteten på pos " + i);
-						ImageView image = (ImageView) v.findViewById(model.getSelectedDay().getActivities().get(i).getImage());
+						ImageView image = (ImageView) thisFragment.getActivity().findViewById(model.getSelectedDay().getActivities().get(i).getImage());
 						DragShadow dragShadow = new DragShadow(v, image);
 
 						ClipData data = ClipData.newPlainText("position", "" + i);
