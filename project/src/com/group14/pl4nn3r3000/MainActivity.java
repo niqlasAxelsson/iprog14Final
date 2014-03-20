@@ -31,14 +31,14 @@ import android.widget.ImageView;
 import com.example.pl4nn3r3000.R;
 
 /**
- * MainActivity, 
- * our starting activity, with all the fragments, the scrollhorizontal list.
+ * MainActivity, our starting activity, with all the fragments, the
+ * scrollhorizontal list.
  */
 public class MainActivity extends Activity {
 
 	private AgendaModel model;
 	private MainActivityView mainActivityView;
-	
+
 	private Vibrator vibe;
 
 	@Override
@@ -48,107 +48,144 @@ public class MainActivity extends Activity {
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-		
+
 		model.mainActivity = this;
-		
-		mainActivityView = new MainActivityView(this,model, model.getNameOfParkedActivities());
+
+		mainActivityView = new MainActivityView(this, model,
+				model.getNameOfParkedActivities());
 		vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		setClickListenerOnListView();
 		setDragListenerOnListView();
 		setClickListenerOnButton();
 		setOnDragOnTrashCan();
-		
-	}
-	
-	
-	public MainActivityView getMainActivityView(){
-		return mainActivityView;
-	}
-	
-	
-	/**
-	 * sets DragListener on the Horizonztal Scroll list
-	 */
-	private void setDragListenerOnListView(){
-		mainActivityView.getListView().setOnItemLongClickListener(listener);
-	}
-	
-	/**
-	 * sets ClickListener on the "New Activity" button
-	 */
-	private void setClickListenerOnButton(){
-		
-		mainActivityView.getNewActivityButton().setOnClickListener(new View.OnClickListener(){
 
-			@Override
-			public void onClick(View v) {
-				
-				Intent i = new Intent(getBaseContext(),CreateEventActivity.class);
-				startActivity(i);
-				
-			}
-			
-			
-		});
 	}
-	
-	
-	/**
-	 * sets OnDrag on the trashcan
-	 */
-	private void setOnDragOnTrashCan(){
-		
-		mainActivityView.getActionBar().getTrashImageView().setOnDragListener(new OnDragListener(){
+
+	private void setDragListenerOnListView() {
+		mainActivityView.getListView().setOnDragListener(new OnDragListener() {
 
 			@Override
 			public boolean onDrag(View v, DragEvent event) {
-				
-				 int action = event.getAction();
-				    switch (event.getAction()) {
-				    case DragEvent.ACTION_DRAG_STARTED:
-				    	//nothing
-				      break;
-				    case DragEvent.ACTION_DRAG_ENTERED:
-				    	//nothing
-				      break;
-				    case DragEvent.ACTION_DRAG_EXITED:
-				    	//nothing				      
-				      break;
-				    case DragEvent.ACTION_DROP:
-				      //TODO
-				      ClipData.Item item = event.getClipData().getItemAt(0);
-				      String dragData = "" + item.getText();
-				      int position = Integer.parseInt(dragData);
-				  
-				      model.removeParkedActivity(position);
 
-				      //mainActivityView.getActivityNamesList().remove(position);
-				  				      				      
-				      //mainActivityView.getAdapter().notifyDataSetChanged();
-				      
-				      
-				      break;
-				    case DragEvent.ACTION_DRAG_ENDED:
-				      //nothing
-				      default:
-				      break;
-				    }
+				switch (event.getAction()) {
+				case DragEvent.ACTION_DRAG_STARTED:
+					// nothing
+					break;
+				case DragEvent.ACTION_DRAG_ENTERED:
+					// nothing
+					break;
+				case DragEvent.ACTION_DRAG_EXITED:
+					// nothing
+					break;
+				case DragEvent.ACTION_DROP:
+					// TODO
+					ClipData.Item item = event.getClipData().getItemAt(0);
+					String dragData = "" + item.getText();
+
+					// if the clipdata ends with a . that means it comes from
+					// the vertical listview i.e proceed with drop
+					if (dragData.endsWith(".")) {
+						System.out.println("drop from hour view");
+					}
+
+					int position = Integer.parseInt(dragData);
+
+					model.removeParkedActivity(position);
+
+					break;
+				case DragEvent.ACTION_DRAG_ENDED:
+					// nothing
+				default:
+					break;
+				}
 				return true;
 			}
-			
 		});
+
 	}
-	
-	
-	//the code inside this maybe should be removed to a view class:)?
+
+	public MainActivityView getMainActivityView() {
+		return mainActivityView;
+	}
+
 	/**
-	 * Our class for listening when starting draging.
-	 * What shall happen when we drag? 
+	 * sets DragListener on the Horizonztal Scroll list
+	 */
+	private void setClickListenerOnListView() {
+		mainActivityView.getListView().setOnItemLongClickListener(listener);
+	}
+
+	/**
+	 * sets ClickListener on the "New Activity" button
+	 */
+	private void setClickListenerOnButton() {
+
+		mainActivityView.getNewActivityButton().setOnClickListener(
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						Intent i = new Intent(getBaseContext(),
+								CreateEventActivity.class);
+						startActivity(i);
+
+					}
+
+				});
+	}
+
+	/**
+	 * sets OnDrag on the trashcan
+	 */
+	private void setOnDragOnTrashCan() {
+
+		mainActivityView.getActionBar().getTrashImageView()
+				.setOnDragListener(new OnDragListener() {
+
+					@Override
+					public boolean onDrag(View v, DragEvent event) {
+
+						int action = event.getAction();
+						switch (event.getAction()) {
+						case DragEvent.ACTION_DRAG_STARTED:
+							// nothing
+							break;
+						case DragEvent.ACTION_DRAG_ENTERED:
+							// nothing
+							break;
+						case DragEvent.ACTION_DRAG_EXITED:
+							// nothing
+							break;
+						case DragEvent.ACTION_DROP:
+							// TODO
+							ClipData.Item item = event.getClipData().getItemAt(
+									0);
+							String dragData = "" + item.getText();
+							int position = Integer.parseInt(dragData);
+
+							model.removeParkedActivity(position);
+
+							break;
+						case DragEvent.ACTION_DRAG_ENDED:
+							// nothing
+						default:
+							break;
+						}
+						return true;
+					}
+
+				});
+	}
+
+	// the code inside this maybe should be removed to a view class:)?
+	/**
+	 * Our class for listening when starting draging. What shall happen when we
+	 * drag?
 	 * 
 	 */
 	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
-
-		
 		@Override
 		public boolean onItemLongClick(AdapterView<?> adapter, View v,
 				int position, long arg3) {
