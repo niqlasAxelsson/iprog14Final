@@ -210,7 +210,6 @@ public class Day extends Observable {
 				positions[i] = true;
 			}
 
-			System.out.println("activityAdded");
 			setChanged();
 			notifyObservers("ActivityAdded");
 			return true;

@@ -30,6 +30,8 @@ public class CreateEventActivity extends Activity {
 	String activityName;
 	String descriptionText;
 	int activityType = 8;
+	Intent oldActivityIntent;
+	Activity oldActivity;
 	
 	AgendaModel model;
 	CreateEventView View;
@@ -40,6 +42,9 @@ public class CreateEventActivity extends Activity {
 		setContentView(R.layout.create_event);
 		model = ((AgendaApplication) getApplication()).getModel();
 		View = new CreateEventView(this.findViewById(android.R.id.content),model,this);
+		
+		oldActivity = model.mainActivity;
+		oldActivityIntent = oldActivity.getIntent();
 		
 		setClickOnDoneButton();
 		setRbClickListeners();
@@ -57,8 +62,8 @@ public class CreateEventActivity extends Activity {
 				View.getFields();
 				EventActivity newEventActivity = new EventActivity(View.getActivityName(),View.getDescriptionText(),View.getDuration(),View.getActivityType());
 				model.addParkedActivity(newEventActivity);
-				Intent i = new Intent(getBaseContext(),MainActivity.class);
-				startActivity(i);
+				//Intent i = new Intent(getBaseContext(),MainActivity.class);
+				startActivity(oldActivityIntent);
 			}
 			
 		});

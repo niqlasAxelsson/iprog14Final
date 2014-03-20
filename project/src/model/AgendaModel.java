@@ -5,11 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
+import android.app.Activity;
+
 public class AgendaModel extends Observable {
 
 	List<Day> days = new ArrayList<Day>();
 	List<EventActivity> parkedActivites = new ArrayList<EventActivity>();
 	Day selectedDay;
+	public Activity mainActivity;
 
 	public AgendaModel() {
 		addExampleData();

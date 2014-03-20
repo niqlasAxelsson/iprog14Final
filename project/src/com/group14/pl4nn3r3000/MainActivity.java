@@ -78,6 +78,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				
 				Intent i = new Intent(getBaseContext(),CreateEventActivity.class);
 				startActivity(i);
 				
