@@ -52,6 +52,9 @@ public class CreateEventActivity extends Activity {
 
 	}
 
+	/**
+	 * creates and adds a new activity when you click the done button
+	 */
 	private void setClickOnDoneButton() {
 
 		view.getDoneButton().setOnClickListener(new View.OnClickListener() {
@@ -68,6 +71,7 @@ public class CreateEventActivity extends Activity {
 
 					finish();
 				} else {
+					//shows a toast if the name field is empty
 					Toast toast = Toast.makeText(activity, "Enter a name", Toast.LENGTH_SHORT);
 					toast.show();
 				}
@@ -76,6 +80,11 @@ public class CreateEventActivity extends Activity {
 		});
 	}
 
+	/**
+	 * creates onclick listeners for the radiobuttons.
+	 * usually we would have used a radiogroup, but
+	 * android doesn't support multiple line radiogroups
+	 */
 	private void setRbClickListeners() {
 
 		view.getAllRadioButtons()[0].setOnClickListener(new OnClickListener() {

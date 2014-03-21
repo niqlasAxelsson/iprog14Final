@@ -32,7 +32,10 @@ public class ScheduleListView implements Observer {
 		buildComponents();
 
 	}
-
+	
+	/**
+	 * build the components for the view
+	 */
 	private void buildComponents() {
 		LayoutInflater inflater = activity.getLayoutInflater();
 		listItemView = inflater.inflate(R.layout.hour_list_item, null, true);
@@ -46,27 +49,49 @@ public class ScheduleListView implements Observer {
 		
 	}
 	
-	
+	/**
+	 * returns the view of a listitem
+	 * @return
+	 */
 	public View getListItemView() {
 		return listItemView;
 	}
 
+	/**
+	 * returns the layout holding the listitem
+	 * @return
+	 */
 	public LinearLayout getListItemHolder() {
 		return listItemHolder;
 	}
 
+	/**
+	 * returns the textview displaying the time 
+	 * @return
+	 */
 	public TextView getTimeTextView() {
 		return timeTextView;
 	}
 
+	/**
+	 * returns the description text
+	 * @return
+	 */
 	public TextView getDescrTextView() {
 		return descrTextView;
 	}
 
+	/**
+	 * returns the icon
+	 * @return
+	 */
 	public ImageView getHourImageView() {
 		return hourImageView;
 	}
 
+	/**
+	 * not used update method
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		

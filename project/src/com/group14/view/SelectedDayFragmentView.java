@@ -75,7 +75,6 @@ public class SelectedDayFragmentView implements Observer{
 		System.out.println(s);
 		
 		if(s.equals("ActivityRemoved")){
-			System.out.println("hej");
 			fragment.adapter.notifyDataSetChanged();
 		}
 		

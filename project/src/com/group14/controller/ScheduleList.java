@@ -1,8 +1,11 @@
-package com.group14.model;
+package com.group14.controller;
 
 import java.util.List;
 
 import com.example.pl4nn3r3000.R;
+import com.group14.model.AgendaApplication;
+import com.group14.model.AgendaModel;
+import com.group14.model.EventActivity;
 import com.group14.view.AllDaysListView;
 import com.group14.view.ScheduleListView;
 

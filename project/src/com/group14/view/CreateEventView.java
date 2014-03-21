@@ -36,7 +36,6 @@ public class CreateEventView implements Observer {
 	public CreateEventView(View view, AgendaModel model, Activity activity) {
 
 		this.view = view;
-		//this.model = model;
 		this.activity = activity;
 		
 		model.addObserver(this);

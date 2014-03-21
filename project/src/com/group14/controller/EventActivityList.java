@@ -1,4 +1,4 @@
-package com.group14.model;
+package com.group14.controller;
 
 import java.util.List;
 import java.util.Observable;
@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
+import com.group14.model.AgendaModel;
+import com.group14.model.EventActivity;
 
 public class EventActivityList extends ArrayAdapter<String>{
 

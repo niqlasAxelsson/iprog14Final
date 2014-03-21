@@ -6,7 +6,6 @@ import java.util.List;
 import com.example.pl4nn3r3000.R;
 import com.group14.model.AgendaApplication;
 import com.group14.model.AgendaModel;
-import com.group14.model.ScheduleList;
 import com.group14.view.SelectedDayFragmentView;
 
 import android.app.Fragment;
@@ -60,6 +59,9 @@ public class SelectedDayFragment extends Fragment {
 	}
 	
 	
+	/**
+	 * onclicklistener for the items in the listview
+	 */
 	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
 
@@ -95,9 +97,11 @@ public class SelectedDayFragment extends Fragment {
 	
 
 	
+	/**
+	 * set the arrayadapter for the listview
+	 */
 	private void setAdapterForList() {
 		adapter = new ScheduleList(this.getActivity(), scheduleTimes);
-		System.out.println("innan listan får adapter");
 		view.getListView().setAdapter(adapter);
 		
 	}
@@ -129,6 +133,12 @@ public class SelectedDayFragment extends Fragment {
 		
 	}
 	
+	
+	/**
+	 * private dragshadow class for managing the images being dragged
+	 * @author Niklas
+	 *
+	 */
 	
 	private class DragShadow extends View.DragShadowBuilder {
 

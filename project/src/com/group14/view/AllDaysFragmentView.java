@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.pl4nn3r3000.R;
+import com.group14.controller.AllDaysList;
 import com.group14.model.AgendaApplication;
 import com.group14.model.AgendaModel;
-import com.group14.model.AllDaysList;
 /**
  * the VIEW of alldaysfragment
  * Show every day that is created.
@@ -26,14 +26,14 @@ public class AllDaysFragmentView implements Observer {
 	private AllDaysList adapter;
 	private Activity activity;
 	private List<String> dayTitles;
-	private Fragment frag;
+	private AgendaModel model;
 	
 	private Button newDayButton;
 	
-	public AllDaysFragmentView(Fragment frag, Activity activity, View view){
+	public AllDaysFragmentView(Activity activity, AgendaModel model, View view){
 		this.activity = activity;
 		this.view = view;
-		this.frag = frag;
+		this.model = model;
 		buildComponents();
 	}
 	
@@ -50,7 +50,6 @@ public class AllDaysFragmentView implements Observer {
 	 * builds the components in the view
 	 */
 	private void buildComponents(){
-		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
 		
 		dayTitles = model.getNameOfDays();
 		newDayButton = (Button) view.findViewById(R.id.newDayButton);
@@ -81,7 +80,6 @@ public class AllDaysFragmentView implements Observer {
 	public void update(Observable observable, Object data) {
 		
 		if(data.equals("DayRemoved")){
-			System.out.println("data set changed");
 			adapter.notifyDataSetChanged();
 		}
 		

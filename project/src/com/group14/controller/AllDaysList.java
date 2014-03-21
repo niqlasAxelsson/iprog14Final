@@ -1,4 +1,4 @@
-package com.group14.model;
+package com.group14.controller;
 
 import java.util.List;
 
@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pl4nn3r3000.R;
-import com.group14.controller.CreateEventActivity;
+import com.group14.model.AgendaApplication;
+import com.group14.model.AgendaModel;
 import com.group14.view.AllDaysListView;
 
 public class AllDaysList extends ArrayAdapter<String>{
@@ -36,9 +37,9 @@ public class AllDaysList extends ArrayAdapter<String>{
 
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
-		
+		AgendaModel model = ((AgendaApplication) context.getApplication()).getModel();
 		this.position = position;
-		alldaysList = new AllDaysListView(context,view,position);
+		alldaysList = new AllDaysListView(context, model, view,position);
 		setClickListenerOnDeleteImage(position);
 		return alldaysList.getListItemView();
 	

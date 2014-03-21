@@ -45,7 +45,7 @@ public class AllDaysFragment extends Fragment {
 		AgendaModel model = ((AgendaApplication) this.getActivity()
 				.getApplication()).getModel();
 		// the view of the all days fragment
-		view = new AllDaysFragmentView(this ,this.getActivity(), inflater.inflate(
+		view = new AllDaysFragmentView(this.getActivity(), model, inflater.inflate(
 				R.layout.all_days_fragment_layout, container, false));
 		model.addObserver(view);
 
@@ -55,6 +55,9 @@ public class AllDaysFragment extends Fragment {
 		return view.getView();
 	}
 
+	/**
+	 * onclicklsiteners for the list items
+	 */
 	private void setOnItemClickListeners() {
 
 		OnItemClickListener listener = new OnItemClickListener() {
@@ -82,6 +85,10 @@ public class AllDaysFragment extends Fragment {
 
 	}
 
+	/**
+	 * shows the alert dialog for creating a new day
+	 * when the new day button is pressed
+	 */
 	private void setClickListenerOnNewDayButton() {
 
 		view.getNewDayButton().setOnClickListener(new OnClickListener() {

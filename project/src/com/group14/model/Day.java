@@ -26,6 +26,9 @@ public class Day extends Observable {
 		this.year = year;
 	}
 
+	/**
+	 * fills the list with null elements
+	 */
 	private void fillListWithNullElements() {
 		for (int i = 0; i < 19; i++) {
 			activities.add(null);

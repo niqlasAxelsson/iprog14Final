@@ -32,7 +32,6 @@ import com.example.pl4nn3r3000.R;
 import com.group14.model.AgendaApplication;
 import com.group14.model.AgendaModel;
 import com.group14.model.EventActivity;
-import com.group14.model.EventActivityList;
 import com.group14.view.ActionBarView;
 import com.group14.view.MainActivityView;
 
@@ -43,7 +42,7 @@ import com.group14.view.MainActivityView;
 public class MainActivity extends Activity {
 
 	private AgendaModel model;
-	MainActivityView mainActivityView;
+	private MainActivityView mainActivityView;
 
 	private Vibrator vibe;
 
@@ -59,6 +58,7 @@ public class MainActivity extends Activity {
 
 		mainActivityView = new MainActivityView(this, model,
 				model.getNameOfParkedActivities());
+		model.addObserver(mainActivityView);
 		vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		setClickListenerOnListView();
 		setDragListenerOnListView();
@@ -69,6 +69,9 @@ public class MainActivity extends Activity {
 	
 	
 
+	/**
+	 * creates an option menu
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		
@@ -80,6 +83,9 @@ public class MainActivity extends Activity {
 
 
 
+	/**
+	 * what happens when you click an option menu item
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -127,7 +133,9 @@ public class MainActivity extends Activity {
 	}
 
 
-
+	/**
+	 * sets the ondraglistener for the horizontal listview
+	 */
 	private void setDragListenerOnListView() {
 		mainActivityView.getListView().setOnDragListener(new OnDragListener() {
 
@@ -156,16 +164,11 @@ public class MainActivity extends Activity {
 					if (dragData.endsWith(".")) {
 						int positionsFromWithinList = Integer.parseInt(strings[0]);
 						
-						System.out.println("on drop");
-						
 						model.addParkedActivity(model.getSelectedDay().getActivities().get(positionsFromWithinList));
-
-						System.out.println("removing from within list");
 						
 						model.removeActivityFromSelectedDay(positionsFromWithinList);
 							
 					}
-
 					break;
 				case DragEvent.ACTION_DRAG_ENDED:
 					// nothing
@@ -178,6 +181,10 @@ public class MainActivity extends Activity {
 
 	}
 
+	/**
+	 * returns the view from the main activity
+	 * @return
+	 */
 	public MainActivityView getMainActivityView() {
 		return mainActivityView;
 	}
@@ -220,7 +227,6 @@ public class MainActivity extends Activity {
 					@Override
 					public boolean onDrag(View v, DragEvent event) {
 
-						int action = event.getAction();
 						switch (event.getAction()) {
 						case DragEvent.ACTION_DRAG_STARTED:
 							// nothing
@@ -238,6 +244,8 @@ public class MainActivity extends Activity {
 							String dragData = "" + item.getText();
 							String[] strings = dragData.split(" ");
 							
+							//determine from the clipdata where the drag came from
+							//and act accordingly
 							if(strings.length == 2){
 								int positionFromWithinList = Integer.parseInt(strings[0]);
 								model.removeActivityFromSelectedDay(positionFromWithinList);
@@ -260,11 +268,8 @@ public class MainActivity extends Activity {
 				});
 	}
 
-	// the code inside this maybe should be removed to a view class:)?
 	/**
-	 * Our class for listening when starting draging. What shall happen when we
-	 * drag?
-	 * 
+	 * Our class for listening when starting draging. 
 	 */
 	OnItemLongClickListener listener = new OnItemLongClickListener() {
 
@@ -284,6 +289,11 @@ public class MainActivity extends Activity {
 
 	};
 
+	/**
+	 * a private class called DragShadow for managing the image getting dragged
+	 * @author Niklas
+	 *
+	 */
 	private class DragShadow extends View.DragShadowBuilder {
 
 		Drawable dragImage;

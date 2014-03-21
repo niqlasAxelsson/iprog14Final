@@ -12,10 +12,10 @@ import android.widget.Button;
 
 import com.example.pl4nn3r3000.R;
 import com.group14.controller.AllDaysFragment;
+import com.group14.controller.EventActivityList;
 import com.group14.controller.HorizontalListView;
 import com.group14.model.AgendaModel;
 import com.group14.model.EventActivity;
-import com.group14.model.EventActivityList;
 
 /**
  * Our MainActivityView.
@@ -25,16 +25,16 @@ import com.group14.model.EventActivityList;
  */
 public class MainActivityView implements Observer {
 
-	Activity activity;
-	AgendaModel model;
-	ActionBarView actionBarView;
+	private Activity activity;
+	private AgendaModel model;
+	private ActionBarView actionBarView;
 
 	private EventActivityList adapter;
 	private EventActivity[] parkedEvents;
 	private int position;
 	private HorizontalListView listview;
-	List<String> activityNames;
-	AllDaysFragment frag;
+	private List<String> activityNames;
+	private AllDaysFragment frag;
 
 	private Button newActivityButton;
 
@@ -42,7 +42,7 @@ public class MainActivityView implements Observer {
 		this.activityNames = activityNames;
 		this.activity = activity;
 		this.model = model;
-		model.addObserver(this);
+		
 		buildActionBar();
 		buildComponents();
 		buildFragment();
@@ -83,7 +83,6 @@ public class MainActivityView implements Observer {
 	 */
 	private void buildComponents() {
 
-		//activityNames = model.getNameOfParkedActivities();
 		parkedEvents = model.getParkedActivitiesArray();
 		listview = (HorizontalListView) activity.findViewById(R.id.listview);
 		adapter = new EventActivityList(activity, model, activityNames);
@@ -136,22 +135,20 @@ public class MainActivityView implements Observer {
 		transaction.commit();
 	}
 
+	/**
+	 * update method for when the observer is notified
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 
 		String[] strings =  arg1.toString().split(" ");
 		
-		System.out.println("Inne i update");
-		System.out.println(strings.toString());
-		//System.out.println(strings[0] + " " + strings[1]);
 		if (strings[0].equals("ParkedActivityRemoved")) {
-			System.out.println("namnlistan innan remove: " + getActivityNamesList().toString());
 			getActivityNamesList().remove(Integer.parseInt(strings[1]));
 			getAdapter().notifyDataSetChanged();
 		}
 		
 		if(strings[0].equals("ActivityParked")){
-			System.out.println("activity parked!");
 			getActivityNamesList().add(model.getNameOfParkedActivities().get(model.getNameOfParkedActivities().size()-1));
 			getAdapter().notifyDataSetChanged();
 		}

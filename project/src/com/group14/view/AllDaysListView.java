@@ -33,14 +33,16 @@ public class AllDaysListView implements Observer {
 	private ImageView dayDelete;
 	private LinearLayout clickLayout;
 	public int position;
+	private AgendaModel model;
 	
 	
 	
-	public AllDaysListView(Activity activity,View view,int position){
+	public AllDaysListView(Activity activity, AgendaModel model, View view,int position){
 		
 		this.position = position;
 		this.view = view;
 		this.activity = activity;
+		this.model = model;
 		
 		buildComponents();
 		setResourcesForComponents(position);
@@ -80,8 +82,6 @@ public class AllDaysListView implements Observer {
 	 * @param position
 	 */
 	private void setResourcesForComponents(int position) {	
-		AgendaModel model = ((AgendaApplication) activity.getApplication()).getModel();
-		System.out.println(model.getDays().get(position).getDateString());
 		Day selectedDay = model.getDays().get(position);
 		
 		dayTitle.setText(selectedDay.getDateString());
