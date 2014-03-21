@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="dd Month yyyy"
             android:textColor="#ffffff"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 

@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:text="Create new activity"
                     android:textColor="#ffffff"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -148,7 +148,7 @@
                     android:text="Choose category"
                     android:textColor="#ffffff"
                     android:textStyle="bold"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout

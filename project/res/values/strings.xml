@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_create_event">CreateEventActivity</string>
     <string name="title_activity_fuck">FuckActivity</string>
+    <string name="title_activity_about_us">AboutUs</string>
 
 </resources>
