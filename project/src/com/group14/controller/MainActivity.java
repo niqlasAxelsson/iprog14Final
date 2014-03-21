@@ -1,5 +1,11 @@
 package com.group14.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
@@ -39,7 +45,7 @@ import com.group14.view.MainActivityView;
  * MainActivity, our starting activity, with all the fragments, the
  * scrollhorizontal list.
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 
 	private AgendaModel model;
 	private MainActivityView mainActivityView;
@@ -53,8 +59,7 @@ public class MainActivity extends Activity {
 
 		// get the application model
 		model = ((AgendaApplication) this.getApplication()).getModel();
-
-		model.mainActivity = this;
+		
 
 		mainActivityView = new MainActivityView(this, model,
 				model.getNameOfParkedActivities());
@@ -66,8 +71,7 @@ public class MainActivity extends Activity {
 		setOnDragOnTrashCan();
 
 	}
-	
-	
+
 
 	/**
 	 * creates an option menu
@@ -167,6 +171,15 @@ public class MainActivity extends Activity {
 						model.addParkedActivity(model.getSelectedDay().getActivities().get(positionsFromWithinList));
 						
 						model.removeActivityFromSelectedDay(positionsFromWithinList);
+						
+						try {
+							FileOutputStream fos = openFileOutput("savefile", MODE_PRIVATE);
+							ObjectOutputStream os = new ObjectOutputStream(fos);
+							os.writeObject(model);
+							os.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 							
 					}
 					break;
@@ -254,6 +267,15 @@ public class MainActivity extends Activity {
 								int position = Integer.parseInt(dragData);
 
 								model.removeParkedActivity(position);
+							}
+							
+							try {
+								FileOutputStream fos = openFileOutput("savefile", MODE_PRIVATE);
+								ObjectOutputStream os = new ObjectOutputStream(fos);
+								os.writeObject(model);
+								os.close();
+							} catch (Exception e) {
+								e.printStackTrace();
 							}
 							
 							break;

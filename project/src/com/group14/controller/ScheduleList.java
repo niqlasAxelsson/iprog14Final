@@ -1,5 +1,7 @@
 package com.group14.controller;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 import com.example.pl4nn3r3000.R;
@@ -11,6 +13,7 @@ import com.group14.view.ScheduleListView;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -142,6 +145,15 @@ public class ScheduleList extends ArrayAdapter<String> {
 						if (model.getSelectedDay().getPositionBoolean()[position] == false)
 							v.setBackgroundColor(Color.parseColor("#ececec"));
 					}
+				}
+				
+				try {
+					FileOutputStream fos = context.openFileOutput("savefile", Context.MODE_PRIVATE);
+					ObjectOutputStream os = new ObjectOutputStream(fos);
+					os.writeObject(model);
+					os.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 
 				break;

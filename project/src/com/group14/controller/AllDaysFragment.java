@@ -1,6 +1,9 @@
 package com.group14.controller;
 
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 import com.example.pl4nn3r3000.R;
 import com.group14.model.AgendaApplication;
 import com.group14.model.AgendaModel;
@@ -11,6 +14,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -120,6 +124,16 @@ public class AllDaysFragment extends Fragment {
 								model.addDay(datePicker.getDayOfMonth(),
 										datePicker.getMonth() + 1,
 										datePicker.getYear());
+								
+								try {
+									FileOutputStream fos = activity.openFileOutput("savefile", Context.MODE_PRIVATE);
+									ObjectOutputStream os = new ObjectOutputStream(fos);
+									os.writeObject(model);
+									os.close();
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								
 								view.getDayTitles()
 										.add(model
 												.getDays()

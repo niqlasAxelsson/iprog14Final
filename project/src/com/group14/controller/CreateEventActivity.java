@@ -1,5 +1,8 @@
 package com.group14.controller;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,6 +71,15 @@ public class CreateEventActivity extends Activity {
 							.getActivityName(), view.getDescriptionText(), view
 							.getDuration(), view.getActivityType());
 					model.addParkedActivity(newEventActivity);
+					
+					try {
+						FileOutputStream fos = openFileOutput("savefile", MODE_PRIVATE);
+						ObjectOutputStream os = new ObjectOutputStream(fos);
+						os.writeObject(model);
+						os.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 
 					finish();
 				} else {

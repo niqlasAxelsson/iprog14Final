@@ -1,8 +1,11 @@
 package com.group14.controller;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +63,15 @@ public class AllDaysList extends ArrayAdapter<String>{
 				model.removeDay(pos);
 				//notifyDataSetChanged();
 				dayTitles.remove(pos);
+				
+				try {
+					FileOutputStream fos = context.openFileOutput("savefile", Context.MODE_PRIVATE);
+					ObjectOutputStream os = new ObjectOutputStream(fos);
+					os.writeObject(model);
+					os.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
 			}
 			

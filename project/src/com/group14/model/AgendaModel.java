@@ -1,21 +1,25 @@
 package com.group14.model;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
 import android.app.Activity;
+import android.content.Context;
 
-public class AgendaModel extends Observable {
+public class AgendaModel extends Observable implements Serializable{
 
 	List<Day> days = new ArrayList<Day>();
 	List<EventActivity> parkedActivites = new ArrayList<EventActivity>();
 	Day selectedDay;
-	public Activity mainActivity;
+	public transient Context myContext;
 
 	public AgendaModel() {
-		
+
 	}
 
 	public Day getSelectedDay() {
@@ -125,10 +129,10 @@ public class AgendaModel extends Observable {
 
 		return pa;
 	}
-	
-	public void removeActivityFromSelectedDay(int pos){
+
+	public void removeActivityFromSelectedDay(int pos) {
 		selectedDay.removeActivity(pos);
-		
+
 		setChanged();
 		notifyObservers("ActivityRemoved");
 	}
@@ -138,12 +142,11 @@ public class AgendaModel extends Observable {
 	 */
 	public EventActivity removeParkedActivity(int position) {
 		EventActivity act = parkedActivites.remove(position);
-		
+
 		setChanged();
 		notifyObservers("ParkedActivityRemoved " + position);
 		return act;
 	}
-
 
 	public void addExampleData() {
 		String[] titles = { "Workout", "Meeting", "Meal", "Party", "Studies",
@@ -165,28 +168,24 @@ public class AgendaModel extends Observable {
 
 		// adding activities to a day
 		Day awesomeDay = new Day(13, 3, 2007);
-		
 
 		EventActivity ea = new EventActivity("Träning", "Träna med julle", 2, 1);
 		awesomeDay.addActivity(ea, 0);
-		
+
 		awesomeDay.removeActivity(0);
-		
-		
-		
+
 		EventActivity ea3 = new EventActivity("Fest", "krök", 4, 4);
 		awesomeDay.addActivity(ea3, 5);
-		
+
 		EventActivity ea33 = new EventActivity("Möte", "möte osv", 8, 3);
 		awesomeDay.addActivity(ea33, 4);
-		
-		
+
 		EventActivity ea4 = new EventActivity("Other", "hej", 2, 8);
 		awesomeDay.addActivity(ea4, 18);
-		
+
 		EventActivity ea5 = new EventActivity("hejhej", "hej", 1, 7);
 		awesomeDay.addActivity(ea5, 18);
-		
+
 		days.add(awesomeDay);
 
 		System.out.println(awesomeDay.dayToString());

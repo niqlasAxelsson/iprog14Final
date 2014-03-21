@@ -1,12 +1,13 @@
 package com.group14.model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 import android.graphics.Color;
 
 import com.example.pl4nn3r3000.R;
 
-public class EventActivity extends Observable {
+public class EventActivity extends Observable implements Serializable{
 
 	// The possible types of the activity
 	public static final int WORKOUT = 1;
